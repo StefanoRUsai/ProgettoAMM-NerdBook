@@ -1,39 +1,55 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
+<head>
         <title>NerdBook il nuovo social network</title>
+        <base href="http://Nerdbook/web/M1/descrizione.html">        <!--inidirizzo fittizzio--> 
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Stefano Raimondo Usai">
-        <meta name="keywords" content="cerca, nerd, giochi, musica">
+        <meta name="keywords" content="cerca, nerd, giochi, GDR, RPG, GRV, MMPORG, libri, fantasy, ,code, programming, languages, music, programmazione, linguaggi, games, musica">
     </head>
-    
+    <body>
     <div id="title">                
         <h1>NerdBook</h1>        
-            <nav>
-                <form action="demo_form.asp" method="get">
-                    <label for="Username">Username</label>
-                    <input type="text" name="username" id="username" value="valore iniziale" />
-
-                    <label for="pswd">Password</label>
-                    <input type="password" name="pswd” " id="pswd" value="oscurato" />
-
-                </form>
-            </nav>
     </div> 
+        <div>
+                <form action="demo_form.asp" method="post">>
+                  <div>
+                      
+                      <img title="profilo" alt="immagine avatar" src="img/avatar-placeholder.jpg" width="60" height="71">
+                  </div>
+
+                  <div>
+                      <label><b>Username</b></label>
+                    <input type="text" name="username" autofocus required>
+
+                    <label><b>Password</b></label>
+                    <input type="password"  name="psw" required>
+
+                    <button type="submit" onclick="location.href='bacheca.html'">Accedi</button> <!--posso farlo?-->
+                    <input type="checkbox"> rimani collegato
+                  </div>
+
+                  <div>
+                    <span><a href="bacheca.html">Hai dimenticato la password?</a></span>
+                  </div>
+                </form>
+        </div>
+        <div>
+                <nav>
+                    <h2>Pagine del Sito</h2>
+                    
+                    <ul>
+                    <li><a href="descrizione.html">Descrizione</a></li>
+                    <li><a href="profilo.html">Profilo</a></li>
+                    <li><a href="bacheca.html">Bacheca</a></li>
+                    </ul>
+                
+                </nav>
+        </div>
+            
+ 
+    </body>
 </html>
 
-
-<tr class="odd">
-                        <td class="tag">email</td>
-                        <td class="descr">E-mail: <input type="email" name="usremail"></td>
-                        <td class="comp">
-                            <img src="http://www.w3schools.com/images/compatible_ie2020.gif" title="Internet Explorer" alt="Internet Explorer" width="20" height="20">
-                            <img src="http://www.w3schools.com/images/compatible_firefox2020.gif" title="Firefox" alt="Firefox" width="20" height="20">
-                            <img src="http://www.w3schools.com/images/compatible_chrome2020.gif" title="Chrome" alt="Chrome" width="20" height="20">
-                            <img src="http://www.w3schools.com/images/incompatible_safari2020.gif" title="Safari" alt="Safari" width="20" height="20">
-                            <img src="http://www.w3schools.com/images/compatible_opera2020.gif" title="Opera" alt="Opera" width="20" height="20">
-
-                        </td>
-                    </tr>
