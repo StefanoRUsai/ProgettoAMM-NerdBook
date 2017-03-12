@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>NerdBook il nuovo social network</title>
-        <base href="http://Nerdbook/web/M1/descrizione.html">        <!--inidirizzo fittizzio--> 
+        <base href="http://Nerdbook/web/M1">        <!--inidirizzo fittizzio--> 
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Stefano Raimondo Usai">
@@ -23,38 +23,38 @@
                   </div>
 
                   <div>
-                      <p>
+                      <p id="name">
                           <label><b>Nome</b></label> 
-                          <input type="text" name="username" required>
+                          <input type="text" name="username" placeholder="username" required>
                       </p>
-                      <p>
+                      <p id="lastname">
                           <label><b>Cognome</b></label> 
-                          <input type="text" name="lastname" required>
+                          <input type="text" name="lastname" placeholder="lastname" required>
                       </p>
-                      <p>
+                      <p id="avatar">
                           <label><b>URL Avatar</b></label> 
                           <input type="url" name="img" required> or <input type="file" name="img">
                       </p>
-                       <p>
+                       <p id="sign">
                           <label><b>Frase di presentazione</b></label> 
-                          <input type="text" name="sign" required>
+                          <input type="text" name="sign"  required>
                       </p>
-                      <p>
+                      <p id="bday">
                           <label><b>Data di nascista</b></label> 
-                          <input type="date" name="day" required>
+                          <input type="date" name="bday" placeholder="bday" required>
                       </p>
                       <p>
                           <label><b>Password</b></label> 
-                          <input type="password"  name="psw" required>
+                          <input type="password"  name="psw" placeholder="psw" required>
                       </p>
-                      <p>
+                      <p id="psw">
                           <label><b>Conferma password</b></label> 
-                          <input type="password"  name="psw" required>
+                          <input type="password"  name="psw" placeholder="psw" required>
                       </p>
                                                                               
 
-                    <button type="submit" onclick="location.href='bacheca.html'">Cancella</button> <!--posso farlo?-->
-                    <button type="submit" onclick="location.href='#'">Accedi</button> <!--posso farlo?-->
+                    <button type="submit" >Cancella</button>
+                    <button type="submit" >Accedi</button> 
                 </form>
         </div>
         
