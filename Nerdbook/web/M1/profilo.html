@@ -26,31 +26,48 @@
         </nav>    
 
         <div id="form">
-            <form action="bacheca.html" method="post"> <!-- pagin.java sull'action subnet java, il validatore fa funzione pure l'indirizzo della bacheca-->
+            <form action="bacheca.html" method="post"> <!-- pagin.java sull'action subnet java, il validatore fa funzionare pure l'indirizzo della bacheca-->
+                    
+                <div>
+                    <label><b>Nome</b></label> 
+                    <input type="text" name="username">
+                </div>
+                
+                
+                <div>
+                    <label><b>Cognome</b></label> 
+                    <input type="text" name="lastname">
+                </div>
 
-                <label><b>Nome</b></label> 
-                <input type="text" name="username"><br>
-
-                <label><b>Cognome</b></label> 
-                <input type="text" name="lastname"><br>
-
-                <label><b>URL Avatar</b></label> 
-                <input type="url" name="img" > or <input type="file" name="img"><br>
-
-                <label><b>Frase di presentazione</b></label> 
-                <input type="text" name="frase presentazione"><br>
-
-                <label><b>Data di nascista</b></label> 
-                <input type="date" name="bday"><br>  <!-- da chiedere ai tutor se posso usarlo -->
-
-                <label><b>Password</b></label> 
-                <input type="password" name="password"><br>
-
-                <label><b>Conferma password</b></label> 
-                <input type="password"  name="password"><br>                 
-
-                <button type="submit" >Cancella</button>
-                <button type="submit" >Accedi</button> 
+                <div>
+                    <label><b>URL Avatar</b></label> 
+                    <input type="url" name="img" > or <input type="file" name="img">
+                </div>
+                
+                <div>
+                    <label><b>Frase di presentazione</b></label> 
+                    <input type="text" name="frase presentazione">
+                </div>
+                
+                <div>
+                    <label><b>Data di nascista</b></label> 
+                    <input type="date" name="bday">
+                </div>
+                
+                <div>
+                    <label><b>Password</b></label> 
+                    <input type="password" name="password">
+                </div>
+                
+                <div>
+                    <label><b>Conferma password</b></label> 
+                    <input type="password"  name="password">     
+                </div>
+                
+                <div>
+                    <button type="submit" >Cancella</button>
+                    <button type="submit" >Accedi</button>
+                </div>
             </form>
 
         </div>
