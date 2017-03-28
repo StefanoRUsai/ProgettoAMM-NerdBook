@@ -11,6 +11,8 @@ and open the template in the editor.
 body{
     background-color: #e9ebee;
     font: 17px/25px  "Open Sans", Arial, sans-serif;
+    height: 100%;
+    margin: auto;
 }
 
 h1{
@@ -38,12 +40,86 @@ nav ol, nav li{
     list-style-type: none;
 }
 
-.collegamento ol, .collegamento li{
+
+header{
+    top: 0;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 0;
+    padding-right: 0;
+    position: fixed;
+    margin: auto;
+    width: 100%;
+    height: 46px; 
+    background-color: #333745;
+    
+}
+
+#title {
+    height: 40px;
+    padding-left: 5px;
+    min-width:150px;
+    float: left;
+    padding-top: 6px;
+    color: greenyellow;
+    font: 20px/30px "Open Sans", Arial, sans-serif;
+    font-weight: bold;
+}
+
+h1#title{
+    margin-top: 0px; 
+    color: #111111;
+    font: 36px/40px "Open Sans", Arial, sans-serif;
+    font-weight: bold;
+}
+
+.navbar {
+    
+     min-height: 40px; 
+     float: right;
+     
+}
+
+.navbar ol, .navbar li{
     display: inline-block;
+    color: white;
+        
+}
+
+.navbar a:link, .navbar a:visited {
+    font: 14px/25px  "Open Sans", Arial, sans-serif;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+
+#sidebar{
+    margin-top: 50px;
+    position:relative;
+    padding-top: 0px;
+    width:auto;
+    height: auto;
+    float: left;
+    
+}
+
+#sidebar ol, #sidebar li{
+    list-style: none;
+    margin-left: 0px;
+    padding-left: 0px;
+   
     
 }
 
 
+#content{
+    margin-top: 50px;
+    position: relative;
+        
+    
+}
 
 .profilo a:link, .profilo a:visited {
     font: 14px/25px  "Open Sans", Arial, sans-serif;
@@ -57,7 +133,7 @@ nav ol, nav li{
     text-decoration: underline;
 }
 
-#post{
+.newpost{
     background-color: white;
     float: left;
     min-width:500px;
@@ -73,9 +149,3 @@ nav ol, nav li{
     
 }
 
-#sidebar{
-    min-width:120px;
-    max-width:120px;
-    float: left;
-    
-}
