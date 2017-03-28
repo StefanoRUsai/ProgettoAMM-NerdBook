@@ -8,3 +8,74 @@ and open the template in the editor.
     Author     : St3
 */
 
+body{
+    background-color: #e9ebee;
+    font: 17px/25px  "Open Sans", Arial, sans-serif;
+}
+
+h1{
+    margin-top: 0px; 
+    color: #111111;
+    font: 35px/40px "Open Sans", Arial, sans-serif;
+    font-weight: bold;
+}
+
+h2{
+    margin-top: 0px; 
+    color: #333333;
+    font: 25px/40px "Open Sans", Arial, sans-serif;
+    font-weight: bold;
+}
+
+h3{
+    margin-top: 0px; 
+    color: #333333;
+    font: 15px/20px "Open Sans", Arial, sans-serif;
+    font-weight: bold;
+}
+
+nav ol, nav li{
+    list-style-type: none;
+}
+
+.collegamento ol, .collegamento li{
+    display: inline-block;
+    
+}
+
+
+
+.profilo a:link, .profilo a:visited {
+    font: 14px/25px  "Open Sans", Arial, sans-serif;
+    font-weight: bold;
+    color: #365899;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.profilo a:hover{
+    text-decoration: underline;
+}
+
+#post{
+    background-color: white;
+    float: left;
+    min-width:500px;
+    max-width:500px;
+    min-height:300px;
+    max-height:600px;
+    margin-bottom: 5px;
+    margin-left: 50px;
+    padding-left: 5px;
+    margin-top: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,.2);
+    
+    
+}
+
+#sidebar{
+    min-width:120px;
+    max-width:120px;
+    float: left;
+    
+}
