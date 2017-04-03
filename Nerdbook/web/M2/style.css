@@ -10,13 +10,12 @@ and open the template in the editor.
 
 @media only screen and (min-width: 100px){
     
-    html, body{
+    html, body, #page{
         position: relative;
         background-color: #e9ebee;
         font: 17px/25px  "Open Sans", Arial, sans-serif;
         margin: 0;
         padding: 0;
-        min-height: 100%;
         height: 100%;
     }
 
@@ -24,14 +23,14 @@ and open the template in the editor.
     h1{
         margin-top: 0px; 
         color: #111111;
-        font: 35px/40px "Open Sans", Arial, sans-serif;
+        font-size: 35px;
         font-weight: bold;
     }
 
     h2{
         margin-top: 0px; 
         color: #333333;
-        font: 25px/40px "Open Sans", Arial, sans-serif;
+        font-size: 25px;
         font-weight: bold;
     }
 
@@ -39,10 +38,27 @@ and open the template in the editor.
     h3{
         margin-top: 0px; 
         color: #333333;
-        font: 15px/20px "Open Sans", Arial, sans-serif;
+        font-size: 15px;
         font-weight: bold;
     }
-
+    
+    
+    input:focus, textarea:focus{
+        outline: none;
+        border-color: #333745;
+        box-shadow: 0 0 1px #333745;
+    }
+    
+    button{
+        padding: .5em;
+        color: white;
+        background-color: #333745;
+        text-shadow: 1px 1px 1px #000;
+        border: solid thin #333745;
+        border-radius: 5px;
+        
+    }
+    /*regole header*/
     header{
         top: 0;
         padding-top: 3px;
@@ -59,20 +75,21 @@ and open the template in the editor.
     }
 
     #title {
+        
         height: 40px;
         padding-left: 5px;
         min-width:150px;
         float: left;
-        padding-top: 6px;
+        padding-top: 10px;
+        padding-bottom: 10px;
         color: greenyellow;
-        font: 20px/30px "Open Sans", Arial, sans-serif;
+        font-size: 30px;
         font-weight: bold;
     }
 
     h1#title{
         margin-top: 0px; 
         color: #111111;
-        font: 36px/40px "Open Sans", Arial, sans-serif;
         font-weight: bold;
     }
 
@@ -98,15 +115,20 @@ and open the template in the editor.
         text-decoration: none;
     }
 
-
+    /*regole sidebar*/
     #sidebar{
-        margin-top: 50px;
+        margin-top: 60px;
         margin-left: 5px;
         max-width:150px;
+        height: 90%;
         float: left;
         position: fixed;
         overflow: hidden;
         white-space:nowrap;
+        box-shadow: 3px 3px 20px #333745;
+        border-radius: 10px;
+        clear: both;
+        padding: 5px;
 
     }
 
@@ -117,10 +139,14 @@ and open the template in the editor.
 
     #sidebar ol, #sidebar li{
         list-style: none;
-        margin-left: 0px;
         padding-left: 0px;
 
     }
+    
+    #sidebar li{
+        list-style: none;
+        margin-left: -40px;
+}
 
     .barralaterale a:link, .barralaterale a:visited {
         font: 14px/25px  "Open Sans", Arial, sans-serif;
@@ -138,16 +164,15 @@ and open the template in the editor.
 
         float:left;
     }
-
-
-
+    
+    
+    /*regole content*/
     #content{
-        margin-top: 50px;
-        margin-left: 160px;
-        max-width: 500px;    
         float:left;
-        min-height: 100%;
-        height: 100%;
+        margin-top: 51px;
+        margin-left: 160px;
+        width: 80%;
+        height: 90%;
     }
 
     .profilo a:link, .profilo a:visited {
@@ -210,7 +235,10 @@ and open the template in the editor.
         margin-right: auto;
         max-width:  400px;
         min-width:  400px;
-        padding-top: 70px;
+        min-height:  400px;
+        max-height:  400px;
+        padding-top: 10px;
+        padding-bottom: 10px;
         padding-left: 10px;
         padding-right: 10px;
         box-shadow: 3px 3px 20px #333745;
@@ -234,12 +262,6 @@ and open the template in the editor.
 
     }
 
-    #texar input:focus{
-        outline: none;
-        border-color: #333745;
-        box-shadow: 0 0 1px #333745;
-    }
-
     #divform button{
 
         padding: .5em;
@@ -253,52 +275,104 @@ and open the template in the editor.
         border-radius: 5px;
 
     }
-    #formprofilo {
-        
+    
+    /*regole pagina profilo*/
+    .form {
         min-width:500px;
-        max-width:500px;
+        max-width:720px;
         margin-top: 10px;
         margin-bottom: 10px;
-        margin-left: 10px;
-        padding-left: 10px;
-        min-height: 90%;
+        margin-left: 20px;
+        padding: 10px;
         height: 90%;
         box-shadow: 3px 3px 20px #333745;
         border-radius: 10px;
         float:left;
-        display: inline-block;
         position: fixed;
+        clear:both;
     }
     
-    #formprofilo button{
-
-        padding: .5em;
+    .immaginiprofilo{
+    float:left;
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    box-shadow: 0 0 1px #333745;
+    transition: 0.2s;
+    }
+    
+    .immaginiprofilo:hover{
+    border-radius: 10px;
+    box-shadow: 0 0 1px #333745;
+    
+    }
+    
+     .immaginiprofilo img{
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    transition: 0.2s;
+    }
+    
+    .immaginiprofilo img:hover{
+    border-radius: 10px;
+    }
+    
+    
+    .areaform {
+        float:left;
+        width: 550px;
+        height: 550px;
+        padding: 10px;
+        
+    }
+    
+    .textform{
+        width: 100%;
+        height: 27px;
+        float:left;
+        padding: 2px;
         margin-top: 10px;
-        margin-left: auto;
-        margin-right: auto;
-        width: 100px;
-        color: white;
-        background-color: #333745;
-        text-shadow: 1px 1px 1px #000;
-        border: solid thin #333745;
+        margin-left: 5px;
+        vertical-align:middle;
+        clear:both;
+    }
+    
+    .textform input, .textform textarea{
+        float:right;
+        height: 25px;
+        width: 55%;
+      
         border-radius: 5px;
+        padding-left: 2px;
+        
+    }
+    
+    .textform label{
+        width: 200px;
+        
+    }
+    
+    .form button{
+        width: 100%;
+        margin-top: 20px;
+        margin-left: 5px;
+        
+    }
+    
+    li.imgelement {
+        
+    text-align: center;
+    }
+    
+    li.imgelement span:before{
+        
+    content: url("img/profile-pictures.jpg")
+        
+       
+    
     }
 
-    #formprofilo input{
-        max-width:  250px;
-        min-width:  250px;
-        margin-left: 100px;
-
-    }
-
-    #formprofilo input:focus{
-        outline: none;
-        border-color: #333745;
-        box-shadow: 0 0 1px #333745;
-    }
 
 
 }
-
-
-

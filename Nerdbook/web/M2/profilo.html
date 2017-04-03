@@ -22,7 +22,7 @@
                         <ul>
                             <li><a href="bacheca.html">Bacheca</a></li>
                             <li><a href="profilo.html">Profilo</a></li>
-                            <li><a href="login.html">Login</a></li>
+                            <li class="imgelement"><a href="login.html">Login</a></li>
                         </ul>                
                     </nav>
                 </div>
@@ -51,56 +51,63 @@
 
             <div id="content">
 
-                <div id="formprofilo">
+                <div class="form">
+                    <div class="immaginiprofilo">
+                        <img title="profilo" alt="immagine avatar" src="img/profilo.jpg">
+                    </div>
 
-                    <form action="bacheca.html" method="post"> <!-- pagin.java sull'action subnet java, il validatore fa funzionare pure l'indirizzo della bacheca-->
+                    <div class="areaform">
+                        <form action="bacheca.html" method="post"> <!-- pagin.java sull'action subnet java, il validatore fa funzionare pure l'indirizzo della bacheca-->
 
-                        <div>
-                            <label for="username"><b>Nome</b></label> 
-                            <input type="text" id="username" name="username" value="Nome">
-                        </div>
-
-
-                        <div>
-                            <label for="lastname"><b>Cognome</b></label> 
-                            <input type="text" id="lastname" name="lastname" value="Cognome">
-                        </div>
-
-                        <div>
-                            <label for="avatar"><b>URL Avatar</b></label> 
-                            <input type="url" name="img" id="avatar" value="">
-                        </div>
-
-                        <div>
-
-                            <label for="bday"><b>Data di nascista</b></label> 
-                            <input type="date" name="bday" id="bday" value=""> <!-- warning per il browser firefox, accettabile -->
-                        </div>
-
-                        <div>
-                            <label for="primapsw"><b>Password</b></label> 
-                            <input type="password" id="primapsw" name="primapsw" value="password">
-                        </div>
-
-                        <div>
-                            <label for="verifica"><b>Conferma password</b></label> 
-                            <input type="password" id="verifica"  name="verifica" value="password">     
-                        </div>
-
-                        <div>
-                            <label for="presentazione"><b>Frase di presentazione</b></label> 
-                            <textarea rows="5" cols="60" name="presentazione" id="presentazione">Frase di presentazione </textarea>
-                        </div>
+                            <div class="textform">
+                                <label for="username"><b>Nome</b></label> 
+                                <input type="text" id="username" name="username" value="Nome">
+                            </div>
 
 
-                        <div>
-                            <button type="submit" >Aggiorna</button>
+                            <div class="textform">
+                                <label for="lastname"><b>Cognome</b></label> 
+                                <input type="text" id="lastname" name="lastname" value="Cognome">
+                            </div>
 
-                        </div>
-                    </form>
+                            <div class="textform">
+                                <label for="avatar"><b>URL Avatar</b></label> 
+                                <input type="url" name="img" id="avatar" value="">
+                            </div>
+
+                            <div class="textform">
+
+                                <label for="bday"><b>Data di nascista</b></label> 
+                                <input type="date" name="bday" id="bday" value=""> <!-- warning per il browser firefox, accettabile -->
+                            </div>
+
+                            <div class="textform">
+                                <label for="primapsw"><b>Password</b></label> 
+                                <input type="password" id="primapsw" name="primapsw" value="password">
+                            </div>
+
+                            <div class="textform">
+                                <label for="verifica"><b>Conferma password</b></label> 
+                                <input type="password" id="verifica"  name="verifica" value="password">     
+                            </div>
+
+                            <div class="textform">
+                                <label for="presentazione"><b>Frase di presentazione</b></label> 
+                                <textarea  name="presentazione" id="presentazione">Frase di presentazione </textarea>
+                            </div>
+
+
+                            <div>
+                                <button type="submit" >Aggiorna</button>
+
+                            </div>
+                        </form>
+                    </div>
 
                 </div>
             </div>
         </div>
+
     </body>
 </html>
+
