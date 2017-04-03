@@ -50,7 +50,9 @@
             </div>
 
             <div id="content">
-                <div class="formprofilo">
+
+                <div id="formprofilo">
+
                     <form action="bacheca.html" method="post"> <!-- pagin.java sull'action subnet java, il validatore fa funzionare pure l'indirizzo della bacheca-->
 
                         <div>
@@ -70,11 +72,7 @@
                         </div>
 
                         <div>
-                            <label for="presentazione"><b>Frase di presentazione</b></label> 
-                            <textarea rows="5" cols="60" name="presentazione" id="presentazione">Frase di presentazione </textarea>
-                        </div>
 
-                        <div>
                             <label for="bday"><b>Data di nascista</b></label> 
                             <input type="date" name="bday" id="bday" value=""> <!-- warning per il browser firefox, accettabile -->
                         </div>
@@ -90,8 +88,14 @@
                         </div>
 
                         <div>
-                            <button type="submit" >Cancella</button>
-                            <button type="submit" >Accedi</button>
+                            <label for="presentazione"><b>Frase di presentazione</b></label> 
+                            <textarea rows="5" cols="60" name="presentazione" id="presentazione">Frase di presentazione </textarea>
+                        </div>
+
+
+                        <div>
+                            <button type="submit" >Aggiorna</button>
+
                         </div>
                     </form>
 

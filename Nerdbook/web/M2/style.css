@@ -8,275 +8,297 @@ and open the template in the editor.
     Author     : St3
 */
 
-body{
-    background-color: #e9ebee;
-    font: 17px/25px  "Open Sans", Arial, sans-serif;
-    margin: auto;
-}
-
-h1{
-    margin-top: 0px; 
-    color: #111111;
-    font: 35px/40px "Open Sans", Arial, sans-serif;
-    font-weight: bold;
-}
-
-h2{
-    margin-top: 0px; 
-    color: #333333;
-    font: 25px/40px "Open Sans", Arial, sans-serif;
-    font-weight: bold;
-}
-
-h3{
-    margin-top: 0px; 
-    color: #333333;
-    font: 15px/20px "Open Sans", Arial, sans-serif;
-    font-weight: bold;
-}
-
-nav ol, nav li{
-    list-style-type: none;
-}
-
-
-header{
-    top: 0;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    padding-left: 0;
-    padding-right: 0;
-    position: fixed;
-    margin: auto;
-    width: 100%;
-    height: 46px; 
-    background-color: #333745;
-    display: inline-block;
-
-}
-
-#title {
-    height: 40px;
-    padding-left: 5px;
-    min-width:150px;
-    float: left;
-    padding-top: 6px;
-    color: greenyellow;
-    font: 20px/30px "Open Sans", Arial, sans-serif;
-    font-weight: bold;
-}
-
-h1#title{
-    margin-top: 0px; 
-    color: #111111;
-    font: 36px/40px "Open Sans", Arial, sans-serif;
-    font-weight: bold;
-}
-
-.navbar {
-
-    min-height: 40px; 
-    float: right;
-
-}
-
-.navbar ol, .navbar li{
-    display: inline-block;
-    color: white;
-
-}
-
-.navbar a:link, .navbar a:visited {
-    font: 14px/25px  "Open Sans", Arial, sans-serif;
-    font-weight: bold;
-    margin-right: 5px;
-    color: white;
-    cursor: pointer;
-    text-decoration: none;
-}
-
-
-#sidebar{
-    margin-top: 50px;
-    margin-left: 5px;
-    max-width:150px;
-    float: left;
-    position: fixed;
-    overflow: hidden;
-    white-space:nowrap;
-
-}
-
-h1#sidebar{
-    margin-top: 0px;
-
-}
-
-#sidebar ol, #sidebar li{
-    list-style: none;
-    margin-left: 0px;
-    padding-left: 0px;
-     
-}
-
-.barralaterale a:link, .barralaterale a:visited {
-    font: 14px/25px  "Open Sans", Arial, sans-serif;
-    font-weight: bold;
-    color: #365899;
-    cursor: pointer;
-    text-decoration: none;
-}
-
-.barralaterale a:hover{
-    text-decoration: underline;
-}
-
-#persone, #gruppi{
-
-    float:left;
-}
-
-
-
-#content{
-    margin-top: 50px;
-    margin-left: 160px;
-    height: 100%;
-    max-width: 500px;    
-
-}
-
-.profilo a:link, .profilo a:visited {
-    font: 14px/25px  "Open Sans", Arial, sans-serif;
-    font-weight: bold;
-    color: #365899;
-    cursor: pointer;
-    text-decoration: none;
-}
-
-.profilo a:hover{
-    text-decoration: underline;
-}
-
-.newpost{
-    background-color: white;
-    float: left;
-    min-width:500px;
-    max-width:500px;
-    min-height:300px;
-    max-height:600px;
-    margin-bottom: 5px;
-    margin-left: 50px;
-    padding-left: 5px;
-    padding-right: 5px;
-    margin-top: 5px;
-    padding-top: 5px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0,0,0,.2);
-
-}
-
-.imgprofilo{
-    float:left;
-    max-height: 40px;
-    max-width: 40px;
-
-}
-
-.nameprofilo {
-    float:left;
-    max-height: 40px;
-    max-width: 448px;
-    min-width: 448px;
-    margin-left: 2px; 
-    padding-top: 20px;
-}
-
-.testopost {
-    float:left;
-    clear: both;
-
-}
-
-#divlogin {
-    display: table;
-    clear: both;
-    margin-top: 100px;
-    margin-left: auto;
-    margin-right: auto;
-    max-height: 400px;
-    min-height: 400px;
-    max-width:  400px;
-    min-width:  400px;
-    padding-top: 70px;
-    padding-left: 10px;
-    padding-right: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,1);
-
-}
-
-
-
-#divform label, #divform input{
-
-    max-width:  360px;
-    min-width:  360px;
-    margin-left: 17px;
-    float:left;
-}
-
-#divform input{
-
-    max-width:  360px;
-    min-width:  360px;
-    margin-left: 17px;
-    float:left;
-
-}
-
-#divform button{
+@media only screen and (min-width: 100px){
     
-    padding: .5em;
-    margin-top: 5px;
-    margin-left: 18px;
-    width: 362px;
-    color: white;
-    background-color: #333745;
-    text-shadow: 1px 1px 1px #000;
-    border: solid thin #333745;
-    border-radius: 5px;
-
-}
-.formprofilo {
-    background-color: white;
-    float: left;
-    min-width:500px;
-    max-width:500px;
-/*    min-height:300px;
-    max-height:600px*/
+    html, body{
+        position: relative;
+        background-color: #e9ebee;
+        font: 17px/25px  "Open Sans", Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        min-height: 100%;
         height: 100%;
-    margin-bottom: 5px;
-    margin-left: 50px;
-    padding-left: 5px;
-    padding-right: 5px;
-    margin-top: 5px;
-    padding-top: 5px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0,0,0,.2);
+    }
+
+
+    h1{
+        margin-top: 0px; 
+        color: #111111;
+        font: 35px/40px "Open Sans", Arial, sans-serif;
+        font-weight: bold;
+    }
+
+    h2{
+        margin-top: 0px; 
+        color: #333333;
+        font: 25px/40px "Open Sans", Arial, sans-serif;
+        font-weight: bold;
+    }
+
+
+    h3{
+        margin-top: 0px; 
+        color: #333333;
+        font: 15px/20px "Open Sans", Arial, sans-serif;
+        font-weight: bold;
+    }
+
+    header{
+        top: 0;
+        padding-top: 3px;
+        padding-bottom: 3px;
+        padding-left: 0;
+        padding-right: 0;
+        position: fixed;
+        margin: auto;
+        width: 100%;
+        height: 46px; 
+        background-color: #333745;
+        display: inline-block;
+
+    }
+
+    #title {
+        height: 40px;
+        padding-left: 5px;
+        min-width:150px;
+        float: left;
+        padding-top: 6px;
+        color: greenyellow;
+        font: 20px/30px "Open Sans", Arial, sans-serif;
+        font-weight: bold;
+    }
+
+    h1#title{
+        margin-top: 0px; 
+        color: #111111;
+        font: 36px/40px "Open Sans", Arial, sans-serif;
+        font-weight: bold;
+    }
+
+    .navbar {
+
+        min-height: 40px; 
+        float: right;
+
+    }
+
+    .navbar ol, .navbar li{
+        display: inline-block;
+        color: white;
+
+    }
+
+    .navbar a:link, .navbar a:visited {
+        font: 14px/25px  "Open Sans", Arial, sans-serif;
+        font-weight: bold;
+        margin-right: 5px;
+        color: white;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+
+    #sidebar{
+        margin-top: 50px;
+        margin-left: 5px;
+        max-width:150px;
+        float: left;
+        position: fixed;
+        overflow: hidden;
+        white-space:nowrap;
+
+    }
+
+    h1#sidebar{
+        margin-top: 0px;
+
+    }
+
+    #sidebar ol, #sidebar li{
+        list-style: none;
+        margin-left: 0px;
+        padding-left: 0px;
+
+    }
+
+    .barralaterale a:link, .barralaterale a:visited {
+        font: 14px/25px  "Open Sans", Arial, sans-serif;
+        font-weight: bold;
+        color: #365899;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    .barralaterale a:hover{
+        text-decoration: underline;
+    }
+
+    #persone, #gruppi{
+
+        float:left;
+    }
+
+
+
+    #content{
+        margin-top: 50px;
+        margin-left: 160px;
+        max-width: 500px;    
+        float:left;
+        min-height: 100%;
+        height: 100%;
+    }
+
+    .profilo a:link, .profilo a:visited {
+        font: 14px/25px  "Open Sans", Arial, sans-serif;
+        font-weight: bold;
+        color: #365899;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    .profilo a:hover{
+        text-decoration: underline;
+    }
+
+    .newpost{
+        background-color: white;
+        float: left;
+        min-width:500px;
+        max-width:500px;
+        min-height:300px;
+        max-height:600px;
+        margin-bottom: 5px;
+        margin-left: 50px;
+        padding-left: 5px;
+        padding-right: 5px;
+        margin-top: 5px;
+        padding-top: 5px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0,0,0,.2);
+
+    }
+
+    .imgprofilo{
+        float:left;
+        max-height: 40px;
+        max-width: 40px;
+
+    }
+
+    .nameprofilo {
+        float:left;
+        max-height: 40px;
+        max-width: 448px;
+        min-width: 448px;
+        margin-left: 2px; 
+        padding-top: 20px;
+    }
+
+    .testopost {
+        float:left;
+        clear: both;
+
+    }
+
+    #divlogin {
+        display: table;
+        clear: both;
+        margin-top: 100px;
+        margin-left: auto;
+        margin-right: auto;
+        max-width:  400px;
+        min-width:  400px;
+        padding-top: 70px;
+        padding-left: 10px;
+        padding-right: 10px;
+        box-shadow: 3px 3px 20px #333745;
+        border-radius: 10px;
+
+    }
+
+    #divform label {
+
+        max-width:  360px;
+        min-width:  360px;
+        margin-left: 17px;
+        float:left;
+    }
+
+    #texar input{
+        max-width:  360px;
+        min-width:  360px;
+        margin-left: 17px;   
+        float:left;
+
+    }
+
+    #texar input:focus{
+        outline: none;
+        border-color: #333745;
+        box-shadow: 0 0 1px #333745;
+    }
+
+    #divform button{
+
+        padding: .5em;
+        margin-top: 5px;
+        margin-left: 18px;
+        width: 362px;
+        color: white;
+        background-color: #333745;
+        text-shadow: 1px 1px 1px #000;
+        border: solid thin #333745;
+        border-radius: 5px;
+
+    }
+    #formprofilo {
+        
+        min-width:500px;
+        max-width:500px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-left: 10px;
+        padding-left: 10px;
+        min-height: 90%;
+        height: 90%;
+        box-shadow: 3px 3px 20px #333745;
+        border-radius: 10px;
+        float:left;
+        display: inline-block;
+        position: fixed;
+    }
     
+    #formprofilo button{
+
+        padding: .5em;
+        margin-top: 10px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100px;
+        color: white;
+        background-color: #333745;
+        text-shadow: 1px 1px 1px #000;
+        border: solid thin #333745;
+        border-radius: 5px;
+    }
+
+    #formprofilo input{
+        max-width:  250px;
+        min-width:  250px;
+        margin-left: 100px;
+
+    }
+
+    #formprofilo input:focus{
+        outline: none;
+        border-color: #333745;
+        box-shadow: 0 0 1px #333745;
+    }
+
+
 }
 
-.formprofilo button{
-    
-    padding: .5em;
-    margin-top: 5px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100px;
-    color: white;
-    background-color: #333745;
-    text-shadow: 1px 1px 1px #000;
-    border: solid thin #333745;
-    border-radius: 5px;
 
-}
+
