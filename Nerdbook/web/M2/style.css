@@ -88,6 +88,7 @@ h1#title{
 .navbar a:link, .navbar a:visited {
     font: 14px/25px  "Open Sans", Arial, sans-serif;
     font-weight: bold;
+    margin-right: 5px;
     color: white;
     cursor: pointer;
     text-decoration: none;
@@ -114,8 +115,7 @@ h1#sidebar{
     list-style: none;
     margin-left: 0px;
     padding-left: 0px;
-   
-    
+     
 }
 
 .barralaterale a:link, .barralaterale a:visited {
@@ -167,6 +167,7 @@ h1#sidebar{
     margin-bottom: 5px;
     margin-left: 50px;
     padding-left: 5px;
+    padding-right: 5px;
     margin-top: 5px;
     padding-top: 5px;
     border-radius: 5px;
@@ -184,7 +185,8 @@ h1#sidebar{
 .nameprofilo {
     float:left;
     max-height: 40px;
-    max-width: 200px;
+    max-width: 448x;
+    min-width: 448x;
     margin-left: 2px; 
     padding-top: 20px;
 }
