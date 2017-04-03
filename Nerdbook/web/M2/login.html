@@ -10,46 +10,50 @@
         <meta name="keywords" content="cerca nerd giochi GDR RPG GRV MMPORG libri fantasy code programming languages music programmazione linguaggi games musica">
         <link rel="stylesheet" type="text/css" href="style.css" media="screen">
     </head>
+    
     <body>
-        <header>
-            <div id="title">
-                Nerdbook 
+        <div id="page">
+            <header>
+                <div id="title">
+                    Nerdbook 
+                </div>
+
+                <div class="navbar">
+                    <nav>                        
+                        <ul>
+                            <li><a href="descrizione.html">Descrizione</a></li>
+                            <li><a href="profilo.html">Profilo</a></li>
+                            <li><a href="bacheca.html">Bacheca</a></li>
+                        </ul>                
+                    </nav>
+                </div>
+
+            </header>
+
+
+            <div id="divlogin">
+                <form action="demo_form.asp" method="post">
+
+
+                    <div id="divform">
+                          
+                            <label for="username"><b>Username</b></label>
+                            <input class="inserimento" type="text" id="username" name="username" value="">
+
+                            <label for="password"><b>Password</b></label>
+                            <input class="inserimento" type="password" id="password"  name="password" value="">
+
+                            <button type="submit">Accedi</button> 
+                            <input type="checkbox"> rimani collegato
+                        
+                    </div>
+
+                    <div>
+                        <a href="bacheca.html">Hai dimenticato la password?</a><!--indirizzo falso-->
+                    </div>
+                </form>
             </div>
-        </header>
-
-        <nav>   
-            <ul>
-                <li><a href="descrizione.html">Descrizione</a></li>
-                <li><a href="profilo.html">Profilo</a></li>
-                <li><a href="bacheca.html">Bacheca</a></li>
-            </ul>               
-        </nav>
-
-        <div>
-            <form action="demo_form.asp" method="post">
-                <div>
-                    <img title="profilo" alt="immagine avatar" src="img/avatar-placeholder.jpg" width="60" height="71">
-                </div>
-
-                <div>
-                    <p>  
-                        <label for="username"><b>Username</b></label>
-                        <input type="text" id="username" name="username" value="">
-
-                        <label for="password"><b>Password</b></label>
-                        <input type="password" id="password"  name="password" value="">
-
-                        <button type="submit">Accedi</button> 
-                        <input type="checkbox"> rimani collegato
-                    </p>
-                </div>
-
-                <div>
-                    <a href="bacheca.html">Hai dimenticato la password?</a><!--indirizzo falso-->
-                </div>
-            </form>
         </div>
-
     </body>
 </html>
 
