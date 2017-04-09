@@ -19,7 +19,13 @@ and open the template in the editor.
         height: 100%;
     }
 
+    iframe{
+        width: 400px;
+        height: 280px;
+        border-radius: 15px; 
+        overflow: hidden;
 
+    }
 
     h1{
         margin-top: 0px; 
@@ -134,7 +140,6 @@ and open the template in the editor.
         text-shadow: 1.0px 1.0px 1.0px grey;
     }
     
-    
     .navleft{
         float:left;
         margin-left: 50px;
@@ -258,10 +263,22 @@ and open the template in the editor.
         cursor: pointer;
         text-decoration: none;
     }
-    /*
-        .profilo a:hover{
-            text-decoration: underline;
-        }*/
+
+    .img_post img{
+        border-radius: 5px;
+        width: 80%; 
+        height: 50%;
+        margin-bottom: 5px;
+        overflow: hidden;
+        float:left;
+    }
+
+    .img_post iframe{
+        border-radius: 5px;
+        margin-bottom: 5px;
+        overflow: hidden;
+    }
+
 
     .newpost{
         background-color: white;
@@ -272,12 +289,18 @@ and open the template in the editor.
         max-height:600px;
         margin-bottom: 5px;
         margin-left: 50px;
-        padding-left: 5px;
-        padding-right: 5px;
+        padding-left: 15px;
+        padding-right: 15px;        
+        padding-top: 10px;
+        padding-bottom: 10px;
         margin-top: 5px;
-        padding-top: 5px;
+        padding-top: 10px;
+        padding-bottom: 10px;
         border-radius: 5px;
         box-shadow: 0 0 10px rgba(0,0,0,.2);
+        overflow: hidden;
+
+
     }
 
     .imgprofilo{
@@ -288,12 +311,11 @@ and open the template in the editor.
     }
 
     .nameprofilo {
-        float:left;
-        max-height: 40px;
-        max-width: 448px;
-        min-width: 448px;
-        margin-left: 2px; 
-        padding-top: 20px;
+        height: 40px;
+        width: 100%;
+        margin-left: 45px; 
+        padding-top: 5px;
+        padding-left: 5px;
     }
 
     .testopost {
@@ -305,8 +327,7 @@ and open the template in the editor.
         display: table;
         clear: both;
         margin-top: 100px;
-        margin-left: auto;
-        margin-right: auto;
+        margin-left: 26%;
         max-width:  400px;
         min-width:  400px;
         min-height:  400px;
@@ -317,7 +338,15 @@ and open the template in the editor.
         padding-right: 10px;
         box-shadow: 3px 3px 20px #333745;
         border-radius: 10px;
+        font: 14px/25px  "Open Sans", Arial, sans-serif;
+        font-weight: bold;
+        color: #365899;
 
+    }
+
+
+    #passworddimenticata{
+        padding: 10px; 
     }
 
     #divform label {
@@ -444,15 +473,15 @@ and open the template in the editor.
         padding-left: 5px;
         padding-right: 5px;
     }
-    
+
     #box_descrizione img{
-        border-radius: 100%;
+        border-radius: 10px;
     }
-    
+
     #box_descrizione h1, #box_descrizione h2, #box_descrizione h3{
         color: #333745;
     }
-    
+
     #box_descrizione a:link, #box_descrizione a:visited {
         font: 14px/25px  "Open Sans", Arial, sans-serif;
         font-weight: bold;
@@ -460,8 +489,8 @@ and open the template in the editor.
         cursor: pointer;
         text-decoration: none;
     }
-    
-    
+
+
     #box_descrizione il, #box_descrizione li, #box_descrizione ul{
         list-style-type: none;
         margin-left: 0px; 
@@ -485,6 +514,15 @@ and open the template in the editor.
         margin: 0;
         padding: 0;
         height: 100%;
+    }
+
+
+    iframe{
+        width: 400px; 
+        height: 280px;
+        border-radius: 15px; 
+        overflow: hidden;
+
     }
 
 
@@ -539,7 +577,9 @@ and open the template in the editor.
         width: 99.9%;
         height: 46px; 
         background-color: #333745;
-        display: block;
+
+        box-shadow: 3px 3px 3px #333745;
+        overflow: hidden;
     }
     header ul, header li{
         padding-left: 0px;
@@ -557,6 +597,7 @@ and open the template in the editor.
         color: greenyellow;
         font-size: 30px;
         font-weight: bold;
+        text-shadow: 3px 2px 2px grey;
     }
 
     h1#title{
@@ -585,6 +626,7 @@ and open the template in the editor.
         color: #365899;
         cursor: pointer;
         text-decoration: none;
+        text-shadow: 1.0px 1.0px 1.0px grey;
     }
 
 
@@ -596,7 +638,10 @@ and open the template in the editor.
         color: white;
         cursor: pointer;
         text-decoration: none;
+        text-shadow: 1.0px 1.0px 1.0px grey;
     }
+
+
     .navleft{
         float:left;
         margin-left: 50px;
@@ -720,6 +765,21 @@ and open the template in the editor.
         cursor: pointer;
         text-decoration: none;
     }
+
+    .img_post img{
+        border-radius: 5px;
+        width: 400px; 
+        height: 250px;
+        margin-bottom: 5px;
+        overflow: hidden;
+        float:left;
+    }
+
+    .img_post iframe{
+        border-radius: 5px;
+        margin-bottom: 5px;
+        overflow: hidden;
+    }
     /*
         .profilo a:hover{
             text-decoration: underline;
@@ -728,18 +788,22 @@ and open the template in the editor.
     .newpost{
         background-color: white;
         float: left;
-        min-width:500px;
-        max-width:500px;
-        min-height:300px;
-        max-height:600px;
+        width: 400px;
+        min-height: 200px; 
+        max-height:600px;               
+        padding-top: 10px;
+        padding-bottom: 10px;
         margin-bottom: 5px;
-        margin-left: 50px;
-        padding-left: 5px;
-        padding-right: 5px;
-        margin-top: 5px;
-        padding-top: 5px;
+        margin-left: 10%;
+        margin-right: auto;
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-top: 10px;
+        padding-top: 10px;
         border-radius: 5px;
         box-shadow: 0 0 10px rgba(0,0,0,.2);
+        text: 12px;
+        clear: both;
     }
 
     .imgprofilo{
@@ -750,12 +814,11 @@ and open the template in the editor.
     }
 
     .nameprofilo {
-        float:left;
-        max-height: 40px;
-        max-width: 448px;
-        min-width: 448px;
-        margin-left: 2px; 
-        padding-top: 20px;
+        height: 40px;
+        width: 100%;
+        margin-left: 45px; 
+        padding-top: 10px;
+        padding-left: 5px;
     }
 
     .testopost {
@@ -767,10 +830,8 @@ and open the template in the editor.
         display: table;
         clear: both;
         margin-top: 100px;
-        margin-left: auto;
-        margin-right: auto;
-        max-width:  400px;
-        min-width:  400px;
+        margin-left: -10%;
+        width:  400px;
         min-height:  400px;
         max-height:  400px;
         padding-top: 10px;
@@ -779,7 +840,15 @@ and open the template in the editor.
         padding-right: 10px;
         box-shadow: 3px 3px 20px #333745;
         border-radius: 10px;
+        font: 14px/25px  "Open Sans", Arial, sans-serif;
+        font-weight: bold;
+        color: #365899;
 
+    }
+
+
+    #passworddimenticata{
+        padding: 10px; 
     }
 
     #divform label {
@@ -892,29 +961,29 @@ and open the template in the editor.
     }
 
     #box_descrizione {
-        float:left;
-        widht:90%;
-        margin-top: 10px;
-        margin-left: 30px;
-        margin-bottom: 10px;
-        background-color: #e9ebee;
-        box-shadow: 3px 3px 20px #333745;
-        border-radius: 10px;
-        clear: both;
-        padding-top: 5px;
-        padding-bottom: 5px;
-        padding-left: 5px;
-        padding-right: 5px;
+    float: left;
+    width: 90%;
+    margin-top: 10px;
+    margin-left: 30px;
+    margin-bottom: 10px;
+    background-color: #e9ebee;
+    box-shadow: 3px 3px 20px #333745;
+    border-radius: 10px;
+    clear: both;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 3%;
+    padding-right: 3%;
     }
-    
+
     #box_descrizione img{
-        border-radius: 100%;
+        border-radius: 10px;
     }
-    
+
     #box_descrizione h1, #box_descrizione h2, #box_descrizione h3{
         color: #333745;
     }
-    
+
     #box_descrizione a:link, #box_descrizione a:visited {
         font: 14px/25px  "Open Sans", Arial, sans-serif;
         font-weight: bold;
@@ -922,8 +991,8 @@ and open the template in the editor.
         cursor: pointer;
         text-decoration: none;
     }
-    
-    
+
+
     #box_descrizione il, #box_descrizione li, #box_descrizione ul{
         list-style-type: none;
         margin-left: 0px; 
@@ -941,13 +1010,19 @@ and open the template in the editor.
 @media only screen and (max-width: 480px){
 
 
-    html, body, #page{
+    html, body{
+
         position: relative;
         background-color: #e9ebee;
         font: 17px/25px  "Open Sans", Arial, sans-serif;
         margin: 0;
         padding: 0;
         height: 100%;
+    }
+
+    #page{
+        top:0;
+        height: 100%;    
     }
 
 
@@ -988,8 +1063,8 @@ and open the template in the editor.
         text-shadow: 1px 1px 1px #000;
         border: solid thin #333745;
         border-radius: 5px;
-
     }
+
     /*regole header*/
     header{
         top: 0;
@@ -1003,7 +1078,9 @@ and open the template in the editor.
         height: 46px; 
         background-color: #333745;
         display: block;
+        overflow: hidden;
     }
+
     header ul, header li{
         padding-left: 0;
 
@@ -1160,8 +1237,10 @@ and open the template in the editor.
 
         display: block;
         float:left;
-        margin-top: 51px;
-        width: 90%;
+        margin-top: 0px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
         height: 90%;
         padding-left: 10px;
         padding-right: 10px;
@@ -1182,19 +1261,30 @@ and open the template in the editor.
     .newpost{
         background-color: white;
         float: left;
-        width:300px;
-        height:200px;
-
+        width: 400px;
+        min-height: 200px; 
+        max-height:600px;
         margin-bottom: 5px;
-        margin-left: auto;
-        margin-right: auto;
-        padding-left: 5px;
-        padding-right: 5px;
-        margin-top: 5px;
-        padding-top: 5px;
+        margin-left: 3%;
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-top: 10px;
+        padding-top: 10px;
         border-radius: 5px;
         box-shadow: 0 0 10px rgba(0,0,0,.2);
+        text-height: 12px;
+        display: box-inline;
     }
+
+    .img_post img{
+        border-radius: 5px;
+        width: 80%; 
+        height: 50%;
+        margin-bottom: 5px;
+        overflow: hidden;
+        float:left;
+    }
+
 
     .imgprofilo{
         float:left;
@@ -1205,11 +1295,11 @@ and open the template in the editor.
 
     .nameprofilo {
         float:left;
-        max-height: 40px;
-        max-width: 448px;
-        min-width: 448px;
-        margin-left: 2px; 
-        padding-top: 20px;
+        height: 30px;
+        max-width: 100%;
+        margin-left: 5px; 
+        padding-top: 5px;
+        padding-left: 5px;
     }
 
     .testopost {
@@ -1223,17 +1313,17 @@ and open the template in the editor.
         margin-top: 100px;
         margin-left: auto;
         margin-right: auto;
-        max-width:  400px;
-        min-width:  400px;
-        min-height:  400px;
-        max-height:  400px;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        padding-left: 10px;
+        width: 80%;
+        min-height: 400px;
+        max-height: 400px;
+        padding-top: 20px;
+        padding-left: 0px;
         padding-right: 10px;
         box-shadow: 3px 3px 20px #333745;
         border-radius: 10px;
-
+        font: 14px/25px  "Open Sans", Arial, sans-serif;
+        font-weight: bold;
+        color: #365899;
     }
 
     #divform label {
@@ -1244,41 +1334,49 @@ and open the template in the editor.
         float:left;
     }
 
-    #texar input{
-        max-width:  360px;
-        min-width:  360px;
-        margin-left: 17px;   
-        float:left;
-
+    #passworddimenticata{
+        padding: 10px; 
     }
 
-    #divform button{
+    #passworddimenticata a:link, #passworddimenticata a:visited {
+        font: 14px/25px  "Open Sans", Arial, sans-serif;
+        font-weight: bold;
+        color: #365899;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+
+    #texar input {
+
+        width: 95%;
+        margin-left: 3%;
+    }
+
+    #divform button {
         padding: .5em;
-        margin-top: 5px;
-        margin-left: 18px;
-        width: 362px;
+        margin-top: 10px;
+        margin-left: 3%;
+        width: 96%;
         color: white;
         background-color: #333745;
         text-shadow: 1px 1px 1px #000;
         border: solid thin #333745;
         border-radius: 5px;
-
     }
 
     /*regole pagina profilo*/
     .form {
-        min-width:500px;
-        max-width:720px;
+        width: 85%;
         margin-top: 8px;
         margin-bottom: 10px;
-        margin-left: 20px;
+        margin-left: 15px;
         padding: 10px;
         height: 96%;
         box-shadow: 3px 3px 20px #333745;
         border-radius: 10px;
-        float:left;
-
-        clear:both;
+        float: left;
+        clear: both;
     }
 
     .immaginiprofilo{
@@ -1327,27 +1425,73 @@ and open the template in the editor.
         clear:both;
     }
 
-    .textform input, .textform textarea{
-        float:right;
+    .textform input, .textform textarea {
+        float: right;
         height: 25px;
-        width: 55%;      
+        width: 25%;
         border-radius: 5px;
-        padding-left: 2px;       
+        padding-left: 2px;
+        margin-right: 35%;
     }
-
     .textform label{
         width: 200px;        
     }
 
     .form button{
-        width: 100%;
+        width: 65%;
         margin-top: 20px;
         margin-left: 5px;        
     }
 
     #box_descrizione {
-        float:left;
-        widht:100%;
+        float: left;
+        width: 80%;
+        margin-top: 10px;
+        margin-left: 30px;
+        margin-bottom: 10px;
+        background-color: #e9ebee;
+        box-shadow: 3px 3px 20px #333745;
+        border-radius: 10px;
+        clear: both;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    #box_descrizione img{
+        border-radius: 10px;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    #box_descrizione h1, #box_descrizione h2, #box_descrizione h3{
+        color: #333745;
+    }
+
+    #box_descrizione a:link, #box_descrizione a:visited {
+        font: 14px/25px  "Open Sans", Arial, sans-serif;
+        font-weight: bold;
+        color: #365899;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+
+    #box_descrizione il, #box_descrizione li, #box_descrizione ul{
+        list-style-type: none;
+        margin-left: 0px; 
+        padding-left: 0px;
+
+    }
+    a.dice:before{
+
+        content: url("img/d20.png");
+        padding-left: 4px;
+        padding-right: 2px;
+    }
+    textarea{
+        overflow: hidden;
     }
 
 }
