@@ -9,7 +9,7 @@ and open the template in the editor.
 */
 
 @media only screen and (min-width: 100px){
-    
+
     html, body, #page{
         position: relative;
         background-color: #e9ebee;
@@ -18,6 +18,7 @@ and open the template in the editor.
         padding: 0;
         height: 100%;
     }
+    
 
 
     h1{
@@ -41,14 +42,14 @@ and open the template in the editor.
         font-size: 15px;
         font-weight: bold;
     }
-    
-    
+
+
     input:focus, textarea:focus{
         outline: none;
         border-color: #333745;
         box-shadow: 0 0 1px #333745;
     }
-    
+
     button{
         padding: .5em;
         color: white;
@@ -56,7 +57,7 @@ and open the template in the editor.
         text-shadow: 1px 1px 1px #000;
         border: solid thin #333745;
         border-radius: 5px;
-        
+
     }
     /*regole header*/
     header{
@@ -67,15 +68,18 @@ and open the template in the editor.
         padding-right: 0;
         position: fixed;
         margin: auto;
-        width: 100%;
+        width: 99.9%;
         height: 46px; 
         background-color: #333745;
-        display: inline-block;
+        display: block;
+    }
+    header ul, header li{
+        -webkit-padding-start: 0;
 
     }
 
     #title {
-        
+
         height: 40px;
         padding-left: 5px;
         min-width:150px;
@@ -93,11 +97,12 @@ and open the template in the editor.
         font-weight: bold;
     }
 
-    .navbar {
-
-        min-height: 40px; 
-        float: right;
-
+    .navbar { 
+        padding-left: 5px;
+        padding-right:5px;
+        float: left;
+        width: auto;
+        display: inline;
     }
 
     .navbar ol, .navbar li{
@@ -114,18 +119,29 @@ and open the template in the editor.
         cursor: pointer;
         text-decoration: none;
     }
-    
-    li.imgelement {
-        
-    text-align: center;
+    .navleft{
+        float:left;
+        margin-left: 50px;
+        display: inline;
     }
     
-    li.imgelement:before{
-        
+    .navright{
+        margin-right: 1px;
+        float:right;
+        display: inline;
+    }
+    
+    
+    a.imgelement {
+
+        text-align: center;
+    }
+
+    a.imgelement:before{
+
         content: url("img/profile-pictures.png");
         padding-left: 4px;
-        padding-right:2px;
-        
+        padding-right: 2px;
     }
 
     /*regole sidebar*/
@@ -138,10 +154,12 @@ and open the template in the editor.
         position: fixed;
         overflow: hidden;
         white-space:nowrap;
+        background-color: #e9ebee;
         box-shadow: 3px 3px 20px #333745;
         border-radius: 10px;
         clear: both;
         padding: 5px;
+        z-index: 1;
 
     }
 
@@ -151,15 +169,15 @@ and open the template in the editor.
     }
 
     #sidebar ol, #sidebar li{
-        list-style: none;
+        list-style-type: none;
+        margin-left: 0px; 
         padding-left: 0px;
 
     }
-    
-    #sidebar li{
-        list-style: none;
-        margin-left: -40px;
-}
+
+    #sidebar li, #sidebar ul{
+    -webkit-padding-start: 0px;
+    }
 
     .barralaterale a:link, .barralaterale a:visited {
         font: 14px/25px  "Open Sans", Arial, sans-serif;
@@ -168,26 +186,39 @@ and open the template in the editor.
         cursor: pointer;
         text-decoration: none;
     }
-
-    .barralaterale a:hover{
-        text-decoration: underline;
+    
+    .botdiv {
+        float:left;
+        width: 100%;
+        border-radius: 5px;
     }
+
+    
+    .botdiv:hover{
+        background-color: white;
+        float:left;
+        width: 100%;
+        border-radius: 5px;
+        
+    }
+    
+
 
     #persone, #gruppi{
 
         float:left;
     }
-    
-    
 
-    #persone li {
-        
-    text-align: center;
-    
+
+
+    #persone a {
+
+        text-align: center;
+
     }
-    
-    #persone li::before{
-        
+
+    #persone a::before{
+
         content: url("img/profile-verde.png");
         padding-left: 4px;
         padding-right:5px;
@@ -197,6 +228,8 @@ and open the template in the editor.
     
     /*regole content*/
     #content{
+        
+        display: block;
         float:left;
         margin-top: 51px;
         margin-left: 160px;
@@ -211,10 +244,10 @@ and open the template in the editor.
         cursor: pointer;
         text-decoration: none;
     }
-
+/*
     .profilo a:hover{
         text-decoration: underline;
-    }
+    }*/
 
     .newpost{
         background-color: white;
@@ -231,14 +264,12 @@ and open the template in the editor.
         padding-top: 5px;
         border-radius: 5px;
         box-shadow: 0 0 10px rgba(0,0,0,.2);
-
     }
 
     .imgprofilo{
         float:left;
         max-height: 40px;
         max-width: 40px;
-
     }
 
     .nameprofilo {
@@ -253,7 +284,6 @@ and open the template in the editor.
     .testopost {
         float:left;
         clear: both;
-
     }
 
     #divlogin {
@@ -292,7 +322,6 @@ and open the template in the editor.
     }
 
     #divform button{
-
         padding: .5em;
         margin-top: 5px;
         margin-left: 18px;
@@ -304,7 +333,7 @@ and open the template in the editor.
         border-radius: 5px;
 
     }
-    
+
     /*regole pagina profilo*/
     .form {
         min-width:500px;
@@ -320,42 +349,41 @@ and open the template in the editor.
         position: fixed;
         clear:both;
     }
-    
+
     .immaginiprofilo{
-    float:left;
-    width: 150px;
-    height: 150px;
-    border-radius: 100%;
-    box-shadow: 0 0 1px #333745;
-    transition: 0.2s;
+        float:left;
+        width: 150px;
+        height: 150px;
+        border-radius: 100%;
+        box-shadow: 0 0 1px #333745;
+        transition: 0.2s;
     }
-    
+
     .immaginiprofilo:hover{
-    border-radius: 10px;
-    box-shadow: 0 0 1px #333745;
-    
+        border-radius: 10px;
+        box-shadow: 0 0 1px #333745;
+
     }
-    
-     .immaginiprofilo img{
-    width: 100%;
-    height: 100%;
-    border-radius: 100%;
-    transition: 0.2s;
+
+    .immaginiprofilo img{
+        width: 100%;
+        height: 100%;
+        border-radius: 100%;
+        transition: 0.2s;
     }
-    
+
     .immaginiprofilo img:hover{
-    border-radius: 10px;
+        border-radius: 10px;
     }
-    
-    
+
+
     .areaform {
         float:left;
         width: 550px;
         height: 550px;
-        padding: 10px;
-        
+        padding: 10px;        
     }
-    
+
     .textform{
         width: 100%;
         height: 27px;
@@ -366,28 +394,26 @@ and open the template in the editor.
         vertical-align:middle;
         clear:both;
     }
-    
+
     .textform input, .textform textarea{
         float:right;
         height: 25px;
-        width: 55%;
-      
+        width: 55%;      
         border-radius: 5px;
-        padding-left: 2px;
-       
+        padding-left: 2px;       
     }
-    
+
     .textform label{
-        width: 200px;
-        
+        width: 200px;        
     }
-    
+
     .form button{
         width: 100%;
         margin-top: 20px;
-        margin-left: 5px;
-        
+        margin-left: 5px;        
     }
-    
 
+
+    
+    
 }
