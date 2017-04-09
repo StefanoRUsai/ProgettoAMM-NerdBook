@@ -8,6 +8,8 @@ and open the template in the editor.
     Author     : St3
 */
 
+
+
 @media only screen and (min-width: 1024px){
 
     html, body, #page{
@@ -210,6 +212,7 @@ and open the template in the editor.
         float:left;
         width: 100%;
         border-radius: 5px;
+        padding: 3px;
     }
 
 
@@ -220,8 +223,6 @@ and open the template in the editor.
         border-radius: 5px;
 
     }
-
-
 
     #persone, #gruppi{
 
@@ -347,6 +348,15 @@ and open the template in the editor.
 
     #passworddimenticata{
         padding: 10px; 
+    }
+
+    #passworddimenticata a:link, #passworddimenticata a:visited {
+        font: 14px/25px "Open Sans", Arial, sans-serif;
+        font-weight: bold;
+        color: #365899;
+        cursor: pointer;
+        text-decoration: none;
+        margin: 4%;
     }
 
     #divform label {
@@ -712,6 +722,7 @@ and open the template in the editor.
         float:left;
         width: 100%;
         border-radius: 5px;
+        padding: 3px;
     }
 
 
@@ -850,6 +861,15 @@ and open the template in the editor.
         padding: 10px; 
     }
 
+    #passworddimenticata a:link, #passworddimenticata a:visited {
+        font: 14px/25px "Open Sans", Arial, sans-serif;
+        font-weight: bold;
+        color: #365899;
+        cursor: pointer;
+        text-decoration: none;
+        margin: 4%;
+    }
+
     #divform label {
 
         max-width:  360px;
@@ -891,7 +911,6 @@ and open the template in the editor.
         box-shadow: 3px 3px 20px #333745;
         border-radius: 10px;
         float:left;
-
         clear:both;
     }
 
@@ -1260,10 +1279,6 @@ and open the template in the editor.
         cursor: pointer;
         text-decoration: none;
     }
-    /*
-        .profilo a:hover{
-            text-decoration: underline;
-        }*/
 
     .newpost{
         background-color: white;
@@ -1497,17 +1512,17 @@ and open the template in the editor.
         padding-left: 4px;
         padding-right: 2px;
     }
-    
+
     .form{
         overflow: hidden;
-        
+
     }
     textarea{
         overflow: hidden;
     }
-    
+
     .areaform{
-        
+
         overflow: hidden;
     }
 }
