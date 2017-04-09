@@ -210,6 +210,7 @@ and open the template in the editor.
         float:left;
         width: 100%;
         border-radius: 5px;
+        padding: 3px;
     }
 
 
@@ -712,6 +713,7 @@ and open the template in the editor.
         float:left;
         width: 100%;
         border-radius: 5px;
+        padding: 3px;
     }
 
 
@@ -1497,17 +1499,17 @@ and open the template in the editor.
         padding-left: 4px;
         padding-right: 2px;
     }
-    
+
     .form{
         overflow: hidden;
-        
+
     }
     textarea{
         overflow: hidden;
     }
-    
+
     .areaform{
-        
+
         overflow: hidden;
     }
 }
