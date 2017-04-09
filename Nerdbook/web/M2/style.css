@@ -201,7 +201,7 @@ and open the template in the editor.
         margin-top: 51px;
         margin-left: 160px;
         width: 80%;
-        height: 85%;
+        height: 90%;
     }
 
     .profilo a:link, .profilo a:visited {
@@ -309,11 +309,11 @@ and open the template in the editor.
     .form {
         min-width:500px;
         max-width:720px;
-        margin-top: 9px;
+        margin-top: 8px;
         margin-bottom: 10px;
         margin-left: 20px;
         padding: 10px;
-        height: 86.3%;
+        height: 86.2%;
         box-shadow: 3px 3px 20px #333745;
         border-radius: 10px;
         float:left;
