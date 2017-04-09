@@ -139,7 +139,7 @@ and open the template in the editor.
         text-decoration: none;
         text-shadow: 1.0px 1.0px 1.0px grey;
     }
-    
+
     .navleft{
         float:left;
         margin-left: 50px;
@@ -460,7 +460,7 @@ and open the template in the editor.
 
     #box_descrizione {
         float:left;
-        widht:90%;
+        width: 90%;
         margin-top: 10px;
         margin-left: 30px;
         margin-bottom: 10px;
@@ -802,7 +802,6 @@ and open the template in the editor.
         padding-top: 10px;
         border-radius: 5px;
         box-shadow: 0 0 10px rgba(0,0,0,.2);
-        text: 12px;
         clear: both;
     }
 
@@ -961,19 +960,19 @@ and open the template in the editor.
     }
 
     #box_descrizione {
-    float: left;
-    width: 90%;
-    margin-top: 10px;
-    margin-left: 30px;
-    margin-bottom: 10px;
-    background-color: #e9ebee;
-    box-shadow: 3px 3px 20px #333745;
-    border-radius: 10px;
-    clear: both;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left: 3%;
-    padding-right: 3%;
+        float: left;
+        width: 90%;
+        margin-top: 10px;
+        margin-left: 30px;
+        margin-bottom: 10px;
+        background-color: #e9ebee;
+        box-shadow: 3px 3px 20px #333745;
+        border-radius: 10px;
+        clear: both;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 3%;
+        padding-right: 3%;
     }
 
     #box_descrizione img{
@@ -1023,6 +1022,14 @@ and open the template in the editor.
     #page{
         top:0;
         height: 100%;    
+    }
+
+    iframe{
+        width: 400px;
+        height: 280px;
+        border-radius: 15px; 
+        overflow: hidden;
+
     }
 
 
@@ -1272,8 +1279,7 @@ and open the template in the editor.
         padding-top: 10px;
         border-radius: 5px;
         box-shadow: 0 0 10px rgba(0,0,0,.2);
-        text-height: 12px;
-        display: box-inline;
+
     }
 
     .img_post img{
@@ -1423,6 +1429,7 @@ and open the template in the editor.
         margin-left: 5px;
         vertical-align:middle;
         clear:both;
+        overflow: hidden;
     }
 
     .textform input, .textform textarea {
@@ -1490,10 +1497,19 @@ and open the template in the editor.
         padding-left: 4px;
         padding-right: 2px;
     }
+    
+    .form{
+        overflow: hidden;
+        
+    }
     textarea{
         overflow: hidden;
     }
-
+    
+    .areaform{
+        
+        overflow: hidden;
+    }
 }
 
 
