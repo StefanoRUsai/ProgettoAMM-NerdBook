@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>NerdBook il nuovo social network</title>
+        <base href="M1">        <!--inidirizzo fittizzio--> 
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Stefano Raimondo Usai">
+        <meta name="keywords" content="cerca nerd giochi GDR RPG GRV MMPORG libri fantasy code programming languages music programmazione linguaggi games musica">
+        <link rel="stylesheet" type="text/css" href="style.css" media="screen">
+    </head>
+
+    <body>
+        <div id="page">
+            <header>
+                <div id="title">
+                    Nerdbook 
+                </div>
+
+                
+                    <nav class="navbar navleft">                          
+                        <ul>
+                            <li><a class="nonqui" href="bacheca.html">Bacheca</a></li>
+                            <li><a class="nonqui" href="profilo.html">Profilo</a></li>
+                            <li><a class="nonqui" href="descrizione.html">Descrizione</a></li>
+                        </ul>                
+                    </nav>
+                    <nav class="navbar navright">                        
+                        <ul>
+                            <li><a class="imgelement qui" href="login.html">Login</a></li>
+                        </ul>                
+                    </nav>
+                
+
+            </header>
+            <div id="content">
+                <div id="divlogin">
+                    <form action="demo_form.asp" method="post">
+
+
+                        <div id="divform">
+
+                            <div id="texar">
+                                <label for="username"><b>Username</b></label>
+                                <input class="inserimento" type="text" id="username" name="username" value="">
+
+                                <label for="password"><b>Password</b></label>
+                                <input class="inserimento" type="password" id="password"  name="password" value="">
+                            </div>
+                            <button type="submit">Accedi</button> 
+                            <input class="scatola" type="checkbox"> rimani collegato
+
+                        </div>
+
+                        <div id="passworddimenticata">
+                            <a href="bacheca.html">Hai dimenticato la password?</a><!--indirizzo falso-->
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+
+
+
+
