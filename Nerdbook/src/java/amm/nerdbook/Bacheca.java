@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author St3
  */
-
 public class Bacheca extends HttpServlet {
 
     /**
@@ -36,10 +35,10 @@ public class Bacheca extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet bacheca2</title>");            
+            out.println("<title>Servlet Bacheca</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet bacheca2 at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet Bacheca at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }

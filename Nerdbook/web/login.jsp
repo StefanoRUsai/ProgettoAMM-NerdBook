@@ -13,40 +13,24 @@
 
     <body>
         <div id="page">
-            <header>
-                <div id="title">
-                    Nerdbook 
-                </div>
-
+                <!--header contenente in titolo della pagina-->
+                <c:set var="title" value="Bacheca Personale"/>
+                <jsp:include page="header.jsp"/>
                 
-                    <nav class="navbar navleft">                          
-                        <ul>
-                            <li><a class="nonqui" href="bacheca.html">Bacheca</a></li>
-                            <li><a class="nonqui" href="profilo.html">Profilo</a></li>
-                            <li><a class="nonqui" href="descrizione.html">Descrizione</a></li>
-                        </ul>                
-                    </nav>
-                    <nav class="navbar navright">                        
-                        <ul>
-                            <li><a class="imgelement qui" href="login.html">Login</a></li>
-                        </ul>                
-                    </nav>
                 
-
-            </header>
             <div id="content">
                 <div id="divlogin">
-                    <form action="demo_form.asp" method="post">
+                    <form action="Login" method="post">
 
 
                         <div id="divform">
 
                             <div id="texar">
                                 <label for="username"><b>Username</b></label>
-                                <input class="inserimento" type="text" id="username" name="username" value="">
+                                <input class="inserimento" type="text" id="username" name="username">
 
                                 <label for="password"><b>Password</b></label>
-                                <input class="inserimento" type="password" id="password"  name="password" value="">
+                                <input class="inserimento" type="password" id="password"  name="password">
                             </div>
                             <button type="submit">Accedi</button> 
                             <input class="scatola" type="checkbox"> rimani collegato

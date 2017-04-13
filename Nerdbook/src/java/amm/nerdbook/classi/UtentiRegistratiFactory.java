@@ -6,6 +6,7 @@
 package amm.nerdbook.classi;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  *
@@ -86,5 +87,14 @@ public class UtentiRegistratiFactory {
             }
         }
         return null;
+    }
+    
+    static public boolean verifica(UtentiRegistrati user) {
+        for (UtentiRegistrati i : this.listaUtentiRegistrati) {
+            if (i.getNome() == user.getNome() && i.getPassword() == user.getPassword()) {
+                return true;
+            }
+        }
+        return false;
     }
 }

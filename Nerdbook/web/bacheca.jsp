@@ -14,25 +14,9 @@
 
     <body>
         <div id="page">
-            <header>
-                <div id="title">
-                    Nerdbook 
-                </div>
-
-                <nav class="navbar navleft">                          
-                    <ul>
-                        <li><a class="qui" href="bacheca.html">Bacheca</a></li>
-                        <li><a class="nonqui" href="profilo.html">Profilo</a></li>
-                        <li><a class="nonqui" href="descrizione.html">Descrizione</a></li>
-                    </ul>                
-                </nav>
-                <nav class="navbar navright">                        
-                    <ul>
-                        <li><a class="imgelement nonqui" href="login.html">Login</a></li>
-                    </ul>                
-                </nav>
-
-            </header>
+                <!--header contenente in titolo della pagina-->
+                <c:set var="title" value="Bacheca Personale"/>
+                <jsp:include page="header.jsp"/>
 
 
 
