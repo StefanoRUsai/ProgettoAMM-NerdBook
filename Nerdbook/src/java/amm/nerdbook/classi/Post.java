@@ -11,22 +11,26 @@ package amm.nerdbook.classi;
  */
 public class Post {
 
-    public enum Type {
-        TEXT, IMAGE, URL
-    };
+    
 
-    private static int id = 0;
     protected int idpost;
     protected UtentiRegistrati user;
+    private String imageUser;
+    private String nomeUtente;
     private String content;
-    private Type postType;
-
+    private String image;
+    private String link;
+    private String urlVideo;
+    
     public Post() {
-        id++;
-        idpost = id;
-        user = null;
-        content = "";
-        postType = Type.TEXT;
+        
+        this.idpost = 0;
+        this.user = null;
+        this.imageUser = null;
+        this.content = "";
+        this.image = "";
+        this.link = "";
+        this.urlVideo = "";
     }
 
     /**
@@ -39,8 +43,8 @@ public class Post {
     /**
      * @param id the id to set
      */
-    public void setIdPost() {
-        id++;
+    public void setIdPost(int id) {
+        
         this.idpost = id;
     }
 
@@ -56,6 +60,8 @@ public class Post {
      */
     public void setUser(UtentiRegistrati user) {
         this.user = user;
+        this.imageUser=this.user.getUrlAvatar();
+        this.nomeUtente=this.user.getNome()+" "+this.user.getCognome();
     }
 
     /**
@@ -72,17 +78,78 @@ public class Post {
         this.content = content;
     }
 
+
     /**
-     * @return the postType
+     * @return the imageUser
      */
-    public Type getPostType() {
-        return postType;
+    public String getImageUser() {
+        return imageUser;
     }
 
     /**
-     * @param postType the postType to set
+     * @param imageUser the imageUser to set
      */
-    public void setPostType(Type postType) {
-        this.postType = postType;
+    public void setImageUser(String imageUser) {
+        this.imageUser = imageUser;
+    }
+
+    /**
+     * @return the image
+     */
+    public String getImage() {
+        return image;
+    }
+
+    /**
+     * @param image the image to set
+     */
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    /**
+     * @return the urlImage
+     */
+
+    /**
+     * @return the urlVideo
+     */
+    public String getUrlVideo() {
+        return urlVideo;
+    }
+
+    /**
+     * @param urlVideo the urlVideo to set
+     */
+    public void setUrlVideo(String urlVideo) {
+        this.urlVideo = urlVideo;
+    }
+
+    /**
+     * @return the nomeutente
+     */
+    public String getNomeUtente() {
+        return nomeUtente;
+    }
+
+    /**
+     * @param nomeUtente the nomeUtente to set
+     */
+    public void setNomeUtente(String nomeUtente) {
+        this.nomeUtente = nomeUtente;
+    }
+
+    /**
+     * @return the link
+     */
+    public String getLink() {
+        return link;
+    }
+
+    /**
+     * @param link the link to set
+     */
+    public void setLink(String link) {
+        this.link = link;
     }
 }

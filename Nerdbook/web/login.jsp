@@ -1,3 +1,5 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
 <html>
@@ -20,9 +22,12 @@
                 
             <div id="content">
                 <div id="divlogin">
+                    
+                <c:if test="${invalidData == true}">
+                    <div id="invalidDataWarning">I dati inseriti non sono corretti</div>
+                </c:if>
+                    
                     <form action="Login" method="post">
-
-
                         <div id="divform">
 
                             <div id="texar">

@@ -11,7 +11,6 @@ package amm.nerdbook.classi;
  */
 public class UtentiRegistrati {
 
-    private static int id = 0;
     private int idUtente;
     private String nome;
     private String cognome;
@@ -23,8 +22,8 @@ public class UtentiRegistrati {
     
     public UtentiRegistrati(){
         
-        id++;
-        this.idUtente = id ;
+        
+        this.idUtente = 0 ;
         this.nome = "";
         this.cognome = "";
         this.urlAvatar = "";
@@ -45,8 +44,8 @@ public class UtentiRegistrati {
     /**
      * @param id the id to set
      */
-    public void setIdUtente() {
-        id++;
+    public void setIdUtente(int id) {
+        
         this.idUtente = id;
     }
 
@@ -146,6 +145,15 @@ public class UtentiRegistrati {
      */
     public void setFrase(String frase) {
         this.frase = frase;
+    }
+    
+    @Override
+    public boolean equals(Object utentediverso) {
+        if (utentediverso instanceof UtentiRegistrati)
+            if (this.getIdUtente() == ((UtentiRegistrati)utentediverso).getIdUtente()) 
+            
+                return true;
+        return false;
     }
 
 

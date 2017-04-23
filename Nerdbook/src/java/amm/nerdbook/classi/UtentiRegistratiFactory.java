@@ -6,7 +6,6 @@
 package amm.nerdbook.classi;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 /**
  *
@@ -32,10 +31,10 @@ public class UtentiRegistratiFactory {
 
         //Djanni
         UtentiRegistrati utentiRegistrati1 = new UtentiRegistrati();
-        utentiRegistrati1.setIdUtente();
+        utentiRegistrati1.setIdUtente(1);
         utentiRegistrati1.setNome("Giovanni");
         utentiRegistrati1.setCognome("Rodriguez");
-        utentiRegistrati1.setUrlAvatar("http://nonesisto.com");
+        utentiRegistrati1.setUrlAvatar("img/avatar-placeholder.jpg");
         utentiRegistrati1.setData("25/12/0000");
         utentiRegistrati1.setEmail("giovannirodriguez@gmail.com");        
         utentiRegistrati1.setPassword("123456");
@@ -43,43 +42,53 @@ public class UtentiRegistratiFactory {
 
         //HeavyBreathing
        UtentiRegistrati utentiRegistrati2 = new UtentiRegistrati();
-        utentiRegistrati2.setIdUtente();
+        utentiRegistrati2.setIdUtente(2);
         utentiRegistrati2.setNome("Marco");
         utentiRegistrati2.setCognome("Bianco");
-        utentiRegistrati2.setUrlAvatar("http://nonesisto.com");
+        utentiRegistrati2.setUrlAvatar("img/avatar-placeholder.jpg");
         utentiRegistrati2.setData("25/12/0000");
         utentiRegistrati2.setEmail("marcobianco@gmail.com");        
         utentiRegistrati2.setPassword("123456");
 
         //GymWorkOut
         UtentiRegistrati utentiRegistrati3 = new UtentiRegistrati();
-        utentiRegistrati3.setIdUtente();
-        utentiRegistrati3.setNome("Mario");
+        utentiRegistrati3.setIdUtente(3);
+        utentiRegistrati3.setNome("Reginaldo");
         utentiRegistrati3.setCognome("Rossi");
-        utentiRegistrati3.setUrlAvatar("http://nonesisto.com");
+        utentiRegistrati3.setUrlAvatar("img/avatar-placeholder.jpg");
         utentiRegistrati3.setData("25/12/0000");
         utentiRegistrati3.setEmail("mariorossi@gmail.com");        
         utentiRegistrati3.setPassword("123456");
         
                //GymWorkOut
         UtentiRegistrati utentiRegistrati4 = new UtentiRegistrati();
-        utentiRegistrati4.setIdUtente();
-        utentiRegistrati4.setNome("Marco");
-        utentiRegistrati4.setCognome("Bianco");
-        utentiRegistrati4.setUrlAvatar("http://nonesisto.com");
+        utentiRegistrati4.setIdUtente(4);
+        utentiRegistrati4.setNome("Mario");
+        utentiRegistrati4.setCognome("Bros");
+        utentiRegistrati4.setUrlAvatar("img/mario_face.jpg");
         utentiRegistrati4.setData("25/12/0000");
         utentiRegistrati4.setEmail("marcobianco@gmail.com");        
         utentiRegistrati4.setPassword("123456");
 
-
+        UtentiRegistrati utentiRegistrati5 = new UtentiRegistrati();
+        utentiRegistrati5.setIdUtente(5);
+        utentiRegistrati5.setNome("Prova");
+        utentiRegistrati5.setCognome("Servlet");
+        utentiRegistrati5.setUrlAvatar("img/mario_face.jpg");
+        utentiRegistrati5.setData("00/00/0000");
+        utentiRegistrati5.setEmail("sonoinprova@gmail.com");        
+        utentiRegistrati5.setPassword("2332");
+        
       
 
         listaUtentiRegistrati.add(utentiRegistrati1);
         listaUtentiRegistrati.add(utentiRegistrati2);
         listaUtentiRegistrati.add(utentiRegistrati3);
         listaUtentiRegistrati.add(utentiRegistrati4);
+        listaUtentiRegistrati.add(utentiRegistrati5);
     }
-
+    
+    
     public UtentiRegistrati getUtentiRegistratiById(int id) {
         for (UtentiRegistrati utentiRegistrati : this.listaUtentiRegistrati) {
             if (utentiRegistrati.getIdUtente() == id) {
@@ -89,12 +98,26 @@ public class UtentiRegistratiFactory {
         return null;
     }
     
-    static public boolean verifica(UtentiRegistrati user) {
-        for (UtentiRegistrati i : this.listaUtentiRegistrati) {
-            if (i.getNome() == user.getNome() && i.getPassword() == user.getPassword()) {
-                return true;
+    
+    
+    public UtentiRegistrati getUtentiRegistratiByNome(String nome) {
+        for (UtentiRegistrati utentiRegistrati : this.listaUtentiRegistrati) {
+            if (utentiRegistrati.getNome()== nome) {
+                return utentiRegistrati;
             }
         }
-        return false;
+        return null;
     }
+    
+    public int getIdByUserAndPassword(String user, String password){
+        for(UtentiRegistrati utente: this.listaUtentiRegistrati){
+            if(utente.getNome().equals(user) && utente.getPassword().equals(password)){
+                return utente.getIdUtente();
+            }
+        }
+        return -1;
+    }
+
 }
+
+

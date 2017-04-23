@@ -33,39 +33,54 @@ public class PostFactory {
 
         //Creazione Post
         Post post1 = new Post();
-        post1.setContent("Ciao, miei schiavi. Datemi cibo! Adesso! Miaomiaomiaomiaomiao!");
-        post1.setIdPost();
-        post1.setUser(utentiRegistratiFactory.getUtentiRegistratiById(0));
-
+        post1.setIdPost(1);
+        post1.setUser(utentiRegistratiFactory.getUtentiRegistratiById(1));
+        post1.setContent(" trallalero trallala che cosa si scriverà?");
+        post1.setImage("");
+        post1.setLink("");
+        post1.setUrlVideo("");
+        
+        
         Post post2 = new Post();
-        post2.setContent("img/djanni1.jpg");
-        post2.setIdPost();
-        post2.setUser(utentiRegistratiFactory.getUtentiRegistratiById(0));
-        post2.setPostType(Post.Type.IMAGE);
-
+        post2.setIdPost(2);
+        post2.setUser(utentiRegistratiFactory.getUtentiRegistratiById(2));
+        post2.setContent("Divvertente questa immagine di pack Man ");
+        post2.setImage("img/b0979598-c427-4f71-b235-51e4c733753d.jpg");
+        post2.setLink("");
+        post2.setUrlVideo("");
+        
         Post post3 = new Post();
-        post3.setContent("img/djanni2.jpg");
-        post3.setIdPost();
-        post3.setUser(utentiRegistratiFactory.getUtentiRegistratiById(0));
-        post3.setPostType(Post.Type.IMAGE);
-
+        post3.setIdPost(3);
+        post3.setUser(utentiRegistratiFactory.getUtentiRegistratiById(3));
+        post3.setContent("Simpatica la descrizione del minus world");
+        post3.setImage("");
+        post3.setLink("https://it.wikipedia.org/wiki/Super_Mario_Bros.");
+        post3.setUrlVideo("");
+        
         Post post4 = new Post();
-        post4.setContent("I need ansioliticy");
-        post4.setIdPost();
-        post4.setUser(utentiRegistratiFactory.getUtentiRegistratiById(1));
-
+        post4.setIdPost(4);
+        post4.setUser(utentiRegistratiFactory.getUtentiRegistratiById(4));
+        post4.setContent("we we bello sto video!!");
+        post4.setImage("");
+        post4.setLink("");
+        post4.setUrlVideo("https://www.youtube.com/embed/-Khe61uso_o");
+        
         Post post5 = new Post();
-        post5.setContent("https://68.media.tumblr.com/51942e1f788f7209ee0f6db7cfc5e0fb/tumblr_n37ycpbMZf1rkxod7o1_500.jpg");
-        post5.setIdPost();
-        post5.setUser(utentiRegistratiFactory.getUtentiRegistratiById(1));
-        post5.setPostType(Post.Type.IMAGE);
-
+        post5.setIdPost(5);
+        post5.setUser(utentiRegistratiFactory.getUtentiRegistratiById(4));
+        post5.setContent("Che bello quando funzionano le cose e diventi subito contento");
+        post5.setImage("img/b0979598-c427-4f71-b235-51e4c733753d.jpg");
+        post5.setLink("");
+        post5.setUrlVideo("");
+        
         listaPost.add(post1);
         listaPost.add(post2);
         listaPost.add(post3);
         listaPost.add(post4);
         listaPost.add(post5);
     }
+    
+    
 
     public Post getPostById(int id) {
         for (Post post : this.listaPost) {

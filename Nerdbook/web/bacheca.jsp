@@ -1,3 +1,12 @@
+<%-- 
+    Document   : newpost
+    Created on : 23-apr-2017, 15.54.27
+    Author     : St3
+--%>
+
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 
 <html>
@@ -14,120 +23,19 @@
 
     <body>
         <div id="page">
-                <!--header contenente in titolo della pagina-->
-                <c:set var="title" value="Bacheca Personale"/>
-                <jsp:include page="header.jsp"/>
+            <!--header contenente in titolo della pagina-->
+            <c:set var="title" value="Bacheca Personale" scope="request"/>
+            <jsp:include page="header.jsp"/>
 
+            <!--Barra di navigazione tra le pagine del sito-->
+            <c:set var="page" value="Bacheca Personale" scope="request"/>
+            <jsp:include page="sidebar.jsp"/>
 
-
-            <div id="sidebar">
-                <div id="persone">
-                    <h3>Persone</h3>
-                    <nav class="barralaterale">                        
-                        <ul> 
-                            <li><div class="botdiv"><a href="#mariorossi">Mario Rossi</a></div></li>
-                            <li><div class="botdiv"><a href="#marcopinco">Marco Pinco</a></div></li>
-                        </ul>                
-                    </nav>
+            <div id="content">     
+                <div id="contentpost">
+                    <c:set var="page" value="Bacheca Personale" scope="request"/>
+                    <jsp:include page="newpost.jsp"/>
                 </div>
-                <div id="gruppi">
-                    <h3>Gruppi</h3>
-                    <nav class="barralaterale">                        
-                        <ul> 
-                            <li><div class="botdiv"><a href="#GDR">Giochi di Ruolo</a></div></li>
-                            <li><div class="botdiv"><a href="#FPW">Fondamenti Web...</a></div></li>
-                        </ul>                
-                    </nav>
-                </div>
-            </div>
-
-            <div id="content">         
-
-                <div class="newpost">
-                    <div class="profilo">
-                        <div class="imgprofilo">
-                            <img title="profilo" alt="immagine avatar" src="img/avatar-placeholder.jpg" width="40" height="40">
-                        </div>
-                        <div class="nameprofilo">
-                            <a href="#indirizzo_casuale">Giovanni Rodriguez</a>
-                        </div>
-                    </div>
-                    <div class="testopost">
-                        <p>
-                            trallalero trallala che cosa si scriverà?
-                        </p>
-                    </div>
-                    <div class="img_post">
-
-                    </div>
-                    <div class="link_post"></div>
-                </div>
-
-                <div class="newpost">
-                    <div class="profilo">
-                        <div class="imgprofilo">
-                            <img title="profilo" alt="immagine avatar" src="img/avatar-placeholder.jpg" width="40" height="40">
-                        </div>
-                        <div class="nameprofilo">
-                            <a href="#indirizzo_casuale">Marco Bianco</a>
-                        </div>
-                    </div>
-                    <div class="testopost">
-                        <p>
-                            Divertente questa immagine di Pac-Man 
-                        </p>
-                    </div>
-                    <div class="img_post">
-                        <img alt="immagine casuale" src="img/b0979598-c427-4f71-b235-51e4c733753d.jpg">
-                    </div>
-                    <div class="link_post"></div>
-                </div>
-
-                <div class="newpost">
-                    <div class="profilo">
-                        <div class="imgprofilo">
-                            <img title="profilo" alt="immagine avatar" src="img/avatar-placeholder.jpg" width="40" height="40">
-                        </div>
-                        <div class="nameprofilo">
-                            <a href="#indirizzo_casuale">Mario Rossi</a>
-                        </div>
-                    </div>
-                    <div class="testopost">
-                        <p>
-                            Simpatica la descrizione del minus world
-                        </p>
-                    </div>
-                    <div class="img_post">
-
-                    </div>
-                    <div class="link_post"><a href="https://it.wikipedia.org/wiki/Super_Mario_Bros.">https://it.wikipedia.org/wiki/Super_Mario_Bros.</a></div>
-                </div>
-
-
-                <div class="newpost">
-                    <div class="profilo">
-                        <div class="imgprofilo">
-                            <img title="profilo" alt="immagine avatar" src="img/avatar-placeholder.jpg" width="40" height="40">
-                        </div>
-                        <div class="nameprofilo">
-                            <a href="#indirizzo_casuale">Marco Pinco</a>
-                        </div>
-                    </div>
-                    <div class="testopost">
-                        <p>
-                            we we bello sto video!!
-                        </p>
-                    </div>
-                    <div class="img_post">
-                        <iframe 
-                            src="https://www.youtube.com/embed/-Khe61uso_o">
-                        </iframe>
-                    </div>
-                    <div class="link_post"></div>
-                </div>
-
-
-
             </div>
         </div>
     </body>    

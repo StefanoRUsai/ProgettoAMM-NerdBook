@@ -1,3 +1,13 @@
+<%-- 
+    Document   : newpost
+    Created on : 23-apr-2017, 15.54.27
+    Author     : St3
+--%>
+
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,62 +22,30 @@
 
     <body>
         <div id="page">
-            <header>
-                <div id="title">
-                    Nerdbook 
-                </div>
+            <!--header contenente in titolo della pagina-->
+            <c:set var="title" value="Bacheca Personale" scope="request"/>
+            <jsp:include page="header.jsp"/>
 
-                
-                    <nav class="navbar navleft">                          
-                        <ul>
-                            <li><a class="nonqui" href="bacheca.html">Bacheca</a></li>
-                            <li><a class="qui" href="profilo.html">Profilo</a></li>
-                            <li><a class="nonqui" href="descrizione.html">Descrizione</a></li>
-                        </ul>                
-                    </nav>
-                    <nav class="navbar navright">                        
-                        <ul>
-                            <li><a class="imgelement nonqui" href="login.html">Login</a></li>
-                        </ul>                
-                    </nav>
-                
 
-            </header>
-            <div id="sidebar">
-                <div id="persone">
-                    <h3>Persone</h3>
-                    <nav class="barralaterale">                        
-                        <ul> 
-                            <li><div class="botdiv"><a href="#mariorossi">Mario Rossi</a></div></li>
-                            <li><div class="botdiv"><a href="#marcopinco">Marco Pinco</a></div></li>
-                        </ul>                
-                    </nav>
-                </div>
-                <div id="gruppi">
-                    <h3>Gruppi</h3>
-                    <nav class="barralaterale">                        
-                        <ul> 
-                            <li><div class="botdiv"><a href="#GDR">Giochi di Ruolo</a></div></li>
-                            <li><div class="botdiv"><a href="#FPW">Fondamenti programmazione Web</a></div></li>
-                        </ul>                
-                    </nav>
-                </div>
-            </div>
+
+
+            <!--Barra di navigazione tra le pagine del sito-->
+            <c:set var="page" value="Bacheca Personale" scope="request"/>
+            <jsp:include page="sidebar.jsp"/>
 
 
             <div id="content">
-
                 <div class="form">
                     <div class="immaginiprofilo">
                         <img title="profilo" alt="immagine avatar" src="img/profilo.jpg">
                     </div>
 
                     <div class="areaform">
-                        <form action="bacheca.html" method="post"> <!-- pagin.java sull'action subnet java, il validatore fa funzionare pure l'indirizzo della bacheca-->
+                        <form action="Profilo" method="post"> <!-- pagin.java sull'action subnet java, il validatore fa funzionare pure l'indirizzo della bacheca-->
 
                             <div class="textform">
                                 <label for="username"><b>Nome</b></label> 
-                                <input type="text" id="username" name="username" placeholder="Nome">
+                                <input type="text" id="username" name="username" placeholder="Nome" <c:if test="${not empty utente.nome}">value="${utente.nome}"</c:if>>
                             </div>
 
 
@@ -86,8 +64,8 @@
                                 <label for="bday"><b>Data di nascista</b></label> 
                                 <input type="date" name="bday" id="bday" value=""> <!-- warning per il browser firefox, accettabile -->
                             </div>
-                            
-                              <div class="textform">
+
+                            <div class="textform">
                                 <label for="email"><b>E-mail</b></label> 
                                 <input type="text" id="email" name="email" placeholder="inserisci la tua e-mail">
                             </div>

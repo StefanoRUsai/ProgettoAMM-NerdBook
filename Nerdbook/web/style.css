@@ -309,6 +309,8 @@ and open the template in the editor.
         max-height: 40px;
         max-width: 40px;
         transition: 0.2s;
+        border-radius: 100%;
+        
     }
 
     .nameprofilo {
@@ -821,6 +823,7 @@ and open the template in the editor.
         max-height: 40px;
         max-width: 40px;
         transition: 0.2s;
+        border-radius: 100%;
     }
 
     .nameprofilo {
@@ -1312,6 +1315,7 @@ and open the template in the editor.
         max-height: 40px;
         max-width: 40px;
         transition: 0.2s;
+        border-radius: 100%;
     }
 
     .nameprofilo {
