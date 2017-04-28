@@ -10,6 +10,77 @@ and open the template in the editor.
 
 
 
+    #loggedOut, #invalidDataWarning{
+    font: 30px/25px  "Open Sans", Arial, sans-serif;
+    text-align: center;
+    font-weight: bold;
+    color: red;
+    }
+
+
+    #loggedOut:before, #invalidDataWarning:before{
+
+    content: url("img/warning.png");
+    }
+    
+    #postinviato{
+        font: 20px/25px  "Open Sans", Arial, sans-serif;
+        text-align: center;
+        font-weight: bold;
+        margin-top: 10px;
+        color: #365899;
+        float: left;
+    }
+
+    #validate{
+    font: 20px/25px  "Open Sans", Arial, sans-serif;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #365899;
+    }
+    
+    #divnuovopost{
+        background-color: white;
+        float: left;
+        width:500px;
+        height:125px;
+        margin-bottom: 5px;
+        margin-left: 50px;
+        padding-left: 15px;
+        padding-right: 15px;        
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin-top: 5px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0,0,0,.2);
+        overflow: hidden;
+        clear: both;
+    }
+  .nuovopost input, .nuovopost textarea{
+        float:right;
+        width: 90%;      
+        border-radius: 5px;
+        padding-left: 2px;       
+    }
+    
+    .nuovopost textarea{
+        height: 60px;            
+    }
+    
+    .nuovopost input{
+        margin-top: 2px;
+        height: 20px;            
+    }
+    .nuovopost button{
+        
+        float: right;
+        margin-top: 2px; 
+    }
+
+
 @media only screen and (min-width: 1024px){
 
     html, body, #page{
@@ -251,10 +322,11 @@ and open the template in the editor.
 
         display: block;
         float:left;
-        margin-top: 51px;
+        margin-top: 56.4px;
         margin-left: 160px;
         width: 80%;
         height: 90%;
+        padding-left: 1px;
     }
 
     .profilo a:link, .profilo a:visited {
@@ -300,6 +372,7 @@ and open the template in the editor.
         border-radius: 5px;
         box-shadow: 0 0 10px rgba(0,0,0,.2);
         overflow: hidden;
+        clear: both;
 
 
     }
@@ -310,7 +383,7 @@ and open the template in the editor.
         max-width: 40px;
         transition: 0.2s;
         border-radius: 100%;
-        
+
     }
 
     .nameprofilo {
@@ -769,6 +842,7 @@ and open the template in the editor.
         margin-left: 160px;
         width: 80%;
         height: 90%;
+        clear: both;
     }
 
     .profilo a:link, .profilo a:visited {

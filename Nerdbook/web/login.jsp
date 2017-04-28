@@ -5,7 +5,6 @@
 <html>
     <head>
         <title>NerdBook il nuovo social network</title>
-        <base href="M1">        <!--inidirizzo fittizzio--> 
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Stefano Raimondo Usai">
@@ -22,10 +21,6 @@
                 
             <div id="content">
                 <div id="divlogin">
-                    
-                <c:if test="${invalidData == true}">
-                    <div id="invalidDataWarning">I dati inseriti non sono corretti</div>
-                </c:if>
                     
                     <form action="Login" method="post">
                         <div id="divform">
@@ -46,6 +41,14 @@
                             <a href="bacheca.html">Hai dimenticato la password?</a><!--indirizzo falso-->
                         </div>
                     </form>
+                    
+                 <c:if test="${invalidData == true}">
+                    <div id="invalidDataWarning">I dati inseriti non sono corretti</div>
+                </c:if>
+                <c:if test="${loggedIn != true && invalidData != true}">
+                    <div id="loggedOut">Devi essere loggato</div>
+                </c:if>
+                    
                 </div>
             </div>
         </div>

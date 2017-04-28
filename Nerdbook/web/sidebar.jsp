@@ -11,11 +11,15 @@
     <div id="persone">
         <h3>Persone</h3>
         <nav class="barralaterale">                        
-            <ul> 
-                <li><div class="botdiv"><a href="#mariorossi">Mario Rossi</a></div></li>
-                <li><div class="botdiv"><a href="#marcopinco">Marco Pinco</a></div></li>
+            <ul>
+                <c:forEach var="nomiutenti" items="${DButenti}">
+                
+                    <li><div class="botdiv"><a href="bacheca.html?postvisualizati=true&IdOtherUser=${nomiutenti.idUtente}">${nomiutenti.nome} ${nomiutenti.cognome}</a></div></li>
+                
+                </c:forEach>
             </ul>                
         </nav>
+        
     </div>
     <div id="gruppi">
         <h3>Gruppi</h3>

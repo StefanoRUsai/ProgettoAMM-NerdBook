@@ -12,7 +12,6 @@
 <html>
     <head>
         <title>NerdBook il nuovo social network</title>
-        <base href="M1">        <!--inidirizzo fittizzio--> 
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Stefano Raimondo Usai">
@@ -37,60 +36,84 @@
             <div id="content">
                 <div class="form">
                     <div class="immaginiprofilo">
-                        <img title="profilo" alt="immagine avatar" src="img/profilo.jpg">
+               
+                        <c:if test="${not empty utente.urlAvatar && empty img}"><img title="profilo" alt="immagine avatar" src="${utente.urlAvatar}"></c:if>
+                        <c:if test="${not empty img}"><img title="profilo" alt="immagine avatar" src="${img}"></c:if>
+                        <c:if test="${empty utente.urlAvatar && empty img}"><img title="profilo" alt="immagine avatar" src="img/profilo.jpg"></c:if>
+                        
                     </div>
 
                     <div class="areaform">
-                        <form action="Profilo" method="post"> <!-- pagin.java sull'action subnet java, il validatore fa funzionare pure l'indirizzo della bacheca-->
+                        <form action="Profilo?cambio=true" method="post"> <!-- pagin.java sull'action subnet java, il validatore fa funzionare pure l'indirizzo della bacheca-->
 
                             <div class="textform">
                                 <label for="username"><b>Nome</b></label> 
-                                <input type="text" id="username" name="username" placeholder="Nome" <c:if test="${not empty utente.nome}">value="${utente.nome}"</c:if>>
-                            </div>
+                                <input type="text" id="username" name="username" placeholder="Nome" 
+                                       <c:if test="${not empty username}">value="${username}"</c:if>
+                                       <c:if test="${not empty utente.nome}">value="${utente.nome}"</c:if>>
+                                </div>
 
 
-                            <div class="textform">
-                                <label for="lastname"><b>Cognome</b></label> 
-                                <input type="text" id="lastname" name="lastname" placeholder="Cognome">
-                            </div>
+                                <div class="textform">
+                                    <label for="lastname"><b>Cognome</b></label> 
+                                    <input type="text" id="lastname" name="lastname" placeholder="Cognome"
+                                    <c:if test="${not empty lastname}">value="${lastname}"</c:if>
+                                    <c:if test="${not empty utente.cognome}">value="${utente.cognome}"</c:if>>
+                                </div>
 
-                            <div class="textform">
-                                <label for="avatar"><b>URL Avatar</b></label> 
-                                <input type="url" name="img" id="avatar" placeholder="inserisci url">
-                            </div>
+                                <div class="textform">
+                                    <label for="avatar"><b>URL Avatar</b></label> 
+                                    <input type="text" name="img" id="avatar" placeholder="inserisci url"
+                                    <c:if test="${not empty img}">value="${img}"</c:if>
+                                    <c:if test="${not empty utente.urlAvatar}">value="${utente.urlAvatar}"</c:if>>
+                                </div>
 
-                            <div class="textform">
+                                <div class="textform">
 
-                                <label for="bday"><b>Data di nascista</b></label> 
-                                <input type="date" name="bday" id="bday" value=""> <!-- warning per il browser firefox, accettabile -->
-                            </div>
+                                    <label for="bday"><b>Data di nascista</b></label> 
+                                    <input type="date" name="bday" id="bday"
+                                    <c:if test="${not empty bday}">value="${bday}"</c:if>
+                                    <c:if test="${not empty utente.data}">value="${utente.data}"</c:if>> <!-- warning per il browser firefox, accettabile -->
+                                </div>
 
-                            <div class="textform">
-                                <label for="email"><b>E-mail</b></label> 
-                                <input type="text" id="email" name="email" placeholder="inserisci la tua e-mail">
-                            </div>
+                                <div class="textform">
+                                    <label for="email"><b>E-mail</b></label> 
+                                    <input type="text" id="email" name="email" placeholder="inserisci la tua e-mail"
+                                    <c:if test="${not empty email}">value="${email}"</c:if>   
+                                    <c:if test="${not empty utente.email}">value="${utente.email}"</c:if>>
+                                </div>
 
-                            <div class="textform">
-                                <label for="primapsw"><b>Password</b></label> 
-                                <input type="password" id="primapsw" name="primapsw" placeholder="password">
-                            </div>
+                                <div class="textform">
+                                    <label for="primapsw"><b>Password</b></label> 
+                                    <input type="password" id="primapsw" name="password" placeholder="password"
+                                    <c:if test="${not empty password}">value="${password}"</c:if>
+                                    <c:if test="${not empty utente.password}">value="${utente.password}"</c:if>>
+                                </div>
 
-                            <div class="textform">
-                                <label for="verifica"><b>Conferma password</b></label> 
-                                <input type="password" id="verifica"  name="verifica" placeholder="password">     
-                            </div>
+                                <div class="textform">
+                                    <label for="verifica"><b>Conferma password</b></label> 
+                                    <input type="password" id="verifica"  name="verifica" placeholder="password"
+                                    <c:if test="${not empty password}">value="${password}"</c:if>
+                                    <c:if test="${not empty utente.password}">value="${utente.password}"</c:if>>     
+                                </div>
 
-                            <div class="textform">
-                                <label for="presentazione"><b>Frase di presentazione</b></label> 
-                                <textarea  name="presentazione" id="presentazione" placeholder="scrivi una frase di presentazione..."></textarea>
-                            </div>
+                                <div class="textform">
+                                    <label for="presentazione"><b>Frase di presentazione</b></label> 
+                                    <textarea  name="presentazione" id="presentazione" placeholder="scrivi una frase di presentazione...">
+                                    <c:if test="${not empty presentazione}">value="${presentazione}"</c:if>
+                                    <c:if test="${not empty utente.frase}">value="${utente.frase}"</c:if>
+                                    </textarea>
+                                </div>
 
 
-                            <div>
-                                <button type="submit" >Aggiorna</button>
+                                <div>
+                                    <button type="submit" >Aggiorna</button>
 
-                            </div>
-                        </form>
+                                </div>
+                            </form>
+                        <c:if test="${cambio == true}">
+                            <div id="validate">I dati sono stati inseriti correttamente</div>
+                        </c:if>
                     </div>
 
                 </div>

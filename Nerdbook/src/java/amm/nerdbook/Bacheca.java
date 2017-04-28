@@ -38,86 +38,61 @@ public class Bacheca extends HttpServlet {
 
         response.setContentType("text/html;charset=UTF-8");
 
-//        String user = request.getParameter("user");
-//        int userID;
-//
-//        if(user != null){
-//            userID = Integer.parseInt(user);
-//        } else {
-//            userID = 4; //Da sostituire con utente loggato
-//        }
-//        
-//        UtentiRegistrati utente = UtentiRegistratiFactory.getInstance().getUtentiRegistratiById(userID);
-//        if(utente != null){
-//            request.setAttribute("utente", utente);
-//
-//            List<Post> posts = PostFactory.getInstance().getPostList(utente);
-//            request.setAttribute("posts", posts);
-//            
-//            request.getRequestDispatcher("bacheca.jsp").forward(request, response);
-//        } else {
-//            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
-//        }
-//        HttpSession session = request.getSession(false);
-//
-//        if (session != null && session.getAttribute("loggedIn") != null && session.getAttribute("loggedIn").equals(true)) {
-//
-//            UtentiRegistrati utente = (UtentiRegistrati) session.getAttribute("utente");
-//            int userID;
-//
-//            if (utente == null) {
-//                userID = 4; //Da sostituire con utente loggato
-//                utente = UtentiRegistratiFactory.getInstance().getUtentiRegistratiById(userID);
-//            }
-//
-//            if (utente != null) {
-//                request.setAttribute("utente", utente);
-//
-//                List<Post> posts = PostFactory.getInstance().getPostList(utente);
-//                request.setAttribute("posts", posts);
-//
-//                request.getRequestDispatcher("bacheca.jsp").forward(request, response);
-//            } else {
-//                response.setStatus(HttpServletResponse.SC_NOT_FOUND);
-//            }
-//        } else {
-//            request.getRequestDispatcher("login.jsp").forward(request, response);
-//        }
+        HttpSession session = request.getSession(false);
 
+        if (session != null && session.getAttribute("loggedIn") != null
+                && session.getAttribute("loggedIn").equals(true)) {
 
-         HttpSession session = request.getSession(false);
-        
-        //se la sessione esiste ed esiste anche l'attributo loggedIn impostato a true
-        if(session!=null && 
-           session.getAttribute("loggedIn")!=null &&
-           session.getAttribute("loggedIn").equals(true)){
-            
-            //controllo se è impostato il parametro get "user" che mi consente
-            //di visualizzare una bacheca di uno specifico gatto.
             String user = request.getParameter("user");
-            
+
             int userID;
 
-            if(user != null){
+            if (user != null) {
                 userID = Integer.parseInt(user);
             } else {
-                Integer loggedUserID = (Integer)session.getAttribute("loggedUserID");
+                Integer loggedUserID = (Integer) session.getAttribute("loggedUserID");
                 userID = loggedUserID;
             }
 
             UtentiRegistrati utente = UtentiRegistratiFactory.getInstance().getUtentiRegistratiById(userID);
-            if(utente != null){
+
+            if (utente != null) {
                 request.setAttribute("utente", utente);
 
-                List<Post> posts = PostFactory.getInstance().getPostList(utente);
-                request.setAttribute("posts", posts);
+                List<UtentiRegistrati> DButenti = UtentiRegistratiFactory.getInstance().getDataBaseUtenti(utente);
+                request.setAttribute("DButenti", DButenti);
+
+                if (request.getParameter("postvisualizati") != null) {
+                   
+                     String tmp = request.getParameter("IdOtherUser");
+                     if(request.getParameter("IdOtherUser") != null){
+                        int IdDaVisualizzare = Integer.parseInt(tmp);
+                        List<Post> posts = PostFactory.getInstance().getPostListforId(IdDaVisualizzare);
+                        request.setAttribute("posts", posts);
+                        request.setAttribute("postvisualizati", null);
+                        request.setAttribute("postvisualizati", null); 
+                     }else{
+                        List<Post> posts = PostFactory.getInstance().getGlobalPostList();
+                        request.setAttribute("posts", posts);
+                        request.setAttribute("postvisualizati", null);
+                       
+                         
+                     }
+                } else {
+                    
+                    List<Post> posts = PostFactory.getInstance().getPostList(utente);
+                    request.setAttribute("posts", posts);    
+                }
 
                 request.getRequestDispatcher("bacheca.jsp").forward(request, response);
+            
             } else {
+            
                 response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            
             }
-        }
-        else{
+            
+        } else {
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
 

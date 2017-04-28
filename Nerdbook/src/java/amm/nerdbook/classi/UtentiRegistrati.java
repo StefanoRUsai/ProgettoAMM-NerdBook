@@ -19,11 +19,10 @@ public class UtentiRegistrati {
     private String email;
     private String password;
     private String frase;
-    
-    public UtentiRegistrati(){
-        
-        
-        this.idUtente = 0 ;
+
+    public UtentiRegistrati() {
+
+        this.idUtente = 0;
         this.nome = "";
         this.cognome = "";
         this.urlAvatar = "";
@@ -31,9 +30,8 @@ public class UtentiRegistrati {
         this.email = "";
         this.password = "";
         this.frase = "";
-    } 
-    
-    
+    }
+
     /**
      * @return the id
      */
@@ -45,7 +43,7 @@ public class UtentiRegistrati {
      * @param id the id to set
      */
     public void setIdUtente(int id) {
-        
+
         this.idUtente = id;
     }
 
@@ -146,16 +144,27 @@ public class UtentiRegistrati {
     public void setFrase(String frase) {
         this.frase = frase;
     }
-    
+
     @Override
     public boolean equals(Object utentediverso) {
-        if (utentediverso instanceof UtentiRegistrati)
-            if (this.getIdUtente() == ((UtentiRegistrati)utentediverso).getIdUtente()) 
-            
+        if (utentediverso instanceof UtentiRegistrati) {
+            if (this.getIdUtente() == ((UtentiRegistrati) utentediverso).getIdUtente()) {
                 return true;
+            }
+        }
         return false;
     }
 
+    public boolean controlloprofilo(UtentiRegistrati utente) {
 
-    
+        if (utente.getNome().equals("") || utente.getCognome().equals("") || utente.getPassword().equals("")
+                || utente.getUrlAvatar().equals("") || utente.getData().equals("")
+                || utente.getEmail().equals("") || utente.getFrase().equals("")) {
+            return false;
+        } else {
+            return true;
+        }
+
+    }
+
 }

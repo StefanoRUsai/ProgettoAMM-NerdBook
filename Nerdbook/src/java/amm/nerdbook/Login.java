@@ -35,78 +35,51 @@ public class Login extends HttpServlet {
             throws ServletException, IOException {
 
         response.setContentType("text/html;charset=UTF-8");
-
-//        HttpSession session = request.getSession();
-//
-//        if (request.getParameter("logout") != null) {
-//            session.invalidate();
-//            request.getRequestDispatcher("login.jsp").forward(request, response);
-//            return;
-//        }
-//
-//        if (session.getAttribute("loggedIn") != null && session.getAttribute("loggedIn").equals(true)) {
-//
-//            request.getRequestDispatcher("profilo.jsp").forward(request, response);
-//            return;
-//
-//        } else {
-//            String username = request.getParameter("username");
-//            String password = request.getParameter("password");
-//
-//            if (username != null && password != null) {
-//
-//                UtentiRegistrati utente = UtentiRegistratiFactory.getInstance().verificaLogin(username, password);
-//                if (utente != null) {
-//                    session.setAttribute("utente", utente);
-//                    session.setAttribute("loggedIn", true);
-//                    request.getRequestDispatcher("profilo.jsp").forward(request, response);
-//                    return;
-//                }
-//            } else {
-//                session.setAttribute("loggedIn", false);
-//                request.getRequestDispatcher("login.jsp").forward(request, response);
-//                return;
-//            }
-//
-//        }
-
-        //Apertura della sessione
-        HttpSession session = request.getSession();
         
-        //Se è impostato il parametro GET logout, distrugge la sessione
-        if(request.getParameter("logout")!=null)
-        {
+        int userID;
+        //creo la sessione
+        HttpSession session = request.getSession();
+
+        //controllo se è stato effettuato un precedente logout
+        if (request.getParameter("logout") != null) {
             session.invalidate();
             request.getRequestDispatcher("login.jsp").forward(request, response);
             return;
         }
-        
-        //Se esiste un attributo di sessione loggedIn e questo vale true
-        //(Utente già loggato)
+
+        //se loggedin uguale è uguale a true  lo mando al profilo
         if (session.getAttribute("loggedIn") != null && session.getAttribute("loggedIn").equals(true)) {
 
             request.getRequestDispatcher("Profilo").forward(request, response);
             return;
-        
-        //Se l'utente non è loggato...
+
+            //Se l'utente non è loggato...
         } else {
             String username = request.getParameter("username");
             String password = request.getParameter("password");
-        
-            
-            if (username != null && password != null){
+
+            if (username != null && password != null) {
                 int loggedUserID = UtentiRegistratiFactory.getInstance().getIdByUserAndPassword(username, password);
-                
+
                 //se l'utente è valido...
-                if(loggedUserID!=-1)
-                {
+                if (loggedUserID != -1) {
                     session.setAttribute("loggedIn", true);
                     session.setAttribute("loggedUserID", loggedUserID);
+
                     
-                    request.getRequestDispatcher("Profilo").forward(request, response);
-                    return;
+                    userID = loggedUserID;
+
+                    UtentiRegistrati utente = UtentiRegistratiFactory.getInstance().getUtentiRegistratiById(userID);
+
+                    if (utente.controlloprofilo(utente) == true) {
+                        request.getRequestDispatcher("Bacheca").forward(request, response);
+                        return;
+                    } else {
+                        request.getRequestDispatcher("Profilo").forward(request, response);
+                        return;
+                    }
                 } else { //altrimenti se la coppia user/pass non è valida (id==-1)
-                    
+
                     //ritorno al form del login informandolo che i dati non sono validi
                     request.setAttribute("invalidData", true);
                     request.getRequestDispatcher("login.jsp").forward(request, response);
@@ -115,8 +88,8 @@ public class Login extends HttpServlet {
 
             }
         }
+        request.getRequestDispatcher("login.jsp").forward(request, response);
     }
-  
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

@@ -12,7 +12,6 @@
 <html>
     <head>
         <title>NerdBook il nuovo social network</title>
-        <base href="M1">        <!--inidirizzo fittizzio--> 
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Stefano Raimondo Usai">
@@ -31,12 +30,33 @@
             <c:set var="page" value="Bacheca Personale" scope="request"/>
             <jsp:include page="sidebar.jsp"/>
 
-            <div id="content">     
+            <div id="content">
+                <div id="divnuovopost">
+                    <form class="nuovopost" name="nuovopost" action="Bacheca?postinviato=true" method="post"> 
+                        <div class="nuovopost">
+                            <div class="profilo"><img class="imgprofilo" title="profilo" alt="immagine avatar" src="${utente.urlAvatar}"></div>
+                            <textarea  name="content" id="testo"></textarea>
+                        </div>
+                        <div class="nuovopost">
+                            <input type="text" name="image" id="avatar" placeholder="inserisci la tua immagine">
+                        </div>
+                        <div>
+                            <button type="submit" >Pubblica</button>
+                        </div>
+                    </form>
+                    <c:if test="${postinviato == true}">
+                        <div id="postinviato">Il post è stato inviato correttamente</div>
+                    </c:if>
+
+                </div>
                 <div id="contentpost">
                     <c:set var="page" value="Bacheca Personale" scope="request"/>
                     <jsp:include page="newpost.jsp"/>
                 </div>
+
             </div>
+
         </div>
-    </body>    
+    </div>
+</body>    
 </html>
