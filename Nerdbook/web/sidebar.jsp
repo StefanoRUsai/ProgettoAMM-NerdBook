@@ -12,10 +12,10 @@
         <h3>Persone</h3>
         <nav class="barralaterale">                        
             <ul>
+                <!--ciclo la lista dei nomi degli utenti tramite la variabile DButenti che si trovano bacheca, descrizione e profilo-->
                 <c:forEach var="nomiutenti" items="${DButenti}">
-                
-                    <li><div class="botdiv"><a href="bacheca.html?postvisualizati=true&idOtherUser=${nomiutenti.idUtente}">${nomiutenti.nome} ${nomiutenti.cognome}</a></div></li>
-                
+               <li><div class="botdiv"><a href="bacheca.html?postvisualizati=true&idOtherUser=${nomiutenti.idUtente}">
+                    ${nomiutenti.nome} ${nomiutenti.cognome}</a></div></li>
                 </c:forEach>
             </ul>                
         </nav>
@@ -25,10 +25,10 @@
         <h3>Gruppi</h3>
         <nav class="barralaterale">                        
             <ul> 
-                <c:forEach var="gruppi" items="${DBgruppi}">
-                
-                    <li><div class="botdiv"><a href="bacheca.html?postgruppivisualizati=true&idGruppoSideBar=${gruppi.idGruppi}">${gruppi.nome}</a></div></li>
-                
+                 <!--ciclo la lista dei nomi degli utenti tramite la variabile DBgruppi che si trovano in bacheca, descrizione e profilo-->
+                <c:forEach var="gruppi" items="${DBgruppi}">                
+                    <li><div class="botdiv"><a href="bacheca.html?postgruppivisualizati=true&idGruppoSideBar=${gruppi.idGruppi}">
+                                ${gruppi.nome}</a></div></li>                
                 </c:forEach>
             </ul>                
         </nav>

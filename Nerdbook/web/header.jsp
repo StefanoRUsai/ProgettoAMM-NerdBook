@@ -22,7 +22,7 @@
         </nav>
         <nav class="navbar navright">                        
             <ul>
-                    
+                    <!--se l'utente ha una password  vuol dire che è loggato, si potrebbe fare pure sul valore loggedin -->
                     <c:if test="${not empty utente.password}">
                     <li><a class="imgelement nonqui" href="bacheca.html"><c:out value="${utente.nome} ${utente.cognome}"/></a></li>
                     </c:if>

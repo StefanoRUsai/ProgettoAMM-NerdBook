@@ -41,8 +41,12 @@ public class Bacheca extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         HttpSession session = request.getSession(false);
+        
         List<Gruppi> DBgruppi = GruppiFactory.getInstance().getDBGruppi();
         request.setAttribute("DBgruppi", DBgruppi);
+        
+        if(request.getParameter("postinviato") != null)
+            request.setAttribute("postinviato", true);
 
         if (session != null && session.getAttribute("loggedIn") != null
                 && session.getAttribute("loggedIn").equals(true)) {
@@ -135,19 +139,24 @@ public class Bacheca extends HttpServlet {
 
             if (request.getParameter("postvisualizati") != null) {
 
-                String tmp = request.getParameter("idOtherUser");
-                if (request.getParameter("IdOtherUser") != null) {
+               
+                if (request.getParameter("idOtherUser") != null) {
+                    
+                    String tmp = request.getParameter("idOtherUser");
+                    
                     int idDaVisualizzare = Integer.parseInt(tmp);
+                    
                     List<Post> posts = PostFactory.getInstance().getPostListforId(idDaVisualizzare);
                     request.setAttribute("posts", posts);
                     request.setAttribute("postvisualizati", null);
-                    request.setAttribute("postvisualizati", null);
+
                 } else {
+                    
                     List<Post> posts = PostFactory.getInstance().getGlobalPostList();
                     request.setAttribute("posts", posts);
                     request.setAttribute("postvisualizati", null);
-
                 }
+                
             } else {
 
                 List<Post> posts = PostFactory.getInstance().getPostList(utente);
@@ -156,4 +165,5 @@ public class Bacheca extends HttpServlet {
 
         }
     }
+    
 }

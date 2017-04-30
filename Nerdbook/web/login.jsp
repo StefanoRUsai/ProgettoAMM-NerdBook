@@ -38,10 +38,10 @@
                         </div>
 
                         <div id="passworddimenticata">
-                            <a href="bacheca.html">Hai dimenticato la password?</a><!--indirizzo falso-->
+                            <a href="bacheca.html">Hai dimenticato la password?</a>
                         </div>
                     </form>
-                    
+               <!-- da il messaggio di errore nel caso queste variabili non esistano-->     
                  <c:if test="${invalidData == true}">
                     <div id="invalidDataWarning">I dati inseriti non sono corretti</div>
                 </c:if>

@@ -10,7 +10,7 @@
 <%@page import="amm.nerdbook.*"%>
 
 <!DOCTYPE html>
-
+    <!-- gestione post tramite la variabile post creata in bacheca (si veda la servlet -->
     <c:forEach var="post" items="${posts}">
         <div class="newpost">
 

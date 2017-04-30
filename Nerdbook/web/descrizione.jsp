@@ -21,8 +21,7 @@
     <body>   
         <div id="page">
             <!--header contenente in titolo della pagina-->
-            <c:set var
-                   ="title" value="Bacheca Personale" scope="request"/>
+            <c:set var="title" value="Bacheca Personale" scope="request"/>
             <jsp:include page="header.jsp"/>
 
 
