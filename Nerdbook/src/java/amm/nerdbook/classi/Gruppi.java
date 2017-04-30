@@ -20,7 +20,7 @@ public class Gruppi {
     public Gruppi(){
         
         
-        this.idGruppi = 0  ;
+        this.idGruppi = -1  ;
         this.nome = "";
         this.urlAvatar = "";
         this.data = "";
@@ -100,8 +100,6 @@ public class Gruppi {
     public void setFrase(String frase) {
         this.frase = frase;
     }
-    
-    
     
     
     

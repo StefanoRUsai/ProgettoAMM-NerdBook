@@ -35,8 +35,8 @@ public class Login extends HttpServlet {
             throws ServletException, IOException {
 
         response.setContentType("text/html;charset=UTF-8");
-        
-        int userID;
+
+        int userID = 0;
         //creo la sessione
         HttpSession session = request.getSession();
 
@@ -53,40 +53,9 @@ public class Login extends HttpServlet {
             request.getRequestDispatcher("Profilo").forward(request, response);
             return;
 
-            //Se l'utente non è loggato...
         } else {
-            String username = request.getParameter("username");
-            String password = request.getParameter("password");
-
-            if (username != null && password != null) {
-                int loggedUserID = UtentiRegistratiFactory.getInstance().getIdByUserAndPassword(username, password);
-
-                //se l'utente è valido...
-                if (loggedUserID != -1) {
-                    session.setAttribute("loggedIn", true);
-                    session.setAttribute("loggedUserID", loggedUserID);
-
-                    
-                    userID = loggedUserID;
-
-                    UtentiRegistrati utente = UtentiRegistratiFactory.getInstance().getUtentiRegistratiById(userID);
-
-                    if (utente.controlloprofilo(utente) == true) {
-                        request.getRequestDispatcher("Bacheca").forward(request, response);
-                        return;
-                    } else {
-                        request.getRequestDispatcher("Profilo").forward(request, response);
-                        return;
-                    }
-                } else { //altrimenti se la coppia user/pass non è valida (id==-1)
-
-                    //ritorno al form del login informandolo che i dati non sono validi
-                    request.setAttribute("invalidData", true);
-                    request.getRequestDispatcher("login.jsp").forward(request, response);
-                    return;
-                }
-
-            }
+            //Se l'utente non è loggato...
+            this.gestioneLogin(request, session, response, userID);
         }
         request.getRequestDispatcher("login.jsp").forward(request, response);
     }
@@ -130,4 +99,39 @@ public class Login extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+    public void gestioneLogin(HttpServletRequest request, HttpSession session, HttpServletResponse response, int userID)
+            throws ServletException, IOException {
+        
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+
+        if (username != null && password != null) {
+            int loggedUserID = UtentiRegistratiFactory.getInstance().getIdByUserAndPassword(username, password);
+
+            //se l'utente è valido...
+            if (loggedUserID != -1) {
+                session.setAttribute("loggedIn", true);
+                session.setAttribute("loggedUserID", loggedUserID);
+
+                userID = loggedUserID;
+
+                UtentiRegistrati utente = UtentiRegistratiFactory.getInstance().getUtentiRegistratiById(userID);
+
+                if (utente.controlloprofilo(utente) == true) {
+                    request.getRequestDispatcher("Bacheca").forward(request, response);
+                    return;
+                } else {
+                    request.getRequestDispatcher("Profilo").forward(request, response);
+                    return;
+                }
+            } else { //altrimenti se la coppia user/pass non è valida (id==-1)
+
+                //ritorno al form del login informandolo che i dati non sono validi
+                request.setAttribute("invalidData", true);
+                request.getRequestDispatcher("login.jsp").forward(request, response);
+                return;
+            }
+
+        }
+    }
 }

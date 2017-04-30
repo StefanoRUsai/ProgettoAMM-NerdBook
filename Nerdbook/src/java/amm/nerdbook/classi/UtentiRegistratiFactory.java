@@ -122,6 +122,12 @@ public class UtentiRegistratiFactory {
         }
         return nuovalista;
     }
+
+    public ArrayList<UtentiRegistrati> getDataBaseUtenti() {
+        
+        return this.listaUtentiRegistrati;
+    }
+    
     
     
     

@@ -14,7 +14,7 @@
             <ul>
                 <c:forEach var="nomiutenti" items="${DButenti}">
                 
-                    <li><div class="botdiv"><a href="bacheca.html?postvisualizati=true&IdOtherUser=${nomiutenti.idUtente}">${nomiutenti.nome} ${nomiutenti.cognome}</a></div></li>
+                    <li><div class="botdiv"><a href="bacheca.html?postvisualizati=true&idOtherUser=${nomiutenti.idUtente}">${nomiutenti.nome} ${nomiutenti.cognome}</a></div></li>
                 
                 </c:forEach>
             </ul>                
@@ -25,8 +25,11 @@
         <h3>Gruppi</h3>
         <nav class="barralaterale">                        
             <ul> 
-                <li><div class="botdiv"><a href="#GDR">Giochi di Ruolo</a></div></li>
-                <li><div class="botdiv"><a href="#FPW">Fondamenti Web...</a></div></li>
+                <c:forEach var="gruppi" items="${DBgruppi}">
+                
+                    <li><div class="botdiv"><a href="bacheca.html?postgruppivisualizati=true&idGruppoSideBar=${gruppi.idGruppi}">${gruppi.nome}</a></div></li>
+                
+                </c:forEach>
             </ul>                
         </nav>
     </div>

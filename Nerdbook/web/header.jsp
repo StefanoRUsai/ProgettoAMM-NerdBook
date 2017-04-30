@@ -16,15 +16,15 @@
         <nav class="navbar navleft">                          
             <ul>
                 <li><a class="nonqui" href="bacheca.html?postvisualizati=true">Bacheca</a></li>
-                <li><a class="nonqui" href="Profilo">Profilo</a></li>
-                <li><a class="nonqui" href="Descrizione">Descrizione</a></li>
+                <li><a class="nonqui" href="profilo.html">Profilo</a></li>
+                <li><a class="nonqui" href="descrizione.html">Descrizione</a></li>
             </ul>                
         </nav>
         <nav class="navbar navright">                        
             <ul>
                     
                     <c:if test="${not empty utente.password}">
-                    <li><a class="imgelement nonqui" href="Bacheca"><c:out value="${utente.nome} ${utente.cognome}"/></a></li>
+                    <li><a class="imgelement nonqui" href="bacheca.html"><c:out value="${utente.nome} ${utente.cognome}"/></a></li>
                     </c:if>
                     <c:if test="${not empty utente.password}">
                     <li><a class="nonqui" href="login.html?logout=true">Logout</a></li>

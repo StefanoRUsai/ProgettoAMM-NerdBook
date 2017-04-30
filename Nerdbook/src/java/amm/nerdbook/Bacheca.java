@@ -9,6 +9,8 @@ import amm.nerdbook.classi.Post;
 import amm.nerdbook.classi.PostFactory;
 import amm.nerdbook.classi.UtentiRegistrati;
 import amm.nerdbook.classi.UtentiRegistratiFactory;
+import amm.nerdbook.classi.Gruppi;
+import amm.nerdbook.classi.GruppiFactory;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -39,6 +41,8 @@ public class Bacheca extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         HttpSession session = request.getSession(false);
+        List<Gruppi> DBgruppi = GruppiFactory.getInstance().getDBGruppi();
+        request.setAttribute("DBgruppi", DBgruppi);
 
         if (session != null && session.getAttribute("loggedIn") != null
                 && session.getAttribute("loggedIn").equals(true)) {
@@ -57,41 +61,16 @@ public class Bacheca extends HttpServlet {
             UtentiRegistrati utente = UtentiRegistratiFactory.getInstance().getUtentiRegistratiById(userID);
 
             if (utente != null) {
-                request.setAttribute("utente", utente);
-
-                List<UtentiRegistrati> DButenti = UtentiRegistratiFactory.getInstance().getDataBaseUtenti(utente);
-                request.setAttribute("DButenti", DButenti);
-
-                if (request.getParameter("postvisualizati") != null) {
-                   
-                     String tmp = request.getParameter("IdOtherUser");
-                     if(request.getParameter("IdOtherUser") != null){
-                        int IdDaVisualizzare = Integer.parseInt(tmp);
-                        List<Post> posts = PostFactory.getInstance().getPostListforId(IdDaVisualizzare);
-                        request.setAttribute("posts", posts);
-                        request.setAttribute("postvisualizati", null);
-                        request.setAttribute("postvisualizati", null); 
-                     }else{
-                        List<Post> posts = PostFactory.getInstance().getGlobalPostList();
-                        request.setAttribute("posts", posts);
-                        request.setAttribute("postvisualizati", null);
-                       
-                         
-                     }
-                } else {
-                    
-                    List<Post> posts = PostFactory.getInstance().getPostList(utente);
-                    request.setAttribute("posts", posts);    
-                }
+                this.gestionePost(utente, request);
 
                 request.getRequestDispatcher("bacheca.jsp").forward(request, response);
-            
+
             } else {
-            
+
                 response.setStatus(HttpServletResponse.SC_NOT_FOUND);
-            
+
             }
-            
+
         } else {
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
@@ -137,4 +116,44 @@ public class Bacheca extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+    public void gestionePost(UtentiRegistrati utente, HttpServletRequest request) {
+
+        request.setAttribute("utente", utente);
+
+        List<UtentiRegistrati> DButenti = UtentiRegistratiFactory.getInstance().getDataBaseUtenti(utente);
+        request.setAttribute("DButenti", DButenti);
+
+        if (request.getParameter("postgruppivisualizati") != null) {
+
+            String idGroup = request.getParameter("idGruppoSideBar");
+            int idGruppo = Integer.parseInt(idGroup);
+            List<Post> posts = PostFactory.getInstance().getPostListGruppi(idGruppo);
+            request.setAttribute("posts", posts);
+            request.setAttribute("postgruppivisualizati", null);
+
+        } else {
+
+            if (request.getParameter("postvisualizati") != null) {
+
+                String tmp = request.getParameter("idOtherUser");
+                if (request.getParameter("IdOtherUser") != null) {
+                    int idDaVisualizzare = Integer.parseInt(tmp);
+                    List<Post> posts = PostFactory.getInstance().getPostListforId(idDaVisualizzare);
+                    request.setAttribute("posts", posts);
+                    request.setAttribute("postvisualizati", null);
+                    request.setAttribute("postvisualizati", null);
+                } else {
+                    List<Post> posts = PostFactory.getInstance().getGlobalPostList();
+                    request.setAttribute("posts", posts);
+                    request.setAttribute("postvisualizati", null);
+
+                }
+            } else {
+
+                List<Post> posts = PostFactory.getInstance().getPostList(utente);
+                request.setAttribute("posts", posts);
+            }
+
+        }
+    }
 }

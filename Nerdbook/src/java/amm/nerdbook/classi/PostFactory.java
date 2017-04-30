@@ -29,6 +29,7 @@ public class PostFactory {
     private PostFactory() {
 
         UtentiRegistratiFactory utentiRegistratiFactory = UtentiRegistratiFactory.getInstance();
+        GruppiFactory gruppiFactory = GruppiFactory.getInstance();
 
         //Creazione Post
         Post post1 = new Post();
@@ -70,8 +71,7 @@ public class PostFactory {
         post5.setImage("img/b0979598-c427-4f71-b235-51e4c733753d.jpg");
         post5.setLink("");
         post5.setUrlVideo("");
-        
-        
+
         Post post6 = new Post();
         post6.setIdPost(6);
         post6.setUser(utentiRegistratiFactory.getUtentiRegistratiById(6));
@@ -80,12 +80,22 @@ public class PostFactory {
         post6.setLink("");
         post6.setUrlVideo("https://www.youtube.com/embed/zVzER12pk4o");
 
+        Post post7 = new Post();
+        post7.setIdPost(7);
+        post7.setUser(utentiRegistratiFactory.getUtentiRegistratiById(6));
+        post7.setContent("Il nuovo video di Coez");
+        post7.setImage("");
+        post7.setLink("");
+        post7.setUrlVideo("https://www.youtube.com/embed/zVzER12pk4o");
+        post7.setGruppo(gruppiFactory.getGruppiById(1));
+
         listaPost.add(post1);
         listaPost.add(post2);
         listaPost.add(post3);
         listaPost.add(post4);
         listaPost.add(post5);
         listaPost.add(post6);
+        listaPost.add(post7);
     }
 
     public Post getPostById(int id) {
@@ -102,8 +112,10 @@ public class PostFactory {
         List<Post> listaPost = new ArrayList<Post>();
 
         for (Post post : this.listaPost) {
-            if (post.getUser().equals(utentediverso)) {
-                listaPost.add(post);
+            if (post.getUser() != null) {
+                if (post.getUser().equals(utentediverso)) {
+                    listaPost.add(post);
+                }
             }
         }
         return listaPost;
@@ -116,14 +128,26 @@ public class PostFactory {
 
         return lista;
     }
-    
-    
-    public List getGlobalPostList(){
+
+    public List getGlobalPostList() {
 
         List<Post> listaPost = new ArrayList<Post>();
 
-
         return this.listaPost;
+    }
+
+    public List getPostListGruppi(int idGruppo) {
+
+        List<Post> listaPost = new ArrayList<Post>();
+
+        for (Post post : this.listaPost) {
+            if (post.getGruppo() != null) {
+                if (post.getGruppo().getIdGruppi() == idGruppo) {
+                    listaPost.add(post);
+                }
+            }
+        }
+        return listaPost;
     }
 
 }

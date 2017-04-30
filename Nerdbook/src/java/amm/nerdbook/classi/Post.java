@@ -11,8 +11,6 @@ package amm.nerdbook.classi;
  */
 public class Post {
 
-    
-
     protected int idpost;
     protected UtentiRegistrati user;
     private String imageUser;
@@ -21,16 +19,22 @@ public class Post {
     private String image;
     private String link;
     private String urlVideo;
-    
+    private boolean gruppi;
+    private Gruppi gruppo;
+    private String nomeGruppo;
+
     public Post() {
-        
-        this.idpost = 0;
+
+        this.idpost = -1;
         this.user = null;
-        this.imageUser = null;
+        this.imageUser = "";
         this.content = "";
         this.image = "";
         this.link = "";
         this.urlVideo = "";
+        this.gruppi = false;
+        this.gruppo = null;
+        
     }
 
     /**
@@ -44,7 +48,7 @@ public class Post {
      * @param id the id to set
      */
     public void setIdPost(int id) {
-        
+
         this.idpost = id;
     }
 
@@ -60,8 +64,8 @@ public class Post {
      */
     public void setUser(UtentiRegistrati user) {
         this.user = user;
-        this.imageUser=this.user.getUrlAvatar();
-        this.nomeUtente=this.user.getNome()+" "+this.user.getCognome();
+        this.imageUser = this.user.getUrlAvatar();
+        this.nomeUtente = this.user.getNome() + " " + this.user.getCognome();
     }
 
     /**
@@ -77,7 +81,6 @@ public class Post {
     public void setContent(String content) {
         this.content = content;
     }
-
 
     /**
      * @return the imageUser
@@ -110,7 +113,6 @@ public class Post {
     /**
      * @return the urlImage
      */
-
     /**
      * @return the urlVideo
      */
@@ -152,4 +154,49 @@ public class Post {
     public void setLink(String link) {
         this.link = link;
     }
+
+    /**
+     * @return the gruppi
+     */
+    public boolean isGruppi() {
+        return gruppi;
+    }
+
+    /**
+     * @param gruppi the gruppi to set
+     */
+    public void setGruppi(boolean gruppi) {
+        this.gruppi = gruppi;
+    }
+
+
+    /**
+     * @return the gruppo
+     */
+    public Gruppi getGruppo() {
+        return gruppo;
+    }
+
+    /**
+     * @param gruppo the gruppo to set
+     */
+    public void setGruppo(Gruppi gruppo) {
+        this.gruppo = gruppo;
+    }
+
+
+    /**
+     * @return the nomeGruppo
+     */
+    public String getNomeGruppo() {
+        return nomeGruppo;
+    }
+
+    /**
+     * @param nomeGruppo the nomeGruppo to set
+     */
+    public void setNomeGruppo(String nomeGruppo) {
+        this.nomeGruppo = nomeGruppo;
+    }
+
 }

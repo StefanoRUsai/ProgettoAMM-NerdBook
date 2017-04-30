@@ -22,7 +22,7 @@ public class UtentiRegistrati {
 
     public UtentiRegistrati() {
 
-        this.idUtente = 0;
+        this.idUtente = -1;
         this.nome = "";
         this.cognome = "";
         this.urlAvatar = "";

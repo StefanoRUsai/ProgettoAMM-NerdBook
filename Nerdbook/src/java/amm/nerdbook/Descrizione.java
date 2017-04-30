@@ -5,13 +5,19 @@
  */
 package amm.nerdbook;
 
+import amm.nerdbook.classi.Gruppi;
+import amm.nerdbook.classi.GruppiFactory;
+import amm.nerdbook.classi.UtentiRegistrati;
+import amm.nerdbook.classi.UtentiRegistratiFactory;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -32,8 +38,42 @@ public class Descrizione extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
+        HttpSession session = request.getSession(false);
+
+
+        if (session != null && session.getAttribute("loggedIn") != null
+                && session.getAttribute("loggedIn").equals(true)) {
+            
+            
+
+            String user = request.getParameter("user");
+
+            int userID;
+
+            if (user != null) {
+                userID = Integer.parseInt(user);
+            } else {
+                Integer loggedUserID = (Integer) session.getAttribute("loggedUserID");
+                userID = loggedUserID;
+            }
+
+            UtentiRegistrati utente = UtentiRegistratiFactory.getInstance().getUtentiRegistratiById(userID);
+
+            request.setAttribute("utente", utente);
+
+            List<UtentiRegistrati> DButenti = UtentiRegistratiFactory.getInstance().getDataBaseUtenti(utente);
+            request.setAttribute("DButenti", DButenti);
+            
+            
+        List<Gruppi> DBgruppi = GruppiFactory.getInstance().getDBGruppi();
+        request.setAttribute("DBgruppi", DBgruppi);
+        
+        }
+
+
         request.getRequestDispatcher("descrizione.jsp").forward(request, response);
-   }
+
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -61,7 +101,7 @@ public class Descrizione extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-   
+
     }
 
     /**
