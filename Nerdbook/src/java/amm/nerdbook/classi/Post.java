@@ -11,6 +11,7 @@ package amm.nerdbook.classi;
  */
 public class Post {
 
+
     protected int idpost;
     protected UtentiRegistrati user;
     private String imageUser;
@@ -22,7 +23,9 @@ public class Post {
     private boolean gruppi;
     private Gruppi gruppo;
     private String nomeGruppo;
-
+    private int bacheca;
+    private int bachecaGruppi;
+    
     public Post() {
 
         this.idpost = -1;
@@ -66,6 +69,7 @@ public class Post {
         this.user = user;
         this.imageUser = this.user.getUrlAvatar();
         this.nomeUtente = this.user.getNome() + " " + this.user.getCognome();
+        this.bacheca = this.user.getIdUtente();
     }
 
     /**
@@ -182,6 +186,7 @@ public class Post {
      */
     public void setGruppo(Gruppi gruppo) {
         this.gruppo = gruppo;
+        this.bachecaGruppi = this.gruppo.getIdGruppi();
     }
 
 
@@ -199,4 +204,36 @@ public class Post {
         this.nomeGruppo = nomeGruppo;
     }
 
+    
+    /**
+     * @return the Bacheca
+     */
+    public int getBacheca() {
+        return bacheca;
+    }
+
+    /**
+     * @param Bacheca the Bacheca to set
+     */
+    public void setBacheca(int bacheca) {
+        this.bacheca = bacheca;
+    }
+    
+    
+    
+    /**
+     * @return the bachecaGruppi
+     */
+    public int getBachecaGruppi() {
+        return bachecaGruppi;
+    }
+
+    /**
+     * @param bachecaGruppi the bachecaGruppi to set
+     */
+    public void setBachecaGruppi(int bachecaGruppi) {
+        this.bachecaGruppi = bachecaGruppi;
+    }
+
+    
 }

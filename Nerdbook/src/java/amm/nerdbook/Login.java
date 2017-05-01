@@ -36,7 +36,7 @@ public class Login extends HttpServlet {
 
         response.setContentType("text/html;charset=UTF-8");
 
-        int userID = 0;
+        int userID = -1;
         //creo la sessione
         HttpSession session = request.getSession();
 
@@ -50,7 +50,7 @@ public class Login extends HttpServlet {
         //se loggedin uguale è uguale a true  lo mando al profilo
         if (session.getAttribute("loggedIn") != null && session.getAttribute("loggedIn").equals(true)) {
 
-            request.getRequestDispatcher("Profilo").forward(request, response);
+            request.getRequestDispatcher("Bacheca").forward(request, response);
             return;
 
         } else {

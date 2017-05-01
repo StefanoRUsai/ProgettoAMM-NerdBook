@@ -41,12 +41,13 @@ public class Bacheca extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         HttpSession session = request.getSession(false);
-        
+
         List<Gruppi> DBgruppi = GruppiFactory.getInstance().getDBGruppi();
         request.setAttribute("DBgruppi", DBgruppi);
-        
-        if(request.getParameter("postinviato") != null)
+
+        if (request.getParameter("postinviato") != null) {
             request.setAttribute("postinviato", true);
+        }
 
         if (session != null && session.getAttribute("loggedIn") != null
                 && session.getAttribute("loggedIn").equals(true)) {
@@ -66,6 +67,17 @@ public class Bacheca extends HttpServlet {
 
             if (utente != null) {
                 this.gestionePost(utente, request);
+                if (request.getParameter("idOtherUser") != null) {
+
+                String idOtherUser = request.getParameter("idOtherUser");
+                Integer id = Integer.parseInt(idOtherUser);
+                int idBacheca = id;
+                UtentiRegistrati utenteNomeBacheca = UtentiRegistratiFactory.getInstance().getUtentiRegistratiById(id); 
+                String nomeInBacheca = utenteNomeBacheca.getNome()+" "+utenteNomeBacheca.getCognome();
+                request.setAttribute("nomeInBacheca", nomeInBacheca);
+            }
+
+                this.nuovoPost(utente, request, session, response);
 
                 request.getRequestDispatcher("bacheca.jsp").forward(request, response);
 
@@ -76,6 +88,7 @@ public class Bacheca extends HttpServlet {
             }
 
         } else {
+            request.setAttribute("nonloggato", true);
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
 
@@ -139,24 +152,23 @@ public class Bacheca extends HttpServlet {
 
             if (request.getParameter("postvisualizati") != null) {
 
-               
                 if (request.getParameter("idOtherUser") != null) {
-                    
+
                     String tmp = request.getParameter("idOtherUser");
-                    
+
                     int idDaVisualizzare = Integer.parseInt(tmp);
-                    
+
                     List<Post> posts = PostFactory.getInstance().getPostListforId(idDaVisualizzare);
                     request.setAttribute("posts", posts);
                     request.setAttribute("postvisualizati", null);
 
                 } else {
-                    
+
                     List<Post> posts = PostFactory.getInstance().getGlobalPostList();
                     request.setAttribute("posts", posts);
                     request.setAttribute("postvisualizati", null);
                 }
-                
+
             } else {
 
                 List<Post> posts = PostFactory.getInstance().getPostList(utente);
@@ -165,5 +177,21 @@ public class Bacheca extends HttpServlet {
 
         }
     }
+
+    public void nuovoPost(UtentiRegistrati utente, HttpServletRequest request, HttpSession session, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        if (request.getParameter("postinviato") != null) {
+
+                request.setAttribute("postinviato", true);
+
+                String testo = request.getParameter("testo");
+                request.setAttribute("testo", testo);
+
+                String image = request.getParameter("image");
+                request.setAttribute("image", image);
+
+            }
+        }
     
 }

@@ -52,8 +52,6 @@
                                        <c:if test="${not empty username}">value="${username}"</c:if>
                                        <c:if test="${not empty utente.nome}">value="${utente.nome}"</c:if>>
                                 </div>
-
-
                                 <div class="textform">
                                     <label for="lastname"><b>Cognome</b></label> 
                                     <input type="text" id="lastname" name="lastname" placeholder="Cognome"

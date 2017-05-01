@@ -45,7 +45,7 @@
                  <c:if test="${invalidData == true}">
                     <div id="invalidDataWarning">I dati inseriti non sono corretti</div>
                 </c:if>
-                <c:if test="${loggedIn != true && invalidData != true}">
+                <c:if test="${nonloggato != null && invalidData != true}">
                     <div id="loggedOut">Devi essere loggato</div>
                 </c:if>
                     

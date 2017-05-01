@@ -5,17 +5,20 @@
  */
 package amm.nerdbook.classi;
 
+import java.util.List;
+
 /**
  *
  * @author St3
  */
 public class Gruppi {
-   
+
     private int idGruppi;
     private String nome;
     private String urlAvatar;
     private String data;
     private String frase;
+    private List<UtentiRegistrati> listaUtenti;
 
     public Gruppi(){
         
@@ -25,6 +28,7 @@ public class Gruppi {
         this.urlAvatar = "";
         this.data = "";
         this.frase = "";
+        this.listaUtenti= null;
     } 
     
     
@@ -100,6 +104,22 @@ public class Gruppi {
     public void setFrase(String frase) {
         this.frase = frase;
     }
+    
+    
+    /**
+     * @return the utente
+     */
+    public List<UtentiRegistrati> getListaUtenti() {
+        return listaUtenti;
+    }
+
+    /**
+     * @param utente the utente to set
+     */
+    public void setListaUtenti(List<UtentiRegistrati> listaUtenti) {
+        this.listaUtenti = listaUtenti;
+    }
+   
     
     
     

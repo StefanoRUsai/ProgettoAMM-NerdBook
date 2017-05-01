@@ -1,26 +1,31 @@
 <%-- 
     Document   : newpost
-    Created on : 23-apr-2017, 15.54.27
+    Created on : 2-mag-2017, 12.41.27
     Author     : St3
 --%>
-
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="amm.nerdbook.classi.UtentiRegistratiFactory"%>
-<%@page import="amm.nerdbook.*"%>
-
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-    <!-- gestione post tramite la variabile post creata in bacheca (si veda la servlet -->
-    <c:forEach var="post" items="${posts}">
+
+
         <div class="newpost">
 
+
             <div class="profilo">
-                <img class="imgprofilo" title="profilo" alt="immagine avatar" src="${post.imageUser}">
-                <div class="nameprofilo"><a href="#indirizzo_casuale">${post.nomeUtente}</a></div>
+                <img class="imgprofilo" title="profilo" alt="immagine avatar" src="${utente.urlAvatar}">
+                <div class="nameprofilo"><a href="#indirizzo_casuale">${utente.nome} ${utente.cognome}</a></div>
             </div>
-                <c:if test="${not empty post.content}"><div class="testopost"><p>${post.content}</p></div></c:if>
-                <c:if test="${not empty post.link}"><div class="link_post"><a href="${post.link}">${post.link}</a></div></c:if>
-                <c:if test="${not empty post.image}"><div class="img_post"> <img alt="immagine casuale" src="${post.image}"> </div></c:if>
-                <c:if test="${not empty post.urlVideo}"><div class="img_post"> <iframe  src="${post.urlVideo}"> </iframe></div></c:if>
+                <form class="nuovopost" name="nuovopost" action="Bacheca?nuovopost=null&idBacheca=null" method="post"> 
+                    <c:if test="${nomeInBacheca != null}"><p>stai scrivendo nella bacheca di 
+                            ${nomeInBacheca}</p></c:if>
+                    
+                <p>${testo}</p>
+                <p>${image}</p>
+                <div>
+                     <button type="submit" >Pubblica</button>
+                </div>
+
             </div>
-    </c:forEach>
+    
+

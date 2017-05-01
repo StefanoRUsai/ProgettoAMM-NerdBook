@@ -51,6 +51,7 @@ public class Profilo extends HttpServlet {
 
         } else {
 
+            request.setAttribute("nonloggato", true);
             request.getRequestDispatcher("login.jsp").forward(request, response);
 
         }
@@ -97,7 +98,7 @@ public class Profilo extends HttpServlet {
     }// </editor-fold>
 
 
-    public void gestioneSalvataggioParametri(HttpSession session, HttpServletRequest request) {
+    public void SalvataggioParametri(HttpSession session, HttpServletRequest request) {
 
         request.setAttribute("cambio", true);
 
@@ -120,7 +121,7 @@ public class Profilo extends HttpServlet {
         request.setAttribute("password", password);
 
         String presentazione = request.getParameter("presentazione");
-        request.setAttribute("password", presentazione);
+        request.setAttribute("presentazione", presentazione);
 
     }
 
@@ -142,7 +143,7 @@ public class Profilo extends HttpServlet {
         if (utente != null) {
 
             if (request.getParameter("cambio") != null) {
-                this.gestioneSalvataggioParametri(session, request);
+                this.SalvataggioParametri(session, request);
 
             } else {
 

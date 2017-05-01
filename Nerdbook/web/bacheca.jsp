@@ -35,7 +35,7 @@
                     <form class="nuovopost" name="nuovopost" action="Bacheca?postinviato=true" method="post"> 
                         <div class="nuovopost">
                             <div class="profilo"><img class="imgprofilo" title="profilo" alt="immagine avatar" src="${utente.urlAvatar}"></div>
-                            <textarea  name="content" id="testo"></textarea>
+                            <textarea  name="testo" id="testo"></textarea>
                         </div>
                         <div class="nuovopost">
                             <input type="text" name="image" id="avatar" placeholder="inserisci la tua immagine">
@@ -49,11 +49,20 @@
                     </c:if>
 
                 </div>
+                            
+                <c:if test="${postinviato == true}">
                 <div id="contentpost">
                     <c:set var="page" value="Bacheca Personale" scope="request"/>
                     <jsp:include page="newpost.jsp"/>
                 </div>
-
+                </c:if>
+                            
+                <c:if test="${postinviato == null}">
+                <div id="contentpost">
+                    <c:set var="page" value="Bacheca Personale" scope="request"/>
+                    <jsp:include page="post.jsp"/>
+                </div>
+                </c:if>
             </div>
 
         </div>
