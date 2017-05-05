@@ -1,3 +1,4 @@
+
 <%-- 
     Document   : newpost
     Created on : 23-apr-2017, 15.54.27
@@ -69,3 +70,5 @@
     </div>
 </body>    
 </html>
+
+

@@ -42,6 +42,7 @@ public class Bacheca extends HttpServlet {
 
         HttpSession session = request.getSession(false);
 
+
         List<Gruppi> DBgruppi = GruppiFactory.getInstance().getDBGruppi();
         request.setAttribute("DBgruppi", DBgruppi);
 
@@ -66,16 +67,18 @@ public class Bacheca extends HttpServlet {
             UtentiRegistrati utente = UtentiRegistratiFactory.getInstance().getUtentiRegistratiById(userID);
 
             if (utente != null) {
-                this.gestionePost(utente, request);
-                if (request.getParameter("idOtherUser") != null) {
+                this.gestionePost(utente, request, session);
+                if (session.getAttribute("flagId") != null) {
 
-                String idOtherUser = request.getParameter("idOtherUser");
-                Integer id = Integer.parseInt(idOtherUser);
-                int idBacheca = id;
-                UtentiRegistrati utenteNomeBacheca = UtentiRegistratiFactory.getInstance().getUtentiRegistratiById(id); 
-                String nomeInBacheca = utenteNomeBacheca.getNome()+" "+utenteNomeBacheca.getCognome();
-                request.setAttribute("nomeInBacheca", nomeInBacheca);
-            }
+                    
+                        String flagIdString= (String)session.getAttribute("flagId");
+                        Integer id = Integer.parseInt(flagIdString);
+                        int idBacheca = id;
+                        UtentiRegistrati utenteNomeBacheca = UtentiRegistratiFactory.getInstance().getUtentiRegistratiById(idBacheca);
+                        String nomeInBacheca = utenteNomeBacheca.getNome() + " " + utenteNomeBacheca.getCognome();
+                        request.setAttribute("nomeInBacheca", nomeInBacheca);
+                    }
+            
 
                 this.nuovoPost(utente, request, session, response);
 
@@ -133,7 +136,7 @@ public class Bacheca extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    public void gestionePost(UtentiRegistrati utente, HttpServletRequest request) {
+    public void gestionePost(UtentiRegistrati utente, HttpServletRequest request, HttpSession session) {
 
         request.setAttribute("utente", utente);
 
@@ -155,9 +158,12 @@ public class Bacheca extends HttpServlet {
                 if (request.getParameter("idOtherUser") != null) {
 
                     String tmp = request.getParameter("idOtherUser");
-
+                    if(session.getAttribute("flagId")!= null || 
+                           ((request.getParameter("idOtherUser") != null) && 
+                                (request.getParameter("idOtherUser") != session.getAttribute("flagId")) ))
+                    session.setAttribute("flagId", tmp);
                     int idDaVisualizzare = Integer.parseInt(tmp);
-
+                    
                     List<Post> posts = PostFactory.getInstance().getPostListforId(idDaVisualizzare);
                     request.setAttribute("posts", posts);
                     request.setAttribute("postvisualizati", null);
@@ -183,16 +189,18 @@ public class Bacheca extends HttpServlet {
 
         if (request.getParameter("postinviato") != null) {
 
-                request.setAttribute("postinviato", true);
+            request.setAttribute("postinviato", true);
 
-                String testo = request.getParameter("testo");
-                request.setAttribute("testo", testo);
+            String testo = request.getParameter("testo");
+            request.setAttribute("testo", testo);
 
-                String image = request.getParameter("image");
-                request.setAttribute("image", image);
+            String image = request.getParameter("image");
+            request.setAttribute("image", image);
 
-            }
         }
-    
+    }
+
 }
+
+
 

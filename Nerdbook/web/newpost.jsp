@@ -19,8 +19,9 @@
                 <form class="nuovopost" name="nuovopost" action="Bacheca?nuovopost=null&idBacheca=null" method="post"> 
                     <c:if test="${nomeInBacheca != null}"><p>stai scrivendo nella bacheca di 
                             ${nomeInBacheca}</p></c:if>
-                    
+                <h3>Hai inserito il seguente testo:</h3> 
                 <p>${testo}</p>
+                <h3>Hai inserito la seguente immagine:</h3>
                 <p>${image}</p>
                 <div>
                      <button type="submit" >Pubblica</button>
@@ -29,3 +30,6 @@
             </div>
     
 
+
+                
+                
