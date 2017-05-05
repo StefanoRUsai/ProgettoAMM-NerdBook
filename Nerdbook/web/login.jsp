@@ -21,8 +21,8 @@
                 
             <div id="content">
                 <div id="divlogin">
-                    
-                    <form action="Login" method="post">
+                    <c:if test="${loggedIn == null}"><form action="Login" method="post"></c:if>
+                    <c:if test="${loggedIn != null}"><form action="Login?seiloggato=true" method="post"></c:if>    
                         <div id="divform">
 
                             <div id="texar">
@@ -48,14 +48,15 @@
                 <c:if test="${nonloggato != null && invalidData != true}">
                     <div id="loggedOut">Devi essere loggato</div>
                 </c:if>
+                <c:if test="${seiloggato != null}">
+                    <div id="loggedOut">Sei gia loggato loggato</div>
+                </c:if>
+
                     
                 </div>
             </div>
         </div>
     </body>
 </html>
-
-
-
 
 

@@ -39,7 +39,8 @@ public class Login extends HttpServlet {
         int userID = -1;
         //creo la sessione
         HttpSession session = request.getSession();
-
+        
+        
         //controllo se è stato effettuato un precedente logout
         if (request.getParameter("logout") != null) {
             session.invalidate();
