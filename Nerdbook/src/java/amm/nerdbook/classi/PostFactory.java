@@ -5,6 +5,11 @@
  */
 package amm.nerdbook.classi;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -14,6 +19,7 @@ import java.util.ArrayList;
  */
 public class PostFactory {
 
+    private String connectionString;
     //Pattern Design Singleton
     private static PostFactory singleton;
 
@@ -24,100 +30,97 @@ public class PostFactory {
         return singleton;
     }
 
-    private ArrayList<Post> listaPost = new ArrayList<Post>();
-
-    private PostFactory() {
-
-        UtentiRegistratiFactory utentiRegistratiFactory = UtentiRegistratiFactory.getInstance();
-        GruppiFactory gruppiFactory = GruppiFactory.getInstance();
-
-        //Creazione Post
-        Post post1 = new Post();
-        post1.setIdPost(1);
-        post1.setUser(utentiRegistratiFactory.getUtentiRegistratiById(1));
-        post1.setContent(" trallalero trallala che cosa si scriverà?");
-        post1.setImage("");
-        post1.setLink("");
-        post1.setUrlVideo("");
-
-        Post post2 = new Post();
-        post2.setIdPost(2);
-        post2.setUser(utentiRegistratiFactory.getUtentiRegistratiById(2));
-        post2.setContent("Divvertente questa immagine di pack Man ");
-        post2.setImage("img/b0979598-c427-4f71-b235-51e4c733753d.jpg");
-        post2.setLink("");
-        post2.setUrlVideo("");
-
-        Post post3 = new Post();
-        post3.setIdPost(3);
-        post3.setUser(utentiRegistratiFactory.getUtentiRegistratiById(3));
-        post3.setContent("Simpatica la descrizione del minus world");
-        post3.setImage("");
-        post3.setLink("https://it.wikipedia.org/wiki/Super_Mario_Bros.");
-        post3.setUrlVideo("");
-
-        Post post4 = new Post();
-        post4.setIdPost(4);
-        post4.setUser(utentiRegistratiFactory.getUtentiRegistratiById(4));
-        post4.setContent("we we bello sto video!!");
-        post4.setImage("");
-        post4.setLink("");
-        post4.setUrlVideo("https://www.youtube.com/embed/-Khe61uso_o");
-
-        Post post5 = new Post();
-        post5.setIdPost(5);
-        post5.setUser(utentiRegistratiFactory.getUtentiRegistratiById(4));
-        post5.setContent("Che bello quando funzionano le cose e diventi subito contento");
-        post5.setImage("img/b0979598-c427-4f71-b235-51e4c733753d.jpg");
-        post5.setLink("");
-        post5.setUrlVideo("");
-
-        Post post6 = new Post();
-        post6.setIdPost(6);
-        post6.setUser(utentiRegistratiFactory.getUtentiRegistratiById(6));
-        post6.setContent("Il nuovo video di Coez");
-        post6.setImage("");
-        post6.setLink("");
-        post6.setUrlVideo("https://www.youtube.com/embed/zVzER12pk4o");
-
-        Post post7 = new Post();
-        post7.setIdPost(7);
-        post7.setUser(utentiRegistratiFactory.getUtentiRegistratiById(6));
-        post7.setContent("Il nuovo video di Coez");
-        post7.setImage("");
-        post7.setLink("");
-        post7.setUrlVideo("https://www.youtube.com/embed/zVzER12pk4o");
-        post7.setGruppo(gruppiFactory.getGruppiById(1));
-
-        listaPost.add(post1);
-        listaPost.add(post2);
-        listaPost.add(post3);
-        listaPost.add(post4);
-        listaPost.add(post5);
-        listaPost.add(post6);
-        listaPost.add(post7);
-    }
-
     public Post getPostById(int id) {
-        for (Post post : this.listaPost) {
-            if (post.getId() == id) {
-                return post;
+        UtentiRegistratiFactory utente = UtentiRegistratiFactory.getInstance();
+
+        try {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "stefano", "stefano");
+
+            String query = "select * from posts " + "where idPosts = ?";
+
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+
+            // Si associano i valori
+            stmt.setInt(1, id);
+
+            // Esecuzione query
+            ResultSet res = stmt.executeQuery();
+
+            // ciclo sulle righe restituite
+            if (res.next()) {
+                Post current = new Post();
+                //imposto id del post
+                current.setIdPost(res.getInt("idPosts"));
+
+                //impost il contenuto del post
+                current.setContent(res.getString("content"));
+
+                //imposto l'autore del post
+                current.setUser(utente.getUtentiRegistratiById(res.getInt("author")));
+                current.setImage(res.getString("image"));
+                current.setUrlVideo(res.getString("urlVideo"));
+                current.setLink(res.getString("link"));
+
+                stmt.close();
+                conn.close();
+                return current;
             }
+
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return null;
+
     }
 
-    public List getPostList(UtentiRegistrati utentediverso) {
-
+    public List getPostList(UtentiRegistrati utente) {
         List<Post> listaPost = new ArrayList<Post>();
 
-        for (Post post : this.listaPost) {
-            if (post.getUser() != null) {
-                if (post.getUser().equals(utentediverso)) {
-                    listaPost.add(post);
-                }
+        try {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "stefano", "stefano");
+
+            String query = "select * from posts " + "where author = ?";
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+
+            // Si associano i valori
+            stmt.setInt(1, utente.getIdUtente());
+
+            // Esecuzione query
+            ResultSet res = stmt.executeQuery();
+
+            // ciclo sulle righe restituite
+            while (res.next()) {
+
+                Post current = new Post();
+                //imposto id del post
+                current.setIdPost(res.getInt("idPosts"));
+
+                //impost il contenuto del post
+                current.setContent(res.getString("content"));
+
+                current.setUser(utente);
+                current.setImage(res.getString("image"));
+                current.setUrlVideo(res.getString("urlVideo"));
+                current.setLink(res.getString("link"));
+
+                //imposto l'autore del post
+                current.setUser(utente);
+
+                listaPost.add(current);
             }
+
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+
         return listaPost;
     }
 
@@ -130,24 +133,98 @@ public class PostFactory {
     }
 
     public List getGlobalPostList() {
-
         List<Post> listaPost = new ArrayList<Post>();
 
-        return this.listaPost;
+        try {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "stefano", "stefano");
+
+            String query = "select * from posts ";
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+
+            // Esecuzione query
+            ResultSet res = stmt.executeQuery();
+
+            // ciclo sulle righe restituite
+            while (res.next()) {
+                
+                    Post current = new Post();
+                    //imposto id del post
+                    current.setIdPost(res.getInt("idPosts"));
+
+                    //impost il contenuto del post
+                    current.setContent(res.getString("content"));
+
+                    current.setUser(UtentiRegistratiFactory.getInstance().getUtentiRegistratiById(res.getInt("author")));
+                    current.setImage(res.getString("image"));
+                    current.setUrlVideo(res.getString("urlVideo"));
+                    current.setLink(res.getString("link"));
+
+                    listaPost.add(current);
+                
+            }
+
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return listaPost;
     }
 
     public List getPostListGruppi(int idGruppo) {
-
         List<Post> listaPost = new ArrayList<Post>();
 
-        for (Post post : this.listaPost) {
-            if (post.getGruppo() != null) {
-                if (post.getGruppo().getIdGruppi() == idGruppo) {
-                    listaPost.add(post);
-                }
+        try {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "stefano", "stefano");
+
+            String query = "select * from posts " + "where bachecaGruppi = ?";
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+
+            stmt.setInt(1, idGruppo);
+
+            // Esecuzione query
+            ResultSet res = stmt.executeQuery();
+
+            // ciclo sulle righe restituite
+            while (res.next()) {
+
+                Post current = new Post();
+                //imposto id del post
+                current.setIdPost(res.getInt("idPosts"));
+
+                //impost il contenuto del post
+                current.setContent(res.getString("content"));
+
+                current.setUser(UtentiRegistratiFactory.getInstance().getUtentiRegistratiById(res.getInt("author")));
+                current.setImage(res.getString("image"));
+                current.setUrlVideo(res.getString("urlVideo"));
+                current.setLink(res.getString("link"));
+
+                listaPost.add(current);
+
             }
+
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+
         return listaPost;
+    }
+
+    public void setConnectionString(String s) {
+        this.connectionString = s;
+    }
+
+    public String getConnectionString() {
+        return this.connectionString;
+
     }
 
 }

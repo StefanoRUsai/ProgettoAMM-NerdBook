@@ -10,6 +10,11 @@ package amm.nerdbook.classi;
  * @author St3
  */
 public class UtentiRegistrati {
+    
+    
+    public enum Type {
+        NORMAL, ADMIN
+    };
 
     private int idUtente;
     private String nome;
@@ -19,6 +24,7 @@ public class UtentiRegistrati {
     private String email;
     private String password;
     private String frase;
+    private int type;
 
     public UtentiRegistrati() {
 
@@ -144,6 +150,21 @@ public class UtentiRegistrati {
     public void setFrase(String frase) {
         this.frase = frase;
     }
+    
+        /**
+     * @return the type
+     */
+    public int getType() {
+        return type;
+    }
+
+    /**
+     * @param type the type to set
+     */
+    public void setType(int type) {
+        this.type = type;
+    }
+
 
     @Override
     public boolean equals(Object utentediverso) {
@@ -167,4 +188,5 @@ public class UtentiRegistrati {
 
     }
 
+   
 }

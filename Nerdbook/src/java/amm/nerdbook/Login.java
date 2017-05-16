@@ -5,12 +5,17 @@
  */
 package amm.nerdbook;
 
+import amm.nerdbook.classi.GruppiFactory;
+import amm.nerdbook.classi.PostFactory;
 import amm.nerdbook.classi.UtentiRegistrati;
 import amm.nerdbook.classi.UtentiRegistratiFactory;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,7 +25,12 @@ import javax.servlet.http.HttpSession;
  *
  * @author St3
  */
+@WebServlet(loadOnStartup = 0)
 public class Login extends HttpServlet {
+
+    private static final String JDBC_DRIVER = "org.apache.derby.jdbc.EmbeddedDriver";
+    private static final String DB_CLEAN_PATH = "../../web/WEB-INF/db/Nerdbook";
+    private static final String DB_BUILD_PATH = "WEB-INF/db/Nerdbook";
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,8 +49,7 @@ public class Login extends HttpServlet {
         int userID = -1;
         //creo la sessione
         HttpSession session = request.getSession();
-        
-        
+
         //controllo se è stato effettuato un precedente logout
         if (request.getParameter("logout") != null) {
             session.invalidate();
@@ -102,7 +111,7 @@ public class Login extends HttpServlet {
 
     public void gestioneLogin(HttpServletRequest request, HttpSession session, HttpServletResponse response, int userID)
             throws ServletException, IOException {
-        
+
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
@@ -135,5 +144,22 @@ public class Login extends HttpServlet {
 
         }
     }
-}
 
+    
+
+    @Override
+    public void init() {
+        String dbConnection = "jdbc:derby:" + this.getServletContext().getRealPath("/") + DB_BUILD_PATH;
+        try {
+            Class.forName(JDBC_DRIVER);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        //IMPOSTO LA CONNECTION STRING PER OGNI FACTORY
+        UtentiRegistratiFactory.getInstance().setConnectionString(dbConnection);
+        PostFactory.getInstance().setConnectionString(dbConnection);
+        GruppiFactory.getInstance().setConnectionString(dbConnection);
+    }
+
+}
