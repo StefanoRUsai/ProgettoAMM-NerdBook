@@ -5,7 +5,14 @@
  */
 package amm.nerdbook.classi;
 
+import com.sun.java_cup.internal.runtime.virtual_parse_stack;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.sql.Connection;
+import java.util.List;
 
 /**
  *
@@ -13,7 +20,7 @@ import java.util.ArrayList;
  */
 public class UtentiRegistratiFactory {
 
-
+    private String connectionString;
     //Pattern Design Singleton
     private static UtentiRegistratiFactory singleton;
 
@@ -24,131 +31,283 @@ public class UtentiRegistratiFactory {
         return singleton;
     }
 
-    private ArrayList<UtentiRegistrati> listaUtentiRegistrati = new ArrayList<UtentiRegistrati>();
-
-    private UtentiRegistratiFactory() {
-        //Creazione utenti
-
-        
-        UtentiRegistrati utentiRegistrati1 = new UtentiRegistrati();
-        utentiRegistrati1.setIdUtente(1);
-        utentiRegistrati1.setNome("Giovanni");
-        utentiRegistrati1.setCognome("Rodriguez");
-        utentiRegistrati1.setUrlAvatar("img/avatar-placeholder.jpg");
-        utentiRegistrati1.setData("25/12/0000");
-        utentiRegistrati1.setEmail("giovannirodriguez@gmail.com");        
-        utentiRegistrati1.setPassword("123456");
-        utentiRegistrati1.setFrase("ma che bella frase");
-      
-
-        
-        UtentiRegistrati utentiRegistrati2 = new UtentiRegistrati();
-        utentiRegistrati2.setIdUtente(2);
-        utentiRegistrati2.setNome("Marco");
-        utentiRegistrati2.setCognome("Bianco");
-        utentiRegistrati2.setUrlAvatar("img/avatar-placeholder.jpg");
-        utentiRegistrati2.setData("25/12/0000");
-        utentiRegistrati2.setEmail("marcobianco@gmail.com");        
-        utentiRegistrati2.setPassword("123456");
-        utentiRegistrati2.setFrase("ma che bella frase");
-        
-        
-        UtentiRegistrati utentiRegistrati3 = new UtentiRegistrati();
-        utentiRegistrati3.setIdUtente(3);
-        utentiRegistrati3.setNome("Reginaldo");
-        utentiRegistrati3.setCognome("Rossi");
-        utentiRegistrati3.setUrlAvatar("img/avatar-placeholder.jpg");
-        utentiRegistrati3.setData("25/12/0000");
-        utentiRegistrati3.setEmail("mariorossi@gmail.com");        
-        utentiRegistrati3.setPassword("123456");
-        utentiRegistrati3.setFrase("ma che bella frase");
-        
-        UtentiRegistrati utentiRegistrati4 = new UtentiRegistrati();
-        utentiRegistrati4.setIdUtente(4);
-        utentiRegistrati4.setNome("Mario");
-        utentiRegistrati4.setCognome("Bros");
-        utentiRegistrati4.setUrlAvatar("img/mario_face.jpg");
-        utentiRegistrati4.setData("25/12/0000");
-        utentiRegistrati4.setEmail("marcobianco@gmail.com");        
-        utentiRegistrati4.setPassword("123456");
-        utentiRegistrati4.setFrase("ma che bella frase");
-        
-        UtentiRegistrati utentiRegistrati5 = new UtentiRegistrati();
-        utentiRegistrati5.setIdUtente(5);
-        utentiRegistrati5.setNome("Prova");
-        utentiRegistrati5.setCognome("");
-        utentiRegistrati5.setUrlAvatar("img/mario_face.jpg");
-        utentiRegistrati5.setData("00/00/0000");
-        utentiRegistrati5.setEmail("sonoinprova@gmail.com");        
-        utentiRegistrati5.setPassword("2332");
-        utentiRegistrati5.setFrase("ma che bella frase");
-        
-        
-        UtentiRegistrati utentiRegistrati6 = new UtentiRegistrati();
-        utentiRegistrati6.setIdUtente(6);
-        utentiRegistrati6.setNome("Marco");
-        utentiRegistrati6.setCognome("Pinco");
-        utentiRegistrati6.setUrlAvatar("img/mario_face.jpg");
-        utentiRegistrati6.setData("00/00/0000");
-        utentiRegistrati6.setEmail("sonoinprova@gmail.com");        
-        utentiRegistrati6.setPassword("56789");
-        utentiRegistrati6.setFrase("ma che bella frase");
-      
-
-        listaUtentiRegistrati.add(utentiRegistrati1);
-        listaUtentiRegistrati.add(utentiRegistrati2);
-        listaUtentiRegistrati.add(utentiRegistrati3);
-        listaUtentiRegistrati.add(utentiRegistrati4);
-        listaUtentiRegistrati.add(utentiRegistrati5);
-        listaUtentiRegistrati.add(utentiRegistrati6);
-    }
-    
-    
     public UtentiRegistrati getUtentiRegistratiById(int id) {
-        for (UtentiRegistrati utentiRegistrati : this.listaUtentiRegistrati) {
-            if (utentiRegistrati.getIdUtente() == id) {
-                return utentiRegistrati;
+
+        try {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "stefano", "stefano");
+
+            String query = "select * from utentiRegistrati " + "where idUtentiRegistrati = ?";
+
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+
+            // Si associano i valori
+            stmt.setInt(1, id);
+
+            // Esecuzione query
+            ResultSet res = stmt.executeQuery();
+
+            // ciclo sulle righe restituite
+            if (res.next()) {
+                UtentiRegistrati current = new UtentiRegistrati();
+                current.setIdUtente(res.getInt("idUtentiRegistrati"));
+                current.setNome(res.getString("nome"));
+                current.setCognome(res.getString("cognome"));
+                current.setPassword(res.getString("password"));
+                current.setEmail(res.getString("email"));
+                current.setUrlAvatar(res.getString("urlAvatar"));
+                current.setData(res.getString("data"));
+                current.setFrase(res.getString("frase"));
+                current.setType(res.getInt("type"));
+
+                stmt.close();
+                conn.close();
+                return current;
             }
+
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return null;
     }
-    
+
     public ArrayList<UtentiRegistrati> getDataBaseUtenti(UtentiRegistrati utenteloggato) {
         ArrayList<UtentiRegistrati> nuovalista = new ArrayList<UtentiRegistrati>();
-        for(UtentiRegistrati utente : this.listaUtentiRegistrati ){
-            if(!(utente.equals(utenteloggato))){
-            nuovalista.add(utente);
+        ArrayList<UtentiRegistrati> listaUtenti = new ArrayList<UtentiRegistrati>();
+        try {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "stefano", "stefano");
+
+            String query = "select * from utentiRegistrati";
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+
+            // Esecuzione query
+            ResultSet res = stmt.executeQuery();
+
+            // ciclo sulle righe restituite
+            while (res.next()) {
+
+                UtentiRegistrati current = new UtentiRegistrati();
+                current.setIdUtente(res.getInt("idUtentiRegistrati"));
+                current.setNome(res.getString("nome"));
+                current.setCognome(res.getString("cognome"));
+                current.setPassword(res.getString("password"));
+                current.setEmail(res.getString("email"));
+                current.setUrlAvatar(res.getString("urlAvatar"));
+                current.setData(res.getString("data"));
+                current.setFrase(res.getString("frase"));
+                current.setType(res.getInt("type"));
+
+                listaUtenti.add(current);
+
+            }
+
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        for (UtentiRegistrati utente : listaUtenti) {
+            if (!(utente.equals(utenteloggato))) {
+                nuovalista.add(utente);
             }
         }
         return nuovalista;
     }
 
     public ArrayList<UtentiRegistrati> getDataBaseUtenti() {
-        
-        return this.listaUtentiRegistrati;
+        ArrayList<UtentiRegistrati> listaUtenti = new ArrayList<UtentiRegistrati>();
+
+        try {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "stefano", "stefano");
+
+            String query = "select * from utentiRegistrati";
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+
+            // Esecuzione query
+            ResultSet res = stmt.executeQuery();
+
+            // ciclo sulle righe restituite
+            while (res.next()) {
+
+                UtentiRegistrati current = new UtentiRegistrati();
+                current.setIdUtente(res.getInt("idUtentiRegistrati"));
+                current.setNome(res.getString("nome"));
+                current.setCognome(res.getString("cognome"));
+                current.setPassword(res.getString("password"));
+                current.setEmail(res.getString("email"));
+                current.setUrlAvatar(res.getString("urlAvatar"));
+                current.setData(res.getString("data"));
+                current.setFrase(res.getString("frase"));
+                current.setType(res.getInt("type"));
+
+                listaUtenti.add(current);
+            }
+
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return listaUtenti;
     }
-    
-    
-    
-    
+
     public UtentiRegistrati getUtentiRegistratiByNome(String nome) {
-        for (UtentiRegistrati utentiRegistrati : this.listaUtentiRegistrati) {
-            if (utentiRegistrati.getNome()== nome) {
+
+        ArrayList<UtentiRegistrati> listaUtenti = new ArrayList<UtentiRegistrati>();
+
+        try {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "stefano", "stefano");
+
+            String query = "select * from utentiRegistrati";
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+
+            // Esecuzione query
+            ResultSet res = stmt.executeQuery();
+
+            // ciclo sulle righe restituite
+            while (res.next()) {
+
+                UtentiRegistrati current = new UtentiRegistrati();
+                current.setIdUtente(res.getInt("idUtentiRegistrati"));
+                current.setNome(res.getString("nome"));
+                current.setCognome(res.getString("cognome"));
+                current.setPassword(res.getString("password"));
+                current.setEmail(res.getString("email"));
+                current.setUrlAvatar(res.getString("urlAvatar"));
+                current.setData(res.getString("data"));
+                current.setFrase(res.getString("frase"));
+                current.setType(res.getInt("type"));
+
+                listaUtenti.add(current);
+            }
+
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        for (UtentiRegistrati utentiRegistrati : listaUtenti) {
+            if (utentiRegistrati.getNome().equals(nome)) {
                 return utentiRegistrati;
             }
         }
         return null;
     }
-    
-    public int getIdByUserAndPassword(String user, String password){
-        for(UtentiRegistrati utente: this.listaUtentiRegistrati){
-            if(utente.getNome().equals(user) && utente.getPassword().equals(password)){
-                return utente.getIdUtente();
+
+    public int getIdByUserAndPassword(String user, String password) {
+        try {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "stefano", "stefano");
+
+            String query
+                    = "select idUtentiRegistrati from utentiRegistrati "
+                    + "where nome = ? and password = ?";
+
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+
+            // Si associano i valori
+            stmt.setString(1, user);
+            stmt.setString(2, password);
+
+            // Esecuzione query
+            ResultSet res = stmt.executeQuery();
+
+            // ciclo sulle righe restituite
+            if (res.next()) {
+                int id = res.getInt("idUtentiRegistrati");
+
+                stmt.close();
+                conn.close();
+                return id;
             }
+
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            System.out.println("nada de nada");
+            e.printStackTrace();
         }
         return -1;
+
+    }
+
+    public void setConnectionString(String s) {
+        this.connectionString = s;
+    }
+
+    public String getConnectionString() {
+        return this.connectionString;
+
+    }
+
+    public void registrazioneUtente(UtentiRegistrati utente) {
+
+        try {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "stefano", "stefano");
+
+            String query
+                    = "insert into utentiRegistrati (idUtentiRegistrati, nome, cognome, password, email, urlavatar, data, frase) "
+                    + "values (default, ? , ? , ?, ?, ?, ?, ?)";
+
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+
+            // Si associano i valori
+            stmt.setString(1, utente.getNome());
+            stmt.setString(2, utente.getCognome());
+            stmt.setString(3, utente.getPassword());
+            stmt.setString(4, utente.getEmail());
+            stmt.setString(4, utente.getEmail());
+            stmt.setString(5, utente.getUrlAvatar());
+            stmt.setString(6, utente.getData());
+            stmt.setString(7, utente.getFrase());
+            // Esecuzione query
+            stmt.executeUpdate();
+
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void deleteUser(UtentiRegistrati utente) {
+
+        try {
+            Connection conn = DriverManager.getConnection(connectionString, "stefano", "stefano");
+            String query
+                    = "delete from utentiRegistrati "
+                    + "where idUtentiRegistrati = ? ";
+            // Si associano i valori
+
+            PreparedStatement stmt = conn.prepareStatement(query);
+
+            // Si associano i valori
+            stmt.setInt(1, utente.getIdUtente());
+
+            // Esecuzione query
+            stmt.executeUpdate();
+            stmt.close();
+            conn.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 }
-
-

@@ -11,18 +11,31 @@ and open the template in the editor.
 
 
     #loggedOut, #invalidDataWarning{
-    font: 30px/25px  "Open Sans", Arial, sans-serif;
-    text-align: center;
-    font-weight: bold;
-    color: red;
+        font: 30px/25px  "Open Sans", Arial, sans-serif;
+        text-align: center;
+        font-weight: bold;
+        color: red;
+    }
+
+    .close {
+        content: url(img/Button_12-128.png);
+        color: red;
+        text-indent: -2px;
+        width:20px;
+        height:20px;
+        float:right;
+    }           
+    input.clos{
+        visibility:hidden;
+        display: none;
     }
 
 
     #loggedOut:before, #invalidDataWarning:before{
 
-    content: url("img/warning.png");
+        content: url("img/warning.png");
     }
-    
+
     #postinviato{
         font: 20px/25px  "Open Sans", Arial, sans-serif;
         text-align: center;
@@ -33,13 +46,13 @@ and open the template in the editor.
     }
 
     #validate{
-    font: 20px/25px  "Open Sans", Arial, sans-serif;
-    text-align: center;
-    font-weight: bold;
-    margin-top: 10px;
-    color: #365899;
+        font: 20px/25px  "Open Sans", Arial, sans-serif;
+        text-align: center;
+        font-weight: bold;
+        margin-top: 10px;
+        color: #365899;
     }
-    
+
     #divnuovopost{
         background-color: white;
         float: left;
@@ -59,23 +72,23 @@ and open the template in the editor.
         overflow: hidden;
         clear: both;
     }
-  .nuovopost input, .nuovopost textarea{
+    .nuovopost input, .nuovopost textarea{
         float:right;
         width: 90%;      
         border-radius: 5px;
         padding-left: 2px;       
     }
-    
+
     .nuovopost textarea{
         height: 60px;            
     }
-    
+
     .nuovopost input{
         margin-top: 2px;
         height: 20px;            
     }
     .nuovopost button{
-        
+
         float: right;
         margin-top: 2px; 
     }
