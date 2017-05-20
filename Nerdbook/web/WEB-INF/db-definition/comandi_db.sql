@@ -15,7 +15,7 @@ CREATE TABLE utentiRegistrati (
     email VARCHAR(256) UNIQUE,
     frase VARCHAR(2048),
     type INTEGER,
-    FOREIGN KEY (type) REFERENCES utentiRegistratiType(idUtentiRegistratiType) ON DELETE SET NULL
+    FOREIGN KEY (type) REFERENCES utentiRegistratiType(idUtentiRegistratiType) 
 );
 
 CREATE TABLE posts (
@@ -35,7 +35,7 @@ CREATE TABLE gruppi (
     nome VARCHAR(1024),
     image VARCHAR(512),    
     idAdmin INTEGER,
-    FOREIGN KEY (idAdmin) REFERENCES utentiRegistrati(idUtentiRegistrati)
+    FOREIGN KEY (idAdmin) REFERENCES utentiRegistrati(idUtentiRegistrati)  
         
 );
 

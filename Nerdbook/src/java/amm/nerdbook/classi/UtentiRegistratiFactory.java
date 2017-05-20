@@ -294,6 +294,14 @@ public class UtentiRegistratiFactory {
             
             conn = DriverManager.getConnection(connectionString, "stefano", "stefano");
             
+            
+            //cancello l'utente dai gruppi seguiti
+            query  = "delete from gruppi " + "where idAdmin = ? ";
+            stmt = conn.prepareStatement(query);
+            stmt.setInt(1, utente.getIdUtente());
+            stmt.executeUpdate();
+            
+            
             //cancello l'utente dai gruppi seguiti
             query  = "delete from followerGruppi " + "where follower = ? ";
             stmt = conn.prepareStatement(query);
@@ -324,4 +332,5 @@ public class UtentiRegistratiFactory {
     }
 
 }
+
 
