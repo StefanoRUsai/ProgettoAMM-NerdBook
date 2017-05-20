@@ -13,6 +13,8 @@ import amm.nerdbook.classi.Gruppi;
 import amm.nerdbook.classi.GruppiFactory;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -41,14 +43,23 @@ public class Bacheca extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         HttpSession session = request.getSession(false);
-
+        int idDaVisualizzare=-1;
+        String canc = request.getParameter("cancella");
+        if(request.getParameter("cancella") != null){
+            
+            Integer loggedUserID = (Integer) session.getAttribute("loggedUserID");
+            int idUser = loggedUserID;
+            
+            
+            int idcancella= Integer.parseInt(request.getParameter("cancella"));
+            PostFactory.getInstance().deletePost(idcancella, idUser);
+            response.setIntHeader("Refresh", 0);
+                
+        }
 
         List<Gruppi> DBgruppi = GruppiFactory.getInstance().getDBGruppi();
         request.setAttribute("DBgruppi", DBgruppi);
 
-        if (request.getParameter("postinviato") != null) {
-            request.setAttribute("postinviato", true);
-        }
 
         if (session != null && session.getAttribute("loggedIn") != null
                 && session.getAttribute("loggedIn").equals(true)) {
@@ -71,13 +82,13 @@ public class Bacheca extends HttpServlet {
                 if (session.getAttribute("flagId") != null) {
 
                     
-                        String flagIdString= (String)session.getAttribute("flagId");
-                        Integer id = Integer.parseInt(flagIdString);
-                        int idBacheca = id;
-                        UtentiRegistrati utenteNomeBacheca = UtentiRegistratiFactory.getInstance().getUtentiRegistratiById(idBacheca);
-                        String nomeInBacheca = utenteNomeBacheca.getNome() + " " + utenteNomeBacheca.getCognome();
-                        request.setAttribute("nomeInBacheca", nomeInBacheca);
-                    }
+                    String flagIdString= (String)session.getAttribute("flagId");
+                    Integer id = Integer.parseInt(flagIdString);
+                    int idBacheca = id;
+                    UtentiRegistrati utenteNomeBacheca = UtentiRegistratiFactory.getInstance().getUtentiRegistratiById(idBacheca);
+                    String nomeInBacheca = utenteNomeBacheca.getNome() + " " + utenteNomeBacheca.getCognome();
+                    request.setAttribute("nomeInBacheca", nomeInBacheca);
+                }
             
 
                 this.nuovoPost(utente, request, session, response);
@@ -148,6 +159,7 @@ public class Bacheca extends HttpServlet {
             String idGroup = request.getParameter("idGruppoSideBar");
             int idGruppo = Integer.parseInt(idGroup);
             List<Post> posts = PostFactory.getInstance().getPostListGruppi(idGruppo);
+            Collections.reverse(posts);
             request.setAttribute("posts", posts);
             request.setAttribute("postgruppivisualizati", null);
 
@@ -164,20 +176,25 @@ public class Bacheca extends HttpServlet {
                     session.setAttribute("flagId", tmp);
                     int idDaVisualizzare = Integer.parseInt(tmp);
                     
-                    List<Post> posts = PostFactory.getInstance().getPostListforId(idDaVisualizzare);
+                    List<Post> posts = PostFactory.getInstance().getPostListforBacheca(idDaVisualizzare, utente.getIdUtente());
+                    Collections.reverse(posts);
                     request.setAttribute("posts", posts);
                     request.setAttribute("postvisualizati", null);
 
                 } else {
 
                     List<Post> posts = PostFactory.getInstance().getGlobalPostList();
+                    
+                    Collections.reverse(posts);
+                    
                     request.setAttribute("posts", posts);
                     request.setAttribute("postvisualizati", null);
                 }
 
             } else {
 
-                List<Post> posts = PostFactory.getInstance().getPostList(utente);
+                List<Post> posts = PostFactory.getInstance().getPostListBacheca(utente);
+                Collections.reverse(posts);
                 request.setAttribute("posts", posts);
             }
 
@@ -189,13 +206,26 @@ public class Bacheca extends HttpServlet {
 
         if (request.getParameter("postinviato") != null) {
 
-            request.setAttribute("postinviato", true);
-
             String testo = request.getParameter("testo");
-            request.setAttribute("testo", testo);
 
             String image = request.getParameter("image");
-            request.setAttribute("image", image);
+            
+            Post post = new Post();
+            
+            post.setContent(testo);
+            post.setImage(image);
+            post.setUser(utente);
+            if(session.getAttribute("flagId") != null)
+                post.setBacheca(Integer.parseInt((String)session.getAttribute("flagId")));  
+            else
+                post.setBacheca(utente.getIdUtente());
+            if(testo != null || image != null){
+                PostFactory.getInstance().addNewPost(post);
+                request.removeAttribute("postinviato");
+                response.setIntHeader("Refresh", 0);
+                
+            }
+            request.getRequestDispatcher("bacheca.jsp").forward(request, response);
 
         }
     }

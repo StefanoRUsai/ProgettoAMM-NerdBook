@@ -33,7 +33,7 @@
 
             <div id="content">
                 <div id="divnuovopost">
-                    <form class="nuovopost" name="nuovopost" action="Bacheca?postinviato=true" method="post"> 
+                    <form class="nuovopost" name="nuovopost" action="Bacheca?postinviato" method="post"> 
                         <div class="nuovopost">
                             <div class="profilo"><img class="imgprofilo" title="profilo" alt="immagine avatar" src="${utente.urlAvatar}"></div>
                             <textarea  name="testo" id="testo"></textarea>
@@ -45,25 +45,18 @@
                             <button type="submit" >Pubblica</button>
                         </div>
                     </form>
-                    <c:if test="${postinviato == true}">
-                        <div id="postinviato">Il post è stato inviato correttamente</div>
-                    </c:if>
+                       
 
                 </div>
                             
-                <c:if test="${postinviato == true}">
-                <div id="contentpost">
-                    <c:set var="page" value="Bacheca Personale" scope="request"/>
-                    <jsp:include page="newpost.jsp"/>
-                </div>
-                </c:if>
+               
                             
-                <c:if test="${postinviato == null}">
+               
                 <div id="contentpost">
                     <c:set var="page" value="Bacheca Personale" scope="request"/>
                     <jsp:include page="post.jsp"/>
                 </div>
-                </c:if>
+                
             </div>
 
         </div>
