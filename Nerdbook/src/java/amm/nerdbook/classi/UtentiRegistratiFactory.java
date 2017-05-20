@@ -5,6 +5,7 @@
  */
 package amm.nerdbook.classi;
 
+import com.sun.java_cup.internal.runtime.virtual_parse_stack;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,9 +13,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.sql.Connection;
 import java.util.List;
-
-
-
 
 /**
  *
@@ -33,21 +31,20 @@ public class UtentiRegistratiFactory {
         return singleton;
     }
 
-
     public UtentiRegistrati getUtentiRegistratiById(int id) {
 
         try {
             // path, username, password
             Connection conn = DriverManager.getConnection(connectionString, "stefano", "stefano");
-            
-            String query = "select * from utentiRegistrati "+ "where idUtentiRegistrati = ?";
-            
+
+            String query = "select * from utentiRegistrati " + "where idUtentiRegistrati = ?";
+
             // Prepared Statement
             PreparedStatement stmt = conn.prepareStatement(query);
-            
+
             // Si associano i valori
             stmt.setInt(1, id);
-            
+
             // Esecuzione query
             ResultSet res = stmt.executeQuery();
 
@@ -63,7 +60,7 @@ public class UtentiRegistratiFactory {
                 current.setData(res.getString("data"));
                 current.setFrase(res.getString("frase"));
                 current.setType(res.getInt("type"));
-                
+
                 stmt.close();
                 conn.close();
                 return current;
@@ -76,10 +73,7 @@ public class UtentiRegistratiFactory {
         }
         return null;
     }
-    
 
-
-    
     public ArrayList<UtentiRegistrati> getDataBaseUtenti(UtentiRegistrati utenteloggato) {
         ArrayList<UtentiRegistrati> nuovalista = new ArrayList<UtentiRegistrati>();
         ArrayList<UtentiRegistrati> listaUtenti = new ArrayList<UtentiRegistrati>();
@@ -91,13 +85,12 @@ public class UtentiRegistratiFactory {
             // Prepared Statement
             PreparedStatement stmt = conn.prepareStatement(query);
 
-
             // Esecuzione query
             ResultSet res = stmt.executeQuery();
 
             // ciclo sulle righe restituite
             while (res.next()) {
-                
+
                 UtentiRegistrati current = new UtentiRegistrati();
                 current.setIdUtente(res.getInt("idUtentiRegistrati"));
                 current.setNome(res.getString("nome"));
@@ -108,19 +101,17 @@ public class UtentiRegistratiFactory {
                 current.setData(res.getString("data"));
                 current.setFrase(res.getString("frase"));
                 current.setType(res.getInt("type"));
-                
-               listaUtenti.add(current);
-                
+
+                listaUtenti.add(current);
+
             }
-            
 
             stmt.close();
             conn.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        
-        
+
         for (UtentiRegistrati utente : listaUtenti) {
             if (!(utente.equals(utenteloggato))) {
                 nuovalista.add(utente);
@@ -128,9 +119,9 @@ public class UtentiRegistratiFactory {
         }
         return nuovalista;
     }
-    
-        public ArrayList<UtentiRegistrati> getDataBaseUtenti() {
-            ArrayList<UtentiRegistrati> listaUtenti = new ArrayList<UtentiRegistrati>();
+
+    public ArrayList<UtentiRegistrati> getDataBaseUtenti() {
+        ArrayList<UtentiRegistrati> listaUtenti = new ArrayList<UtentiRegistrati>();
 
         try {
             // path, username, password
@@ -140,13 +131,12 @@ public class UtentiRegistratiFactory {
             // Prepared Statement
             PreparedStatement stmt = conn.prepareStatement(query);
 
-
             // Esecuzione query
             ResultSet res = stmt.executeQuery();
 
             // ciclo sulle righe restituite
             while (res.next()) {
-                
+
                 UtentiRegistrati current = new UtentiRegistrati();
                 current.setIdUtente(res.getInt("idUtentiRegistrati"));
                 current.setNome(res.getString("nome"));
@@ -157,10 +147,9 @@ public class UtentiRegistratiFactory {
                 current.setData(res.getString("data"));
                 current.setFrase(res.getString("frase"));
                 current.setType(res.getInt("type"));
-                
+
                 listaUtenti.add(current);
             }
-            
 
             stmt.close();
             conn.close();
@@ -169,11 +158,11 @@ public class UtentiRegistratiFactory {
         }
 
         return listaUtenti;
-        }
+    }
 
     public UtentiRegistrati getUtentiRegistratiByNome(String nome) {
-        
-           ArrayList<UtentiRegistrati> listaUtenti = new ArrayList<UtentiRegistrati>();
+
+        ArrayList<UtentiRegistrati> listaUtenti = new ArrayList<UtentiRegistrati>();
 
         try {
             // path, username, password
@@ -183,13 +172,12 @@ public class UtentiRegistratiFactory {
             // Prepared Statement
             PreparedStatement stmt = conn.prepareStatement(query);
 
-
             // Esecuzione query
             ResultSet res = stmt.executeQuery();
 
             // ciclo sulle righe restituite
             while (res.next()) {
-                
+
                 UtentiRegistrati current = new UtentiRegistrati();
                 current.setIdUtente(res.getInt("idUtentiRegistrati"));
                 current.setNome(res.getString("nome"));
@@ -200,19 +188,16 @@ public class UtentiRegistratiFactory {
                 current.setData(res.getString("data"));
                 current.setFrase(res.getString("frase"));
                 current.setType(res.getInt("type"));
-                
+
                 listaUtenti.add(current);
             }
-            
 
             stmt.close();
             conn.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        
-        
-        
+
         for (UtentiRegistrati utentiRegistrati : listaUtenti) {
             if (utentiRegistrati.getNome().equals(nome)) {
                 return utentiRegistrati;
@@ -220,23 +205,23 @@ public class UtentiRegistratiFactory {
         }
         return null;
     }
-    
-    public int getIdByUserAndPassword(String user, String password){
+
+    public int getIdByUserAndPassword(String user, String password) {
         try {
             // path, username, password
             Connection conn = DriverManager.getConnection(connectionString, "stefano", "stefano");
-            
-            String query = 
-                      "select idUtentiRegistrati from utentiRegistrati "
+
+            String query
+                    = "select idUtentiRegistrati from utentiRegistrati "
                     + "where nome = ? and password = ?";
-            
+
             // Prepared Statement
             PreparedStatement stmt = conn.prepareStatement(query);
-            
+
             // Si associano i valori
             stmt.setString(1, user);
             stmt.setString(2, password);
-            
+
             // Esecuzione query
             ResultSet res = stmt.executeQuery();
 
@@ -256,17 +241,73 @@ public class UtentiRegistratiFactory {
             e.printStackTrace();
         }
         return -1;
-        
+
     }
 
-    
-    
     public void setConnectionString(String s) {
         this.connectionString = s;
     }
 
     public String getConnectionString() {
         return this.connectionString;
-    
+
     }
+
+    public void registrazioneUtente(UtentiRegistrati utente) {
+
+        try {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "stefano", "stefano");
+
+            String query
+                    = "insert into utentiRegistrati (idUtentiRegistrati, nome, cognome, password, email, urlavatar, data, frase) "
+                    + "values (default, ? , ? , ?, ?, ?, ?, ?)";
+
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+
+            // Si associano i valori
+            stmt.setString(1, utente.getNome());
+            stmt.setString(2, utente.getCognome());
+            stmt.setString(3, utente.getPassword());
+            stmt.setString(4, utente.getEmail());
+            stmt.setString(4, utente.getEmail());
+            stmt.setString(5, utente.getUrlAvatar());
+            stmt.setString(6, utente.getData());
+            stmt.setString(7, utente.getFrase());
+            // Esecuzione query
+            stmt.executeUpdate();
+
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void deleteUser(UtentiRegistrati utente) {
+
+        try {
+            Connection conn = DriverManager.getConnection(connectionString, "stefano", "stefano");
+            String query
+                    = "delete from utentiRegistrati "
+                    + "where idUtentiRegistrati = ? ";
+            // Si associano i valori
+
+            PreparedStatement stmt = conn.prepareStatement(query);
+
+            // Si associano i valori
+            stmt.setInt(1, utente.getIdUtente());
+
+            // Esecuzione query
+            stmt.executeUpdate();
+            stmt.close();
+            conn.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

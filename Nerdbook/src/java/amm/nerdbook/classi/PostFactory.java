@@ -63,8 +63,51 @@ public class PostFactory {
                 current.setUrlVideo(res.getString("urlVideo"));
                 current.setLink(res.getString("link"));
 
-                stmt.close();
-                conn.close();
+                return current;
+            }
+
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+
+    }
+
+    public Post getPostByIdBacheca(int bacheca) {
+        UtentiRegistratiFactory utente = UtentiRegistratiFactory.getInstance();
+
+        try {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "stefano", "stefano");
+
+            String query = "select * from posts " + "where bacheca = ?";
+
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+
+            // Si associano i valori
+            stmt.setInt(1, bacheca);
+
+            // Esecuzione query
+            ResultSet res = stmt.executeQuery();
+
+            // ciclo sulle righe restituite
+            if (res.next()) {
+                Post current = new Post();
+                //imposto id del post
+                current.setIdPost(res.getInt("idPosts"));
+
+                //impost il contenuto del post
+                current.setContent(res.getString("content"));
+
+                //imposto l'autore del post
+                current.setUser(utente.getUtentiRegistratiById(res.getInt("author")));
+                current.setImage(res.getString("image"));
+                current.setUrlVideo(res.getString("urlVideo"));
+                current.setLink(res.getString("link"));
+
                 return current;
             }
 
@@ -124,10 +167,63 @@ public class PostFactory {
         return listaPost;
     }
 
+    public List getPostListBacheca(UtentiRegistrati utente) {
+        List<Post> listaPost = new ArrayList<Post>();
+
+        try {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "stefano", "stefano");
+
+            String query = "select * from posts " + "where bacheca = ?";
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+
+            // Si associano i valori
+            stmt.setInt(1, utente.getIdUtente());
+
+            // Esecuzione query
+            ResultSet res = stmt.executeQuery();
+
+            // ciclo sulle righe restituite
+            while (res.next()) {
+
+                Post current = new Post();
+                //imposto id del post
+                current.setIdPost(res.getInt("idPosts"));
+
+                //impost il contenuto del post
+                current.setContent(res.getString("content"));
+
+                current.setUser(UtentiRegistratiFactory.getInstance().getUtentiRegistratiById(res.getInt("author")));
+                current.setImage(res.getString("image"));
+                current.setUrlVideo(res.getString("urlVideo"));
+                current.setLink(res.getString("link"));
+                current.setBacheca(res.getInt("bacheca"));
+
+                listaPost.add(current);
+            }
+
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return listaPost;
+    }
+
     public List getPostListforId(int userID) {
 
         UtentiRegistrati utente = UtentiRegistratiFactory.getInstance().getUtentiRegistratiById(userID);
         List<Post> lista = PostFactory.getInstance().getPostList(utente);
+
+        return lista;
+    }
+
+    public List getPostListforBacheca(int userBacheca, int userPostato) {
+
+        UtentiRegistrati utente = UtentiRegistratiFactory.getInstance().getUtentiRegistratiById(userBacheca);
+        List<Post> lista = PostFactory.getInstance().getPostListBacheca(utente);
 
         return lista;
     }
@@ -148,21 +244,21 @@ public class PostFactory {
 
             // ciclo sulle righe restituite
             while (res.next()) {
-                
-                    Post current = new Post();
-                    //imposto id del post
-                    current.setIdPost(res.getInt("idPosts"));
 
-                    //impost il contenuto del post
-                    current.setContent(res.getString("content"));
+                Post current = new Post();
+                //imposto id del post
+                current.setIdPost(res.getInt("idPosts"));
 
-                    current.setUser(UtentiRegistratiFactory.getInstance().getUtentiRegistratiById(res.getInt("author")));
-                    current.setImage(res.getString("image"));
-                    current.setUrlVideo(res.getString("urlVideo"));
-                    current.setLink(res.getString("link"));
+                //impost il contenuto del post
+                current.setContent(res.getString("content"));
 
-                    listaPost.add(current);
-                
+                current.setUser(UtentiRegistratiFactory.getInstance().getUtentiRegistratiById(res.getInt("author")));
+                current.setImage(res.getString("image"));
+                current.setUrlVideo(res.getString("urlVideo"));
+                current.setLink(res.getString("link"));
+
+                listaPost.add(current);
+
             }
 
             stmt.close();
@@ -227,4 +323,120 @@ public class PostFactory {
 
     }
 
+    public void addNewPost(Post post) {
+        try {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "stefano", "stefano");
+
+            String query
+                    = "insert into posts (idPosts, content, image, author, bacheca) "
+                    + "values (default, ? , ? , ?, ? )";
+
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+
+            // Si associano i valori
+            stmt.setString(1, post.getContent());
+
+            stmt.setString(2, post.getImage());
+
+            stmt.setInt(3, post.getUser().getIdUtente());
+
+            stmt.setInt(4, post.getBacheca());
+
+            // Esecuzione query
+            stmt.executeUpdate();
+
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deletePost(int idPost, int idUser) {
+
+        int idAuthor = -1;
+
+        try {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "stefano", "stefano");
+
+            String query1 = "SELECT * FROM STEFANO.POSTS " + "WHERE AUTHOR = ? ";
+
+            PreparedStatement stmtcontroll = conn.prepareStatement(query1);
+
+            // Si associano i valori
+            stmtcontroll.setInt(1, idUser);
+
+            ResultSet res = stmtcontroll.executeQuery();
+            if (res.next()) {
+                idAuthor = res.getInt("AUTHOR");
+
+                stmtcontroll.close();
+                conn.close();
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        try {
+
+            if (idAuthor == idUser || idUser == 1) {
+                Connection conn = DriverManager.getConnection(connectionString, "stefano", "stefano");
+                String query
+                        = "delete from posts "
+                        + "where idPosts = ? ";
+                // Si associano i valori
+
+                PreparedStatement stmt = conn.prepareStatement(query);
+
+                // Si associano i valori
+                stmt.setInt(1, idPost);
+
+                // Esecuzione query
+                stmt.executeUpdate();
+                stmt.close();
+                conn.close();
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteAllPost(UtentiRegistrati utente) {
+        
+        
+        List<Post> listaPost = PostFactory.getInstance().getPostListBacheca(utente);
+
+        String query;
+
+        for (Post post : listaPost) {
+
+            try {
+
+                Connection conn = DriverManager.getConnection(connectionString, "stefano", "stefano");
+                query
+                        = "delete from posts "
+                        + "where idPosts = ? ";
+                // Si associano i valori
+
+                PreparedStatement stmt = conn.prepareStatement(query);
+
+                // Si associano i valori
+                stmt.setInt(1, post.getId());
+
+                // Esecuzione query
+                stmt.executeUpdate();
+                stmt.close();
+                conn.close();
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
 }

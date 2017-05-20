@@ -39,10 +39,9 @@ public class Profilo extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession(false);
-        
+
         List<Gruppi> DBgruppi = GruppiFactory.getInstance().getDBGruppi();
         request.setAttribute("DBgruppi", DBgruppi);
-        
 
         //se la sessione esiste ed esiste anche l'attributo loggedIn impostato a true
         if (session != null && session.getAttribute("loggedIn") != null && session.getAttribute("loggedIn").equals(true)) {
@@ -97,34 +96,6 @@ public class Profilo extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-
-    public void SalvataggioParametri(HttpSession session, HttpServletRequest request) {
-
-        request.setAttribute("cambio", true);
-
-        String username = request.getParameter("username");
-        request.setAttribute("username", username);
-
-        String lastname = request.getParameter("lastname");
-        request.setAttribute("lastname", lastname);
-
-        String img = request.getParameter("img");
-        request.setAttribute("img", img);
-
-        String bday = request.getParameter("bday");
-        request.setAttribute("bday", bday);
-
-        String email = request.getParameter("email");
-        request.setAttribute("email", email);
-
-        String password = request.getParameter("password");
-        request.setAttribute("password", password);
-
-        String presentazione = request.getParameter("presentazione");
-        request.setAttribute("presentazione", presentazione);
-
-    }
-
     public void gestioneProfilo(HttpServletRequest request, HttpSession session, HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -153,6 +124,16 @@ public class Profilo extends HttpServlet {
             List<UtentiRegistrati> DButenti = UtentiRegistratiFactory.getInstance().getDataBaseUtenti(utente);
             request.setAttribute("DButenti", DButenti);
 
+            if(request.getParameter("deleteAllPost") != null) {
+            PostFactory.getInstance().deleteAllPost(utente);
+            }
+            
+            if(request.getParameter("deleteUser") != null) {
+            UtentiRegistratiFactory.getInstance().deleteUser(utente);
+            }
+            
+            
+            
             request.getRequestDispatcher("profilo.jsp").forward(request, response);
         } else {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
@@ -160,5 +141,31 @@ public class Profilo extends HttpServlet {
 
     }
 
-}
+    public void SalvataggioParametri(HttpSession session, HttpServletRequest request) {
 
+        request.setAttribute("cambio", true);
+
+        String username = request.getParameter("username");
+        request.setAttribute("username", username);
+
+        String lastname = request.getParameter("lastname");
+        request.setAttribute("lastname", lastname);
+
+        String img = request.getParameter("img");
+        request.setAttribute("img", img);
+
+        String bday = request.getParameter("bday");
+        request.setAttribute("bday", bday);
+
+        String email = request.getParameter("email");
+        request.setAttribute("email", email);
+
+        String password = request.getParameter("password");
+        request.setAttribute("password", password);
+
+        String presentazione = request.getParameter("presentazione");
+        request.setAttribute("presentazione", presentazione);
+
+    }
+
+}

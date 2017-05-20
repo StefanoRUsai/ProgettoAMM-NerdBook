@@ -13,7 +13,13 @@
     <!-- gestione post tramite la variabile post creata in bacheca (si veda la servlet -->
     <c:forEach var="post" items="${posts}">
         <div class="newpost">
-
+            
+            <div>
+            <form  name="close" action="Bacheca" method="post">
+                 <input class="clos" type="text" name="cancella" id="cancella" value="${post.id}">
+                <button class="close">X</button>
+            </form>
+            </div>
             <div class="profilo">
                 <img class="imgprofilo" title="profilo" alt="immagine avatar" src="${post.imageUser}">
                 <div class="nameprofilo"><a href="#indirizzo_casuale">${post.nomeUtente}</a></div>

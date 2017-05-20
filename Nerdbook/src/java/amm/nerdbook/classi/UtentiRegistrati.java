@@ -151,7 +151,7 @@ public class UtentiRegistrati {
         this.frase = frase;
     }
     
-        /**
+    /**
      * @return the type
      */
     public int getType() {
@@ -164,8 +164,7 @@ public class UtentiRegistrati {
     public void setType(int type) {
         this.type = type;
     }
-
-
+    
     @Override
     public boolean equals(Object utentediverso) {
         if (utentediverso instanceof UtentiRegistrati) {
@@ -187,6 +186,5 @@ public class UtentiRegistrati {
         }
 
     }
-
-   
+  
 }
