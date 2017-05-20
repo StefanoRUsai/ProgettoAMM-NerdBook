@@ -287,27 +287,41 @@ public class UtentiRegistratiFactory {
     }
 
     public void deleteUser(UtentiRegistrati utente) {
-
+        String query;
+        PreparedStatement stmt;
+        Connection conn;
         try {
-            Connection conn = DriverManager.getConnection(connectionString, "stefano", "stefano");
-            String query
-                    = "delete from utentiRegistrati "
-                    + "where idUtentiRegistrati = ? ";
-            // Si associano i valori
-
-            PreparedStatement stmt = conn.prepareStatement(query);
-
-            // Si associano i valori
+            
+            conn = DriverManager.getConnection(connectionString, "stefano", "stefano");
+            
+            //cancello l'utente dai gruppi seguiti
+            query  = "delete from followerGruppi " + "where follower = ? ";
+            stmt = conn.prepareStatement(query);
             stmt.setInt(1, utente.getIdUtente());
-
-            // Esecuzione query
             stmt.executeUpdate();
+            
+            //cancello le amicizie con altri utenti
+            query = "delete from amici " + "where follower = ? or followed = ?";
+            stmt = conn.prepareStatement(query);
+            stmt.setInt(1, utente.getIdUtente());
+            stmt.setInt(2, utente.getIdUtente());
+            stmt.executeUpdate();
+            
+            //cancello l'utente ma va in rollback
+            query = "delete from utentiRegistrati " + "where idUtentiRegistrati = ? ";
+            stmt = conn.prepareStatement(query);
+            stmt.setInt(1, utente.getIdUtente());
+            stmt.executeUpdate();
+            
+            
             stmt.close();
             conn.close();
 
         } catch (SQLException e) {
+            
             e.printStackTrace();
         }
     }
 
 }
+
