@@ -382,7 +382,7 @@ public class PostFactory {
         }
 
         try {
-
+//fare controllo sulla bacheca diversa
             if (idAuthor == idUser || idUser == 1) {
                 Connection conn = DriverManager.getConnection(connectionString, "stefano", "stefano");
                 String query
@@ -407,36 +407,26 @@ public class PostFactory {
     }
 
     public void deleteAllPost(UtentiRegistrati utente) {
-        
-        
-        List<Post> listaPost = PostFactory.getInstance().getPostListBacheca(utente);
 
-        String query;
+        try {
 
-        for (Post post : listaPost) {
+            Connection conn = DriverManager.getConnection(connectionString, "stefano", "stefano");
+            String query = "delete from posts " + "where author = ? ";
+            // Si associano i valori
 
-            try {
+            PreparedStatement stmt = conn.prepareStatement(query);
 
-                Connection conn = DriverManager.getConnection(connectionString, "stefano", "stefano");
-                query
-                        = "delete from posts "
-                        + "where idPosts = ? ";
-                // Si associano i valori
+            // Si associano i valori
+            stmt.setInt(1, utente.getIdUtente());
 
-                PreparedStatement stmt = conn.prepareStatement(query);
+            // Esecuzione query
+            stmt.executeUpdate();
+            stmt.close();
+            conn.close();
 
-                // Si associano i valori
-                stmt.setInt(1, post.getId());
-
-                // Esecuzione query
-                stmt.executeUpdate();
-                stmt.close();
-                conn.close();
-
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-
     }
+
 }

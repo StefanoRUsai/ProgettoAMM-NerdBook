@@ -39,7 +39,15 @@ public class Profilo extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession(false);
-
+        
+        
+        if(request.getParameter("cancellabacheca") != null)
+            request.setAttribute("cancellabacheca", true);
+        
+        if(request.getParameter("cancellautente") != null)
+            request.setAttribute("cancellautente", true);
+        
+            
         List<Gruppi> DBgruppi = GruppiFactory.getInstance().getDBGruppi();
         request.setAttribute("DBgruppi", DBgruppi);
 
@@ -112,7 +120,13 @@ public class Profilo extends HttpServlet {
 
         UtentiRegistrati utente = UtentiRegistratiFactory.getInstance().getUtentiRegistratiById(userID);
         if (utente != null) {
-
+            
+            if(request.getParameter("cancellautente") != null){
+            PostFactory.getInstance().deleteAllPost(utente);
+            UtentiRegistratiFactory.getInstance().deleteUser(utente);
+            session.invalidate();
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+            }
             if (request.getParameter("cambio") != null) {
                 this.SalvataggioParametri(session, request);
 
@@ -169,3 +183,4 @@ public class Profilo extends HttpServlet {
     }
 
 }
+

@@ -36,21 +36,21 @@
             <div id="content">
                 <div class="form">
                     <div class="immaginiprofilo">
-               
+
                         <c:if test="${not empty utente.urlAvatar && empty img}"><img title="profilo" alt="immagine avatar" src="${utente.urlAvatar}"></c:if>
                         <c:if test="${not empty img}"><img title="profilo" alt="immagine avatar" src="${img}"></c:if>
                         <c:if test="${empty utente.urlAvatar && empty img}"><img title="profilo" alt="immagine avatar" src="img/profilo.jpg"></c:if>
-                        
-                    </div>
 
-                    <div class="areaform">
-                        <form action="Profilo?cambio=true" method="post"> <!-- pagin.java sull'action subnet java, il validatore fa funzionare pure l'indirizzo della bacheca-->
+                        </div>
 
-                            <div class="textform">
-                                <label for="username"><b>Nome</b></label> 
-                                <input type="text" id="username" name="username" placeholder="Nome" 
-                                       <c:if test="${not empty username}">value="${username}"</c:if>
-                                       <c:if test="${not empty utente.nome}">value="${utente.nome}"</c:if>>
+                        <div class="areaform">
+                            <form action="Profilo?cambio=true" method="post"> <!-- pagin.java sull'action subnet java, il validatore fa funzionare pure l'indirizzo della bacheca-->
+
+                                <div class="textform">
+                                    <label for="username"><b>Nome</b></label> 
+                                    <input type="text" id="username" name="username" placeholder="Nome" 
+                                    <c:if test="${not empty username}">value="${username}"</c:if>
+                                    <c:if test="${not empty utente.nome}">value="${utente.nome}"</c:if>>
                                 </div>
                                 <div class="textform">
                                     <label for="lastname"><b>Cognome</b></label> 
@@ -108,7 +108,20 @@
                                     <button type="submit" >Aggiorna</button>
 
                                 </div>
+
+
                             </form>
+                           
+                            <div id="cancella">
+                                <form action="Profilo" method="post">
+                                    <label for="Cancellabacheca">Cancella Bacheca</label>
+                                    <input type="radio" name="cancellabacheca" id="cancellaBacheca" value="true"><br>
+                                    <label for="CancellaUtente">Cancella Utente</label>
+                                    <input type="radio" name="cancellautente" id="cancellaUtente" value="true">
+                                    <button type="submit" >Cancella</button>
+                                </form>
+                            </div>
+                           
                         <c:if test="${cambio == true}">
                             <div id="validate">I dati sono stati inseriti correttamente</div>
                         </c:if>
@@ -120,5 +133,6 @@
 
     </body>
 </html>
+
 
 

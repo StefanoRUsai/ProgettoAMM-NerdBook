@@ -15,11 +15,13 @@
         <div class="newpost">
             
             <div>
+                
             <form  name="close" action="Bacheca" method="post">
-                 <input class="clos" type="text" name="cancella" id="cancella" value="${post.id}">
-                <button class="close">X</button>
+                <input class="close" type="image" name="cancella" src="img/cancel.png" value="${post.id}" >
             </form>
+            
             </div>
+                
             <div class="profilo">
                 <img class="imgprofilo" title="profilo" alt="immagine avatar" src="${post.imageUser}">
                 <div class="nameprofilo"><a href="#indirizzo_casuale">${post.nomeUtente}</a></div>
