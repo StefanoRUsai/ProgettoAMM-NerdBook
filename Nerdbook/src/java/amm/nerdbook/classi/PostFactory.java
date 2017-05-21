@@ -329,8 +329,8 @@ public class PostFactory {
             Connection conn = DriverManager.getConnection(connectionString, "stefano", "stefano");
 
             String query
-                    = "insert into posts (idPosts, content, image, author, bacheca) "
-                    + "values (default, ? , ? , ?, ? )";
+                    = "insert into posts (idPosts, content, image, author, bacheca, link ) "
+                    + "values (default, ? , ? , ?, ?, ? )";
 
             // Prepared Statement
             PreparedStatement stmt = conn.prepareStatement(query);
@@ -343,6 +343,8 @@ public class PostFactory {
             stmt.setInt(3, post.getUser().getIdUtente());
 
             stmt.setInt(4, post.getBacheca());
+            
+            stmt.setString(5, post.getLink());
 
             // Esecuzione query
             stmt.executeUpdate();

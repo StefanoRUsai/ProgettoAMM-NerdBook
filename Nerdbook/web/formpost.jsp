@@ -15,6 +15,9 @@
     <div class="nuovopost">
         <input type="text" name="image" id="avatar" placeholder="inserisci la tua immagine">
     </div>
+    <div class="nuovopost">
+        <input type="text" name="link" id="avatar" placeholder="inserisci il tuo link">
+    </div>
     <div>
         <button type="submit" >Pubblica</button>
     </div>

@@ -331,6 +331,47 @@ public class UtentiRegistratiFactory {
         }
     }
 
+     public UtentiRegistrati modificaprofilo(int id) {
+
+        try {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "stefano", "stefano");
+
+            String query = "select * from utentiRegistrati " + "where idUtentiRegistrati = ? ";;
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+            
+            
+            // Si associano i valori
+            stmt.setInt(1, id);
+
+            // Esecuzione query
+            ResultSet res = stmt.executeQuery();
+
+            // ciclo sulle righe restituite
+            if (res.next()) {
+
+
+                UtentiRegistrati current = new UtentiRegistrati();
+                current.setIdUtente(res.getInt("idUtentiRegistrati"));
+                current.setNome(res.getString("nome"));
+                current.setCognome(res.getString("cognome"));
+                current.setPassword(res.getString("password"));
+                current.setEmail(res.getString("email"));
+                current.setUrlAvatar(res.getString("urlAvatar"));
+                current.setData(res.getString("data"));
+                current.setFrase(res.getString("frase"));
+                current.setType(res.getInt("type"));
+            }
+
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
 }
 
 

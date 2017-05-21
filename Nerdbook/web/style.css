@@ -8,7 +8,45 @@ and open the template in the editor.
     Author     : St3
 */
 
-
+    #frase{
+        background-color: white;
+        float: left;
+        width:515px;
+        height:50px;
+        text-align: center;
+        margin-bottom: 5px;
+        margin-left: 50px;
+        padding-left: 15px;
+        margin-top: 5px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0,0,0,.2);
+        overflow: hidden;
+        clear: both;
+    }
+    
+    
+        #frase h2{
+        padding-bottom: -10px; 
+        color: #365899;
+        font-size: 20px;
+        font-weight:bold;
+        font-style: italic;
+        
+        
+    }
+    
+    #frase h3{
+        
+        margin-top: -20px; 
+        color: #365899;
+        font-size: 15px;
+        font-weight:bold;
+        font-style: italic;
+        
+        
+    }
 
     #loggedOut, #invalidDataWarning{
         font: 30px/25px  "Open Sans", Arial, sans-serif;
@@ -57,7 +95,7 @@ and open the template in the editor.
         background-color: white;
         float: left;
         width:500px;
-        height:125px;
+        height:150px;
         margin-bottom: 5px;
         margin-left: 50px;
         padding-left: 15px;
@@ -386,8 +424,7 @@ and open the template in the editor.
         box-shadow: 0 0 10px rgba(0,0,0,.2);
         overflow: hidden;
         clear: both;
-
-
+     
     }
 
     .imgprofilo{
@@ -890,7 +927,7 @@ and open the template in the editor.
         float: left;
         width: 400px;
         min-height: 200px; 
-        max-height:600px;               
+        max-height:620px;               
         padding-top: 10px;
         padding-bottom: 10px;
         margin-bottom: 5px;
@@ -903,6 +940,7 @@ and open the template in the editor.
         border-radius: 5px;
         box-shadow: 0 0 10px rgba(0,0,0,.2);
         clear: both;
+        
     }
 
     .imgprofilo{
@@ -1384,7 +1422,7 @@ and open the template in the editor.
         padding-top: 10px;
         border-radius: 5px;
         box-shadow: 0 0 10px rgba(0,0,0,.2);
-
+        clear:both;
     }
 
     .img_post img{

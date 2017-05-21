@@ -32,6 +32,23 @@
             <jsp:include page="sidebar.jsp"/>
 
             <div id="content">
+                
+                <c:if test="${uttmp == null}">
+                <div id="frase">
+                    <h2>Ciao ${utente.nome} ${utente.cognome}</h2>
+                    <h3>Il tuo motto è: ${utente.frase}</h3>
+                </div>
+                </c:if>
+                
+                 <c:if test="${uttmp != null}">
+                <div id="frase">
+                    <h2>Ciao ${utente.nome} ${utente.cognome} stai visitando ${uttmp.nome} ${uttmp.cognome}</h2>
+                    <h3>Il suo motto è: ${uttmp.frase}</h3>
+                </div>
+                </c:if>
+                
+                
+                
                 <div id="divnuovopost">
                     <c:set var="page" value="Bacheca Personale" scope="request"/>
                     <jsp:include page="formpost.jsp"/>

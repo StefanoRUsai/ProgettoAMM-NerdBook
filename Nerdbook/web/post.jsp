@@ -27,8 +27,8 @@
                 <div class="nameprofilo"><a href="#indirizzo_casuale">${post.nomeUtente}</a></div>
             </div>
                 <c:if test="${not empty post.content}"><div class="testopost"><p>${post.content}</p></div></c:if>
-                <c:if test="${not empty post.link}"><div class="link_post"><a href="${post.link}">${post.link}</a></div></c:if>
                 <c:if test="${not empty post.image}"><div class="img_post"> <img alt="immagine casuale" src="${post.image}"> </div></c:if>
                 <c:if test="${not empty post.urlVideo}"><div class="img_post"> <iframe  src="${post.urlVideo}"> </iframe></div></c:if>
+                <c:if test="${not empty post.link}"><div class="link_post"><a href="${post.link}">${post.link}</a></div></c:if>
             </div>
     </c:forEach>
