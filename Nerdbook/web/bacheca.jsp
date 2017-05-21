@@ -33,30 +33,15 @@
 
             <div id="content">
                 <div id="divnuovopost">
-                    <form class="nuovopost" name="nuovopost" action="Bacheca?postinviato" method="post"> 
-                        <div class="nuovopost">
-                            <div class="profilo"><img class="imgprofilo" title="profilo" alt="immagine avatar" src="${utente.urlAvatar}"></div>
-                            <textarea  name="testo" id="testo"></textarea>
-                        </div>
-                        <div class="nuovopost">
-                            <input type="text" name="image" id="avatar" placeholder="inserisci la tua immagine">
-                        </div>
-                        <div>
-                            <button type="submit" >Pubblica</button>
-                        </div>
-                    </form>
-                       
-
+                    <c:set var="page" value="Bacheca Personale" scope="request"/>
+                    <jsp:include page="formpost.jsp"/>
                 </div>
-                            
-               
-                            
-               
+
                 <div id="contentpost">
                     <c:set var="page" value="Bacheca Personale" scope="request"/>
                     <jsp:include page="post.jsp"/>
                 </div>
-                
+
             </div>
 
         </div>

@@ -41,11 +41,20 @@ public class Profilo extends HttpServlet {
         HttpSession session = request.getSession(false);
         
         
+        
+        
         if(request.getParameter("cancellabacheca") != null)
             request.setAttribute("cancellabacheca", true);
         
         if(request.getParameter("cancellautente") != null)
             request.setAttribute("cancellautente", true);
+        
+                if(request.getParameter("confermab") != null)
+            request.setAttribute("confermab", true);
+        
+        if(request.getParameter("confermau") != null)
+            request.setAttribute("confermau", true);
+        
         
             
         List<Gruppi> DBgruppi = GruppiFactory.getInstance().getDBGruppi();
@@ -121,12 +130,19 @@ public class Profilo extends HttpServlet {
         UtentiRegistrati utente = UtentiRegistratiFactory.getInstance().getUtentiRegistratiById(userID);
         if (utente != null) {
             
-            if(request.getParameter("cancellautente") != null){
+            if(request.getParameter("confermau") != null){
             PostFactory.getInstance().deleteAllPost(utente);
             UtentiRegistratiFactory.getInstance().deleteUser(utente);
             session.invalidate();
             request.getRequestDispatcher("login.jsp").forward(request, response);
             }
+            
+             if(request.getParameter("confermab") != null){
+            PostFactory.getInstance().deleteAllPost(utente);
+
+            request.getRequestDispatcher("Bacheca").forward(request, response);
+            }
+            
             if (request.getParameter("cambio") != null) {
                 this.SalvataggioParametri(session, request);
 

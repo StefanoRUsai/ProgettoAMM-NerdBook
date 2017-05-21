@@ -111,17 +111,35 @@
 
 
                             </form>
-                           
+                        <c:if test="${cancellabacheca != true || cancellautente != true || cambio != true}">
                             <div id="cancella">
                                 <form action="Profilo" method="post">
-                                    <label for="Cancellabacheca">Cancella Bacheca</label>
+                                    <label for="cancellabacheca">Cancella Bacheca</label>
                                     <input type="radio" name="cancellabacheca" id="cancellaBacheca" value="true"><br>
-                                    <label for="CancellaUtente">Cancella Utente</label>
+                                    <label for="cancellautente">Cancella Utente</label>
                                     <input type="radio" name="cancellautente" id="cancellaUtente" value="true">
                                     <button type="submit" >Cancella</button>
                                 </form>
                             </div>
-                           
+                        </c:if>
+
+                        </form>
+                        <c:if test="${ cancellautente == true}">
+                            <div id="cancella">
+                                <form action="Profilo?confermau=true" method="post">
+                                    <button type="submit" >Confermi</button>
+                                </form>
+                            </div>
+                        </c:if>
+
+                        <c:if test="${ cancellabacheca == true}">
+                            <div id="cancella">
+                                <form action="Profilo?confermab=true" method="post">
+                                    <button type="submit" >Confermi</button>
+                                </form>
+                            </div>
+                        </c:if>
+
                         <c:if test="${cambio == true}">
                             <div id="validate">I dati sono stati inseriti correttamente</div>
                         </c:if>

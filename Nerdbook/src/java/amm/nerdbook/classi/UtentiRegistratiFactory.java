@@ -295,7 +295,7 @@ public class UtentiRegistratiFactory {
             conn = DriverManager.getConnection(connectionString, "stefano", "stefano");
             
             
-            //cancello l'utente dai gruppi seguiti
+            //cancello l'utente dai gruppi 
             query  = "delete from gruppi " + "where idAdmin = ? ";
             stmt = conn.prepareStatement(query);
             stmt.setInt(1, utente.getIdUtente());
