@@ -15,11 +15,11 @@
         <div class="newpost">
             
             <div>
-                
+              <c:if test="${loggedUserID == post.user.idUtente || loggedUserID == 1}">
             <form  name="close" action="Bacheca" method="post">
                 <input class="close" type="image" name="cancella" src="img/cancel.png" value="${post.id}" >
             </form>
-            
+            </c:if>   
             </div>
                 
             <div class="profilo">
