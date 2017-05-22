@@ -30,6 +30,9 @@
                     <li><a class="nonqui" href="login.html?logout=true">Logout</a></li>
                     </c:if>
                     <c:if test="${empty utente.password}">
+                    <li><a class="imgelement nonqui" href="NuovoUtente">Registrati</a></li>
+                    </c:if>
+                    <c:if test="${empty utente.password}">
                     <li><a class="imgelement nonqui" href="login.html">Login</a></li>
                     </c:if>
             </ul>   

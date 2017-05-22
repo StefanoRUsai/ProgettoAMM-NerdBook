@@ -25,7 +25,7 @@ CREATE TABLE posts (
     link VARCHAR(512),
     urlVideo VARCHAR(512),
     author INTEGER,
-    FOREIGN KEY (author) REFERENCES utentiRegistrati(idUtentiRegistrati),
+    FOREIGN KEY (author) REFERENCES utentiRegistrati(idUtentiRegistrati) ON DELETE CASCADE,
     bacheca INTEGER,
     bachecaGruppi INTEGER
 );
@@ -35,23 +35,23 @@ CREATE TABLE gruppi (
     nome VARCHAR(1024),
     image VARCHAR(512),    
     idAdmin INTEGER,
-    FOREIGN KEY (idAdmin) REFERENCES utentiRegistrati(idUtentiRegistrati)  
+    FOREIGN KEY (idAdmin) REFERENCES utentiRegistrati(idUtentiRegistrati) ON DELETE CASCADE  
         
 );
 
 CREATE TABLE amici (
    follower INTEGER,
-   FOREIGN KEY (follower) REFERENCES utentiRegistrati(idUtentiRegistrati),
+   FOREIGN KEY (follower) REFERENCES utentiRegistrati(idUtentiRegistrati) ON DELETE CASCADE,
    followed INTEGER,
-   FOREIGN KEY (followed) REFERENCES utentiRegistrati(idUtentiRegistrati),
+   FOREIGN KEY (followed) REFERENCES utentiRegistrati(idUtentiRegistrati) ON DELETE CASCADE,
    PRIMARY KEY (follower, followed)
 );
 
 CREATE TABLE followergruppi (
    followed INTEGER,
-   FOREIGN KEY (followed) REFERENCES gruppi(idGruppi),
+   FOREIGN KEY (followed) REFERENCES gruppi(idGruppi) ON DELETE CASCADE,
    follower INTEGER,
-   FOREIGN KEY (follower) REFERENCES utentiRegistrati(idUtentiRegistrati),
+   FOREIGN KEY (follower) REFERENCES utentiRegistrati(idUtentiRegistrati) ON DELETE CASCADE,
    PRIMARY KEY (followed, follower)
 );
 

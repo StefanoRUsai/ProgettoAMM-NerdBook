@@ -8,6 +8,81 @@ and open the template in the editor.
     Author     : St3
 */
 
+
+    html, body, #page{
+        position: relative;
+        background-color: #e9ebee;
+        font: 17px/25px  "Open Sans", Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+    }
+
+    iframe{
+        width: 400px;
+        height: 280px;
+        border-radius: 15px; 
+        overflow: hidden;
+
+    }
+
+    h1{
+        margin-top: 0px; 
+        color: #111111;
+        font-size: 35px;
+        font-weight: bold;
+    }
+
+    h2{
+        margin-top: 0px; 
+        color: #333333;
+        font-size: 25px;
+        font-weight: bold;
+    }
+
+
+    h3{
+        margin-top: 0px; 
+        color: #333333;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+
+    input:focus, textarea:focus{
+        outline: none;
+        border-color: #333745;
+        box-shadow: 0 0 1px #333745;
+    }
+
+    button{
+        padding: .5em;
+        color: white;
+        background-color: #333745;
+        text-shadow: 1px 1px 1px #000;
+        border: solid thin #333745;
+        border-radius: 5px;
+
+    }
+    
+    /*tasto plus*/
+    
+    #inline{
+        float:left;
+        width: 100%;
+      }
+    
+    #tastoplus{
+    clear: both;
+    }
+    
+    
+    #plus{
+        clear: both;
+        width:20px;
+        height:20px;        
+    }
+/*tasto plus*/
     #frase{
         background-color: white;
         float: left;
@@ -56,7 +131,7 @@ and open the template in the editor.
     }
 
     .close {
-        content: url(img/Button_12-128.png);
+        
         color: red;
         text-indent: -2px;
         width:20px;
@@ -134,61 +209,7 @@ and open the template in the editor.
 
 @media only screen and (min-width: 1024px){
 
-    html, body, #page{
-        position: relative;
-        background-color: #e9ebee;
-        font: 17px/25px  "Open Sans", Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        height: 100%;
-    }
-
-    iframe{
-        width: 400px;
-        height: 280px;
-        border-radius: 15px; 
-        overflow: hidden;
-
-    }
-
-    h1{
-        margin-top: 0px; 
-        color: #111111;
-        font-size: 35px;
-        font-weight: bold;
-    }
-
-    h2{
-        margin-top: 0px; 
-        color: #333333;
-        font-size: 25px;
-        font-weight: bold;
-    }
-
-
-    h3{
-        margin-top: 0px; 
-        color: #333333;
-        font-size: 15px;
-        font-weight: bold;
-    }
-
-
-    input:focus, textarea:focus{
-        outline: none;
-        border-color: #333745;
-        box-shadow: 0 0 1px #333745;
-    }
-
-    button{
-        padding: .5em;
-        color: white;
-        background-color: #333745;
-        text-shadow: 1px 1px 1px #000;
-        border: solid thin #333745;
-        border-radius: 5px;
-
-    }
+    
     /*regole header*/
     header{
         top: 0;

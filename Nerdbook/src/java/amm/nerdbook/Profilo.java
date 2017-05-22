@@ -11,6 +11,7 @@ import amm.nerdbook.classi.Post;
 import amm.nerdbook.classi.PostFactory;
 import amm.nerdbook.classi.UtentiRegistrati;
 import amm.nerdbook.classi.UtentiRegistratiFactory;
+import com.sun.corba.se.spi.servicecontext.UEInfoServiceContext;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -144,7 +145,7 @@ public class Profilo extends HttpServlet {
             }
             
             if (request.getParameter("cambio") != null) {
-                this.SalvataggioParametri(session, request);
+                this.SalvataggioParametri(session, request, response, utente);
 
             } else {
 
@@ -171,32 +172,71 @@ public class Profilo extends HttpServlet {
 
     }
 
-    public void SalvataggioParametri(HttpSession session, HttpServletRequest request) {
+//    public void SalvataggioParametri(HttpSession session, HttpServletRequest request) {
+//
+//        request.setAttribute("cambio", true);
+//
+//        String username = request.getParameter("username");
+//        request.setAttribute("username", username);
+//
+//        String lastname = request.getParameter("lastname");
+//        request.setAttribute("lastname", lastname);
+//
+//        String img = request.getParameter("img");
+//        request.setAttribute("img", img);
+//
+//        String bday = request.getParameter("bday");
+//        request.setAttribute("bday", bday);
+//
+//        String email = request.getParameter("email");
+//        request.setAttribute("email", email);
+//
+//        String password = request.getParameter("password");
+//        request.setAttribute("password", password);
+//
+//        String presentazione = request.getParameter("presentazione");
+//        request.setAttribute("presentazione", presentazione);
+//
+//    }
 
-        request.setAttribute("cambio", true);
+    
+    public void SalvataggioParametri(HttpSession session, HttpServletRequest request, HttpServletResponse response, UtentiRegistrati utente)
+            throws ServletException, IOException {
 
-        String username = request.getParameter("username");
-        request.setAttribute("username", username);
 
-        String lastname = request.getParameter("lastname");
-        request.setAttribute("lastname", lastname);
+        
 
-        String img = request.getParameter("img");
-        request.setAttribute("img", img);
+            String username = request.getParameter("username");
 
-        String bday = request.getParameter("bday");
-        request.setAttribute("bday", bday);
+            String lastname = request.getParameter("lastname");
 
-        String email = request.getParameter("email");
-        request.setAttribute("email", email);
+            String img = request.getParameter("img");
 
-        String password = request.getParameter("password");
-        request.setAttribute("password", password);
+            String bday = request.getParameter("bday");
 
-        String presentazione = request.getParameter("presentazione");
-        request.setAttribute("presentazione", presentazione);
+            String email = request.getParameter("email");
 
+            String password = request.getParameter("password");
+
+            String presentazione = request.getParameter("presentazione");
+
+            UtentiRegistrati newuser = new UtentiRegistrati();
+
+            newuser.setNome(username);
+            newuser.setCognome(lastname);
+            newuser.setPassword(password);
+            newuser.setEmail(email);
+            newuser.setUrlAvatar(img);
+            newuser.setData(bday);
+            newuser.setFrase(presentazione);
+            newuser.setType(1);
+            
+            UtentiRegistratiFactory.getInstance().modificaDati(newuser, utente.getIdUtente());
+            
+             request.getRequestDispatcher("Bacheca").forward(request, response);
+
+            
+        
     }
-
 }
 

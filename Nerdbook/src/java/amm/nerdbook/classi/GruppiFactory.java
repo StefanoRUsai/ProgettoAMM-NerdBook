@@ -78,27 +78,28 @@ public class GruppiFactory {
             // Esecuzione query
             ResultSet res = stmt.executeQuery();
 
-            // ciclo sulle righe restituite
-            while (res.next()) {
+            // formo il gruppo
+            if (res.next()) {
 
                 Gruppi current = new Gruppi();
                 current.setIdGruppi(res.getInt("idGruppi"));
                 current.setNome(res.getString("nome"));
-
+                current.setAdmin(res.getInt("idAdmin"));
                 listaGruppi.add(current);
-            }
+            
 
+            
+                stmt.close();
+                conn.close();
+                return current;
+            }
+            
             stmt.close();
             conn.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        for (Gruppi gruppi : listaGruppi) {
-            if (gruppi.getIdGruppi() == id) {
-                return gruppi;
-            }
-        }
         return null;
     }
 
@@ -111,5 +112,60 @@ public class GruppiFactory {
 
     }
 
-}
+    public void addNewGroup(Gruppi gruppo) {
+        try {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "stefano", "stefano");
 
+            String query
+                    = "insert into gruppi  (idGruppi, nome, image, idAdmin) "
+                    + "values (default, ? , ? , ? )";
+
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+
+            // Si associano i valori
+            stmt.setString(1, gruppo.getNome());
+
+            stmt.setString(2, gruppo.getUrlAvatar());
+
+            stmt.setInt(3, gruppo.getAdmin());
+
+            stmt.executeUpdate();
+
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteGruppo(Gruppi gruppo, UtentiRegistrati utente) {
+
+        if (gruppo.getAdmin() == utente.getIdUtente() || utente.getIdUtente() == 1) {
+
+            try {
+                Connection conn = DriverManager.getConnection(connectionString, "stefano", "stefano");
+                String query
+                        = "delete from gruppi "
+                        + "where idGruppi = ? ";
+                // Si associano i valori
+
+                PreparedStatement stmt = conn.prepareStatement(query);
+
+                // Si associano i valori
+                stmt.setInt(1, gruppo.getIdGruppi());
+
+                // Esecuzione query
+                stmt.executeUpdate();
+                stmt.close();
+                conn.close();
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
+
+}

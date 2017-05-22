@@ -44,7 +44,17 @@ public class Bacheca extends HttpServlet {
 
         HttpSession session = request.getSession(false);
         int idDaVisualizzare=-1;
+        int idGruppo =-1;
         String canc = request.getParameter("cancella");
+        
+        
+        
+        if(request.getParameter("idGruppoSideBar") != null){
+            idGruppo= Integer.parseInt(request.getParameter("idGruppoSideBar"));
+            request.setAttribute("idGruppoSideBar", true);
+        }
+        
+        
         if(request.getParameter("cancella") != null){
             
             Integer loggedUserID = (Integer) session.getAttribute("loggedUserID");
@@ -53,9 +63,10 @@ public class Bacheca extends HttpServlet {
             
             int idcancella= Integer.parseInt(request.getParameter("cancella"));
             PostFactory.getInstance().deletePost(idcancella, idUser);
-            response.setIntHeader("Refresh", 0);
+            response.setIntHeader("Refresh", 0);     
                 
         }
+        
 
         List<Gruppi> DBgruppi = GruppiFactory.getInstance().getDBGruppi();
         request.setAttribute("DBgruppi", DBgruppi);
@@ -77,6 +88,12 @@ public class Bacheca extends HttpServlet {
 
             UtentiRegistrati utente = UtentiRegistratiFactory.getInstance().getUtentiRegistratiById(userID);
 
+            if (request.getParameter("cancellagruppo") != null) {
+                    GruppiFactory.getInstance().deleteGruppo(GruppiFactory.getInstance().getGruppiById(idGruppo), utente);
+            }
+
+            
+            
             if (utente != null) {
                 this.gestionePost(utente, request, session);
                 if (session.getAttribute("flagId") != null) {
@@ -162,6 +179,8 @@ public class Bacheca extends HttpServlet {
             Collections.reverse(posts);
             request.setAttribute("posts", posts);
             request.setAttribute("postgruppivisualizati", null);
+            
+            
 
         } else {
 

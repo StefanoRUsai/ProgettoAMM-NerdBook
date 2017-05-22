@@ -14,24 +14,48 @@
             <ul>
                 <!--ciclo la lista dei nomi degli utenti tramite la variabile DButenti che si trovano bacheca, descrizione e profilo-->
                 <c:forEach var="nomiutenti" items="${DButenti}">
-               <li><div class="botdiv"><a href="bacheca.html?postvisualizati=true&idOtherUser=${nomiutenti.idUtente}">
-                    ${nomiutenti.nome} ${nomiutenti.cognome}</a></div></li>
-                </c:forEach>
+                    <li><div class="botdiv"><a href="bacheca.html?postvisualizati=true&idOtherUser=${nomiutenti.idUtente}">
+                                ${nomiutenti.nome} ${nomiutenti.cognome}</a></div></li>
+                            </c:forEach>
             </ul>                
         </nav>
-        
+
     </div>
     <div id="gruppi">
-        <h3>Gruppi</h3>
+        <div id="inline">
+
+            <div id="tastoplus">    
+                <h3>Gruppi</h3>
+            </div>
+            <div id="plus">    
+                <form  name="plus" action="Nuovogruppo" method="post">
+                    <input  type="image" name="plus" src="img/plus.png">
+                </form>
+            </div>
+        </div>
         <nav class="barralaterale">                        
             <ul> 
-                 <!--ciclo la lista dei nomi degli utenti tramite la variabile DBgruppi che si trovano in bacheca, descrizione e profilo-->
+                <!--ciclo la lista dei nomi degli utenti tramite la variabile DBgruppi che si trovano in bacheca, descrizione e profilo-->
                 <c:forEach var="gruppi" items="${DBgruppi}">                
                     <li><div class="botdiv"><a href="bacheca.html?postgruppivisualizati=true&idGruppoSideBar=${gruppi.idGruppi}">
                                 ${gruppi.nome}</a></div></li>                
-                </c:forEach>
+                            </c:forEach>
             </ul>                
         </nav>
     </div>
+
+    <c:if test="${not empty idGruppoSideBar}">
+        <div id="persone">
+            <form action="Bacheca?cancellagruppo=true" method="post"> <!-- pagin.java sull'action subnet java, il validatore fa funzionare pure l'indirizzo della bacheca-->
+
+                <div>
+                    <button type="submit" >Cancella Gruppo</button>
+
+                </div>
+
+
+            </form>
+        </div>
+    </c:if>
 </div>
 

@@ -239,7 +239,7 @@ public class PostFactory {
             // Prepared Statement
             PreparedStatement stmt = conn.prepareStatement(query);
 
-            // Esecuzione query
+            // Esecuzione query2
             ResultSet res = stmt.executeQuery();
 
             // ciclo sulle righe restituite

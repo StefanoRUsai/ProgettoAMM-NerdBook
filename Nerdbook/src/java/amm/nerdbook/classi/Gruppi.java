@@ -16,19 +16,16 @@ public class Gruppi {
     private int idGruppi;
     private String nome;
     private String urlAvatar;
-    private String data;
-    private String frase;
-    private List<UtentiRegistrati> listaUtenti;
-
+    private int admin;
+    
+    
     public Gruppi(){
         
         
         this.idGruppi = -1  ;
         this.nome = "";
         this.urlAvatar = "";
-        this.data = "";
-        this.frase = "";
-        this.listaUtenti= null;
+        this.admin = -1;
     } 
     
     
@@ -77,49 +74,21 @@ public class Gruppi {
         this.urlAvatar = urlAvatar;
     }
 
-    /**
-     * @return the data
-     */
-    public String getData() {
-        return data;
-    }
-
-    /**
-     * @param data the data to set
-     */
-    public void setData(String data) {
-        this.data = data;
-    }
-
-    /**
-     * @return the frase
-     */
-    public String getFrase() {
-        return frase;
-    }
-
-    /**
-     * @param frase the frase to set
-     */
-    public void setFrase(String frase) {
-        this.frase = frase;
-    }
-    
-    
-    /**
-     * @return the utente
-     */
-    public List<UtentiRegistrati> getListaUtenti() {
-        return listaUtenti;
-    }
-
-    /**
-     * @param utente the utente to set
-     */
-    public void setListaUtenti(List<UtentiRegistrati> listaUtenti) {
-        this.listaUtenti = listaUtenti;
-    }
    
+    /**
+     * @return the admin
+     */
+    public int getAdmin() {
+        return admin;
+    }
+
+    /**
+     * @param admin the admin to set
+     */
+    public void setAdmin(int admin) {
+        this.admin = admin;
+    }
+
     
     
     
