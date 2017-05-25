@@ -24,6 +24,10 @@
         <servlet-name>Nuovogruppo</servlet-name>
         <servlet-class>amm.nerdbook.Nuovogruppo</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Filter</servlet-name>
+        <servlet-class>amm.nerdbook.Filter</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Bacheca</servlet-name>
         <url-pattern>/Bacheca</url-pattern>
@@ -71,7 +75,15 @@
     <servlet-mapping>
         <servlet-name>Nuovogruppo</servlet-name>
         <url-pattern>/nuovogruppo.html</url-pattern>
-    </servlet-mapping>  
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Filter</servlet-name>
+        <url-pattern>/Filter</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Filter</servlet-name>
+        <url-pattern>/filter.json</url-pattern>
+    </servlet-mapping>
     <welcome-file-list>
         <welcome-file>descrizione.html</welcome-file>
     </welcome-file-list>

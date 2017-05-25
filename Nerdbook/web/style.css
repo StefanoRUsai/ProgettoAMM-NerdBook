@@ -82,6 +82,20 @@ and open the template in the editor.
         width:20px;
         height:20px;        
     }
+    
+    .serside{
+        width: 130px;
+        float: left;
+        padding-bottom: 5px;
+        padding-top: 5px;
+        margin: 3px;
+    }
+    
+    
+    .serside input{
+        border-radius: 10px;
+    }
+    
 /*tasto plus*/
     #frase{
         background-color: white;

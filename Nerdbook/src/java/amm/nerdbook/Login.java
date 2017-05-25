@@ -116,7 +116,7 @@ public class Login extends HttpServlet {
         String password = request.getParameter("password");
 
         if (username != null && password != null) {
-            int loggedUserID = UtentiRegistratiFactory.getInstance().getIdByUserAndPassword(username, password);
+            int loggedUserID = UtentiRegistratiFactory.getInstance().getIdByEmailAndPassword(username, password);
 
             //se l'utente è valido...
             if (loggedUserID != -1) {
