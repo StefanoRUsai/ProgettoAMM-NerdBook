@@ -1,0 +1,53 @@
+
+Tabella utentiRegistratiType (
+    idUtentiRegistratiType
+    name 
+
+Tabella utentiRegistrati 
+    idUtentiRegistrati
+    nome
+    cognome 
+    password 
+    urlAvatar
+    data 
+    email
+    frase
+    type 
+    
+
+Tabella posts 
+    idPosts  
+    content 
+    image
+    link 
+    urlVideo 
+    author  
+    bacheca 
+    bachecaGruppi
+ 
+Tabella gruppi 
+    idGruppi  
+    nome
+    image     
+    idAdmin 
+     
+
+Tabella amici 
+   follower 
+   followed 
+
+Tabella followergruppi 
+   followed 
+   follower 
+
+
+
+
+
+Utenti ha una relazione molti a molti con utenti (le amicizie di un utente sono bilaterali
+
+Utenti ha una relazione uno a molti con Posts gli utenti possono scrivere molti post, mentre un post è scritto da solo un utente
+
+Utenti ha una relazione  molti a molti con Gruppi, l'utente può essere iscritto a molti gruppi, e ad un Gruppo possono iscriversi molti utenti
+
+Posts ha una relazione uno a molti con gruppi, un post può appartenre  a un solo gruppo. Ed un gruppo contiene molti post
