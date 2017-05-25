@@ -406,4 +406,47 @@ public class UtentiRegistratiFactory {
         }
     }
 
+    
+     public int getIdByEmailAndPassword(String user, String password) {
+        try {
+            // path, username, password
+            Connection conn = DriverManager.getConnection(connectionString, "stefano", "stefano");
+
+            String query
+                    = "select idUtentiRegistrati from utentiRegistrati "
+                    + "where email = ? and password = ?";
+
+            // Prepared Statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+
+            // Si associano i valori
+            stmt.setString(1, user);
+            stmt.setString(2, password);
+
+            // Esecuzione query
+            ResultSet res = stmt.executeQuery();
+
+            // ciclo sulle righe restituite
+            if (res.next()) {
+                int id = res.getInt("idUtentiRegistrati");
+
+                stmt.close();
+                conn.close();
+                return id;
+            }
+
+            stmt.close();
+            conn.close();
+        } catch (SQLException e) {
+            System.out.println("nada de nada");
+            e.printStackTrace();
+        }
+        return -1;
+
+    }
+    
+    
+    
+    
+    
 }

@@ -26,7 +26,7 @@
                         <div id="divform">
 
                             <div id="texar">
-                                <label for="username"><b>Username</b></label>
+                                <label for="username"><b>E-mail</b></label>
                                 <input class="inserimento" type="text" id="username" name="username">
 
                                 <label for="password"><b>Password</b></label>
