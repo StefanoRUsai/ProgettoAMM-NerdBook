@@ -1,27 +1,30 @@
 function createElement(utente){
-    var name = $("<h2>").html(utente.nome);
-    var link = $("<a>")
-            .attr("href", "bacheca.html?user="+utente.id)
-            .html("Link al Profilo");
+   
     
-    var userData = $("<div>")
-            .attr("class","userData")
-            .append(name)
-            .append(link);
-
+    var img = $("<img>")
+            .attr("alt","foto profilo amico")
+            .attr("class", "friendPic");
+    
+    if(utente.urlAvatar == null || utente.urlAvatar === "")
+        img.attr("src", "img/profile-pictures.png");     
+    else img.attr("src", utente.urlAvatar);
+    
+    var name = $("<a>")
+            .append(img)
+            .attr("href", "bacheca.html?postvisualizati=true&idOtherUser="+utente.idUtente)
+            .append(utente.nome+" "+utente.cognome);
+    
+    return $("<li>").append(name);
     
     
-    return $("<div>")
-            .attr("class","user")
-            .append(userData);
 }
 
 function stateSuccess(data){
-    var userListPage = $("#usersList");
+    var utente = $("#utentibarra");
     
-    $(userListPage).empty();
+    $(utente).empty();
     for(var instance in data){
-        $(userListPage).append(createElement(data[instance]));
+        $(utente).append(createElement(data[instance]));
     }
 }
 function stateFailure(data, state){
@@ -29,12 +32,12 @@ function stateFailure(data, state){
 }
 
 $(document).ready(function(){
-    $("#nomeUtenteCercato").click(function(){
+    $("#searchUser").click(function(){
         
         var utenteCercato = $("#searchField")[0].value;
         
         $.ajax({
-            url: "RicercaAjax",
+            url: "filter.json",
             data:{
                 cmd:"search",
                 nomeUtente: utenteCercato

@@ -18,6 +18,8 @@
         <meta name="author" content="Stefano Raimondo Usai">
         <meta name="keywords" content="cerca nerd giochi GDR RPG GRV MMPORG libri fantasy code programming languages music programmazione linguaggi games musica">
         <link rel="stylesheet" type="text/css" href="style.css" media="screen">
+                <script src="js/jquery-3.2.1.min.js"></script>
+        <script src="js/javascript.js"></script>
 
     </head>
 

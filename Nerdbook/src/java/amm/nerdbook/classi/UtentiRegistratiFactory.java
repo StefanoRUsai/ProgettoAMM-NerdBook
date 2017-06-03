@@ -444,9 +444,7 @@ public class UtentiRegistratiFactory {
         return -1;
 
     }
-     
-     
-     
+       
     public ArrayList<UtentiRegistrati> listaSideBar(String nome) {
         
         ArrayList<UtentiRegistrati> listaUtenti = new ArrayList<UtentiRegistrati>();

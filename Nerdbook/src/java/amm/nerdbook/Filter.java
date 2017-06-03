@@ -41,7 +41,7 @@ public class Filter extends HttpServlet {
             {
                 
                 // Esegue la ricerca
-                List<UtentiRegistrati> listautenti = UtentiRegistratiFactory.getInstance().listaSideBar(request.getParameter("nomeUtenteCercato"));
+                List<UtentiRegistrati> listautenti = UtentiRegistratiFactory.getInstance().listaSideBar(request.getParameter("utenteCercato"));
                 
                 request.setAttribute("listautenti", listautenti);
                 
