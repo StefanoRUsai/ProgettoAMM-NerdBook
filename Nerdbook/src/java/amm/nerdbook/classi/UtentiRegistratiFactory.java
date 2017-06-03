@@ -453,13 +453,16 @@ public class UtentiRegistratiFactory {
             // path, username, password
             Connection conn = DriverManager.getConnection(connectionString, "stefano", "stefano");
 
-            String query = "select * from utentiRegistrati where name like ?";
+            String query = "select * from utentiRegistrati where nome || ' ' || cognome like ? ";
             // Prepared Statement
             PreparedStatement stmt = conn.prepareStatement(query);
 
             
             // Si associano i valori
             stmt.setString(1, "%" + nome + "%");
+
+
+
             
             // Esecuzione query
             ResultSet res = stmt.executeQuery();

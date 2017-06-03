@@ -39,9 +39,9 @@ public class Filter extends HttpServlet {
             // Verifica che commando e id siano stati impostati
             if (command.equals("search")) 
             {
-                
+             String nome = request.getParameter("cercaUtente");
                 // Esegue la ricerca
-                List<UtentiRegistrati> listautenti = UtentiRegistratiFactory.getInstance().listaSideBar(request.getParameter("utenteCercato"));
+                List<UtentiRegistrati> listautenti = UtentiRegistratiFactory.getInstance().listaSideBar(nome);
                 
                 request.setAttribute("listautenti", listautenti);
                 
@@ -50,7 +50,7 @@ public class Filter extends HttpServlet {
                 response.setHeader("Expires", "Sat, 6 May 1995 12:00:00 GMT");
                 response.setHeader("Cache-Control", "no-store, no-cache, " + "must-revalidate");
                 // Genero il json con una jsp
-                request.getRequestDispatcher("sidebar.jsp").forward(request, response);
+                request.getRequestDispatcher("ricercautente.jsp").forward(request, response);
             }
         }
     }

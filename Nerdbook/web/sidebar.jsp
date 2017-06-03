@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <div id="sidebar">
     <div id="search">
-            <input class="serside" id="searchField" type="text" placeholder="cerca un tuo amico" value="">
+            <input class="serside" id="searchField" type="text" placeholder="cerca un tuo amico" value=""  onkeyup=dinamic()>
             <button class="serside" id="searchUser">Cerca</button>
     </div>
 </form>

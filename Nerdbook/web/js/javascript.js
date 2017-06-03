@@ -37,10 +37,10 @@ $(document).ready(function(){
         var utenteCercato = $("#searchField")[0].value;
         
         $.ajax({
-            url: "filter.json",
+            url: "Filter",
             data:{
                 cmd:"search",
-                nomeUtente: utenteCercato
+                cercaUtente: utenteCercato
             },
             dataType:"json",
             success: function(data, state){
@@ -52,3 +52,25 @@ $(document).ready(function(){
         });
     })
 });
+
+function dinamic()
+{
+
+    var utenteCercato = $("#searchField")[0].value;
+        
+        $.ajax({
+            url: "Filter",
+            data:{
+                cmd:"search",
+                cercaUtente: utenteCercato
+            },
+        dataType:"json",
+        success: function(data, state){
+            stateSuccess(data);
+        },
+        error: function(data, state){
+            stateFailure(data, state);
+        }
+    });
+
+}
