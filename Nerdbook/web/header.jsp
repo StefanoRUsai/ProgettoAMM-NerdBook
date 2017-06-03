@@ -24,7 +24,7 @@
             <ul>
                     <!--se l'utente ha una password  vuol dire che è loggato, si potrebbe fare pure sul valore loggedin -->
                     <c:if test="${not empty utente.password}">
-                    <li><a class="imgelement nonqui" href="bacheca.html"><c:out value="${utente.nome} ${utente.cognome}"/></a></li>
+                    <li><img class="imgprofiloside" title="profilo" alt="immagine avatar" src="${utente.urlAvatar}"><a class="imgelement nonqui" href="bacheca.html"><c:out value="${utente.nome} ${utente.cognome}"/></a></li>
                     </c:if>
                     <c:if test="${not empty utente.password}">
                     <li><a class="nonqui" href="login.html?logout=true">Logout</a></li>

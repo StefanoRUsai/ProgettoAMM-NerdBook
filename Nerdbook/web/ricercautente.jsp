@@ -11,13 +11,13 @@
 
 <json:array>
     <c:forEach var="utente" items="${listautenti}">
-        <c:if test="${sessionScope.user != utente.idUtente}">
+      
             <json:object>
                 <json:property name="nome" value="${utente.nome}"/>
                 <json:property name="cognome" value="${utente.cognome}"/>
-                <json:property name="id" value="${utente.idUtente}"/>
-                <json:property name="urlFotoProfilo" value="${utente.urlAvatar}"/>
+                <json:property name="idUtente" value="${utente.idUtente}"/>
+                <json:property name="urlAvatar" value="${utente.urlAvatar}"/>
             </json:object>
-        </c:if>
+      
     </c:forEach>
 </json:array>

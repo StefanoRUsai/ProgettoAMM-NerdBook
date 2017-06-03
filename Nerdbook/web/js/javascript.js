@@ -3,7 +3,7 @@ function createElement(utente){
     
     var img = $("<img>")
             .attr("alt","foto profilo amico")
-            .attr("class", "friendPic");
+            .attr("class", "imgprofiloside");
     
     if(utente.urlAvatar == null || utente.urlAvatar === "")
         img.attr("src", "img/profile-pictures.png");     
@@ -28,7 +28,10 @@ function stateSuccess(data){
     }
 }
 function stateFailure(data, state){
-    console.log(state);
+    
+     console.log("failure");
+    $("#utentibarra ul").empty();    
+    $("#utentibarra ul").append($("<li>").append("Nessun utente trovato"));    
 }
 
 $(document).ready(function(){

@@ -18,6 +18,16 @@ and open the template in the editor.
         height: 100%;
     }
 
+    .imgprofiloside {
+    float: left;
+    margin-top: 3px;
+    margin-right: 3px;
+    max-height: 20px;
+    max-width: 20px;
+    border-radius: 100%;
+    }
+    
+    
     iframe{
         width: 400px;
         height: 280px;
@@ -318,12 +328,12 @@ and open the template in the editor.
     }
 
 
-    a.imgelement:before{
+/*    a.imgelement:before{
 
         content: url("img/profile-pictures.png");
         padding-left: 4px;
         padding-right: 2px;
-    }
+    }*/
 
     /*regole sidebar*/
     #sidebar{
@@ -394,14 +404,14 @@ and open the template in the editor.
 
     }
 
-    #persone a::before{
+/*    #persone a::before{
 
         content: url("img/profile-verde.png");
         padding-left: 4px;
         padding-right:5px;
         vertical-align: middle;
 
-    }
+    }*/
 
     /*regole content*/
     #content{
@@ -830,13 +840,13 @@ and open the template in the editor.
         text-align: center;
     }
 
-
+/*
     a.imgelement:before{
 
         content: url("img/profile-pictures.png");
         padding-left: 4px;
         padding-right: 2px;
-    }
+    }*/
 
     /*regole sidebar*/
     #sidebar{
@@ -909,14 +919,14 @@ and open the template in the editor.
 
     }
 
-    #persone a::before{
+/*    #persone a::before{
 
         content: url("img/profile-verde.png");
         padding-left: 4px;
         padding-right:5px;
         vertical-align: middle;
 
-    }
+    }*/
 
     /*regole content*/
     #content{
@@ -1348,12 +1358,12 @@ and open the template in the editor.
     }
 
 
-    a.imgelement:before{
+/*    a.imgelement:before{
 
         content: url("img/profile-pictures.png");
         padding-left: 4px;
         padding-right: 2px;
-    }
+    }*/
 
     /*regole sidebar*/
     #sidebar{
@@ -1412,14 +1422,14 @@ and open the template in the editor.
 
     }
 
-    #persone a::before{
+/*    #persone a::before{
 
         content: url("img/profile-verde.png");
         padding-left: 4px;
         padding-right:5px;
         vertical-align: middle;
 
-    }
+    }*/
 
     /*regole content*/
     #content{

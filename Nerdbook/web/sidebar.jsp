@@ -20,7 +20,9 @@
         <ul>
             <!--ciclo la lista dei nomi degli utenti tramite la variabile DButenti che si trovano bacheca, descrizione e profilo-->
             <c:forEach var="nomiutenti" items="${DButenti}">
-                <li><div class="botdiv"><a href="bacheca.html?postvisualizati=true&idOtherUser=${nomiutenti.idUtente}">
+                <li><div class="botdiv" class="collapse">
+                        <img class="imgprofiloside" title="profilo" alt="immagine avatar" src="${nomiutenti.urlAvatar}">
+                        <a href="bacheca.html?postvisualizati=true&idOtherUser=${nomiutenti.idUtente}">
                             ${nomiutenti.nome} ${nomiutenti.cognome}</a></div></li>
             </c:forEach>
         </ul>                
