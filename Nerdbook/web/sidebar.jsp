@@ -12,7 +12,7 @@
             <input class="serside" id="searchField" type="text" placeholder="cerca un tuo amico" value=""  onkeyup=dinamic()>
             <button class="serside" id="searchUser">Cerca</button>
     </div>
-</form>
+
 
 <div id="persone">
     <h3>Persone</h3>

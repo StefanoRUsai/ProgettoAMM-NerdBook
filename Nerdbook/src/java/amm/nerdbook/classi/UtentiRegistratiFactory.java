@@ -447,7 +447,7 @@ public class UtentiRegistratiFactory {
        
     public ArrayList<UtentiRegistrati> listaSideBar(String nome) {
         
-        ArrayList<UtentiRegistrati> listaUtenti = new ArrayList<UtentiRegistrati>();
+        ArrayList<UtentiRegistrati> listaUtenti = new ArrayList<>();
         
         try {
             // path, username, password
