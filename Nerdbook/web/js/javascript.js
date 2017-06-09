@@ -19,6 +19,7 @@ function createElement(utente){
     
 }
 
+
 function stateSuccess(data){
     var utente = $("#utentibarra");
     
