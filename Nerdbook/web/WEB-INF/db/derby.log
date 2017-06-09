@@ -1,1 +1,2 @@
-Fri Jun 09 20:51:23 CEST 2017 : Server di rete Apache Derby: 10.11.1.2 - (1629631) avviato e pronto ad accettare connessioni sulla porta 1527
+Fri Jun 09 22:23:48 CEST 2017 : Ascolto impossibile sulla porta 1527 dell'host localhost:
+ java.net.BindException: Indirizzo già in uso (Bind failed)

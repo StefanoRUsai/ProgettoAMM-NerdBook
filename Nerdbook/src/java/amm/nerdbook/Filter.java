@@ -33,25 +33,23 @@ public class Filter extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-    String command = request.getParameter("cmd");
-        if (command != null) 
-        {
-            // Verifica che commando e id siano stati impostati
-            if (command.equals("search")) 
-            {
-             String nome = request.getParameter("cercaUtente");
-                // Esegue la ricerca
-                List<UtentiRegistrati> listautenti = UtentiRegistratiFactory.getInstance().listaSideBar(nome);
-                
-                request.setAttribute("listautenti", listautenti);
-                
-                // Quando si restituisce del json e' importante segnalarlo ed evitare il caching
-                response.setContentType("application/json");
-                response.setHeader("Expires", "Sat, 6 May 1995 12:00:00 GMT");
-                response.setHeader("Cache-Control", "no-store, no-cache, " + "must-revalidate");
-                // Genero il json con una jsp
-                request.getRequestDispatcher("ricercautente.jsp").forward(request, response);
-            }
+        String command = request.getParameter("cmd");
+
+        // Verifica che commando e id siano stati impostati
+        String nome = request.getParameter("cercaUtente");
+        // Esegue la ricerca
+        List<UtentiRegistrati> listautenti = UtentiRegistratiFactory.getInstance().listaSideBar(nome);
+        if (listautenti.size() != 0) {
+            request.setAttribute("listautenti", listautenti);
+
+            // Quando si restituisce del json e' importante segnalarlo ed evitare il caching
+            response.setContentType("application/json");
+            response.setHeader("Expires", "Sat, 6 May 1995 12:00:00 GMT");
+            response.setHeader("Cache-Control", "no-store, no-cache, " + "must-revalidate");
+            // Genero il json con una jsp
+            request.getRequestDispatcher("ricercautente.jsp").forward(request, response);
+        } else {
+            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
         }
     }
 
